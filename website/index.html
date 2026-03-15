@@ -218,11 +218,14 @@ section { padding: 5rem 2rem; }
 }
 
 .section-title {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+  font-weight: 900;
   margin-bottom: 1rem;
-  line-height: 1.15;
+  line-height: 1.3;
+  background: linear-gradient(135deg, #f8fafc 40%, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .section-desc {
@@ -750,6 +753,41 @@ footer a { color: var(--teal); text-decoration: none; }
   .schedule-table th, .schedule-table td { padding: 0.6rem 0.5rem; }
   .form-container { padding: 0; }
 }
+
+/* Scroll reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* Enhanced card hover with glow */
+.course-card:hover {
+  border-color: rgba(6,182,212,.3);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 16px 48px rgba(0,0,0,.4), 0 0 20px rgba(6,182,212,.08);
+}
+.why-card {
+  transition: all 0.3s ease;
+}
+.why-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(245,158,11,.2);
+  box-shadow: 0 12px 40px rgba(0,0,0,.3);
+}
+.sample-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 16px 48px rgba(0,0,0,.4), 0 0 20px rgba(6,182,212,.08);
+}
 </style>
 </head>
 <body>
@@ -808,13 +846,13 @@ footer a { color: var(--teal); text-decoration: none; }
 <!-- COURSES -->
 <section class="courses-section" id="courses">
   <div class="container">
-    <div class="section-label">Season I · Summer 2026</div>
-    <div class="section-title">Twelve Courses. One Goal: Excellence.</div>
-    <p class="section-desc">Each course is built around pattern recognition, systematic problem-solving, and the kind of deep understanding that turns "I don't get it" into "this is obvious."</p>
+    <div class="section-label reveal">Season I · Summer 2026</div>
+    <div class="section-title reveal">Twelve Courses. One Goal: Excellence.</div>
+    <p class="section-desc reveal">Each course is built around pattern recognition, systematic problem-solving, and the kind of deep understanding that turns "I don't get it" into "this is obvious."</p>
 
     <div class="courses-grid">
 
-      <div class="course-card math" data-sched="sched-geometry" style="cursor:pointer">
+      <div class="course-card math reveal reveal-delay-1" data-sched="sched-geometry" style="cursor:pointer">
         <div class="course-icon">📐</div>
         <div class="course-title">Geometry</div>
         <div class="course-target">Rising 9th–10th Graders</div>
@@ -832,7 +870,7 @@ footer a { color: var(--teal); text-decoration: none; }
         </div>
       </div>
 
-      <div class="course-card math" data-sched="sched-algebra2" style="cursor:pointer">
+      <div class="course-card math reveal reveal-delay-2" data-sched="sched-algebra2" style="cursor:pointer">
         <div class="course-icon">📊</div>
         <div class="course-title">Algebra II</div>
         <div class="course-target">Rising 10th–11th Graders</div>
@@ -850,7 +888,7 @@ footer a { color: var(--teal); text-decoration: none; }
         </div>
       </div>
 
-      <div class="course-card math" data-sched="sched-precalc" style="cursor:pointer">
+      <div class="course-card math reveal reveal-delay-3" data-sched="sched-precalc" style="cursor:pointer">
         <div class="course-icon">📈</div>
         <div class="course-title">Precalculus</div>
         <div class="course-target">Rising 11th–12th Graders</div>
@@ -868,7 +906,7 @@ footer a { color: var(--teal); text-decoration: none; }
         </div>
       </div>
 
-      <div class="course-card math" data-sched="sched-calculus" style="border:1px solid rgba(245,158,11,0.25);cursor:pointer">
+      <div class="course-card math reveal reveal-delay-1" data-sched="sched-calculus" style="border:1px solid rgba(245,158,11,0.25);cursor:pointer">
         <div class="course-icon">∫</div>
         <div class="course-title">AB Calculus</div>
         <div class="course-target">Rising 11th–12th Graders · AP Prep</div>
@@ -887,7 +925,7 @@ footer a { color: var(--teal); text-decoration: none; }
       </div>
 
 
-      <div class="course-card math" data-sched="sched-prealgebra" style="cursor:pointer">
+      <div class="course-card math reveal reveal-delay-2" data-sched="sched-prealgebra" style="cursor:pointer">
         <div class="course-icon">🔢</div>
         <div class="course-title">Pre-Algebra</div>
         <div class="course-target">Rising 6th–7th Graders</div>
@@ -905,7 +943,7 @@ footer a { color: var(--teal); text-decoration: none; }
         </div>
       </div>
 
-      <div class="course-card math" data-sched="sched-algebra1" style="cursor:pointer">
+      <div class="course-card math reveal reveal-delay-3" data-sched="sched-algebra1" style="cursor:pointer">
         <div class="course-icon">🔤</div>
         <div class="course-title">Algebra I</div>
         <div class="course-target">Rising 7th–8th Graders</div>
@@ -923,7 +961,7 @@ footer a { color: var(--teal); text-decoration: none; }
         </div>
       </div>
 
-      <div class="course-card math" data-sched="sched-amc8" style="border:1px solid rgba(245,158,11,0.2);cursor:pointer">
+      <div class="course-card math reveal reveal-delay-1" data-sched="sched-amc8" style="border:1px solid rgba(245,158,11,0.2);cursor:pointer">
         <div class="course-icon">🏅</div>
         <div class="course-title">AMC 8 / Competition Math Intro</div>
         <div class="course-target">Rising 5th–8th Graders</div>
@@ -941,7 +979,7 @@ footer a { color: var(--teal); text-decoration: none; }
         </div>
       </div>
 
-      <div class="course-card sat" data-sched="sched-shsat" style="cursor:pointer">
+      <div class="course-card sat reveal reveal-delay-2" data-sched="sched-shsat" style="cursor:pointer">
         <div class="course-icon">🏫</div>
         <div class="course-title">SHSAT Prep</div>
         <div class="course-target">Rising 8th–9th Graders</div>
@@ -959,7 +997,7 @@ footer a { color: var(--teal); text-decoration: none; }
         </div>
       </div>
 
-      <div class="course-card chem" data-sched="sched-apchem" style="cursor:pointer">
+      <div class="course-card chem reveal reveal-delay-3" data-sched="sched-apchem" style="cursor:pointer">
         <div class="course-icon">⚗️</div>
         <div class="course-title">AP Chemistry Crash Course</div>
         <div class="course-target">Rising Juniors & Seniors</div>
@@ -977,7 +1015,7 @@ footer a { color: var(--teal); text-decoration: none; }
         </div>
       </div>
 
-      <div class="course-card phys" data-sched="sched-apphysics" style="cursor:pointer">
+      <div class="course-card phys reveal reveal-delay-1" data-sched="sched-apphysics" style="cursor:pointer">
         <div class="course-icon">⚡</div>
         <div class="course-title">AP Physics 1 Prep</div>
         <div class="course-target">Rising Juniors & Seniors</div>
@@ -995,7 +1033,7 @@ footer a { color: var(--teal); text-decoration: none; }
         </div>
       </div>
 
-      <div class="course-card bio" data-sched="sched-apbio" style="cursor:pointer">
+      <div class="course-card bio reveal reveal-delay-2" data-sched="sched-apbio" style="cursor:pointer">
         <div class="course-icon">🧬</div>
         <div class="course-title">AP Biology Crash Course</div>
         <div class="course-target">Rising Juniors & Seniors</div>
@@ -1013,7 +1051,7 @@ footer a { color: var(--teal); text-decoration: none; }
         </div>
       </div>
 
-      <div class="course-card sat" data-sched="sched-sat" style="cursor:pointer">
+      <div class="course-card sat reveal reveal-delay-3" data-sched="sched-sat" style="cursor:pointer">
         <div class="course-icon">📐</div>
         <div class="course-title">SAT Prep Intensive</div>
         <div class="course-target">Rising Juniors & Seniors</div>
@@ -1038,27 +1076,27 @@ footer a { color: var(--teal); text-decoration: none; }
 <!-- WHY -->
 <section id="why">
   <div class="container">
-    <div class="section-label">The Olympiad Edge Difference</div>
-    <div class="section-title">Not Another Tutoring Center.</div>
-    <p class="section-desc">Big test prep companies teach to the middle. We teach to the top — with the depth and intensity that transforms good students into exceptional ones.</p>
+    <div class="section-label reveal">The Olympiad Edge Difference</div>
+    <div class="section-title reveal">Not Another Tutoring Center.</div>
+    <p class="section-desc reveal">Big test prep companies teach to the middle. We teach to the top — with the depth and intensity that transforms good students into exceptional ones.</p>
 
     <div class="why-grid">
-      <div class="why-card">
+      <div class="why-card reveal reveal-delay-1">
         <div class="why-icon a">🎯</div>
         <div class="why-title">Elite Competition Background</div>
         <div class="why-desc">Your instructor is a USAMO Qualifier (top 10 nationally), scored a perfect 150 on AMC 12B, reached USACO Platinum, was a 2× USABO Semifinalist, and a NYC USNCO Prep Invitee. This isn't secondhand knowledge.</div>
       </div>
-      <div class="why-card">
+      <div class="why-card reveal reveal-delay-2">
         <div class="why-icon b">🧠</div>
         <div class="why-title">Pattern Recognition Method</div>
         <div class="why-desc">Our signature approach uses color-coded frameworks and "recognition triggers" that train your brain to see solutions before you even start writing. Problems start feeling inevitable — not random.</div>
       </div>
-      <div class="why-card">
+      <div class="why-card reveal reveal-delay-3">
         <div class="why-icon c">👥</div>
         <div class="why-title">Tiny Class Sizes</div>
         <div class="why-desc">8–12 students max per section. Everyone gets individual attention, real-time feedback, and the space to ask the questions that actually matter — just like office hours, not a lecture hall.</div>
       </div>
-      <div class="why-card">
+      <div class="why-card reveal reveal-delay-4">
         <div class="why-icon d">📊</div>
         <div class="why-title">Real Materials, Real Results</div>
         <div class="why-desc">Custom-built handouts with worked examples, difficulty progressions, and practice sets drawn from actual competition and AP exam problems. The same caliber of materials used at AwesomeMath.</div>
@@ -1090,13 +1128,13 @@ footer a { color: var(--teal); text-decoration: none; }
 <!-- SAMPLE MATERIALS -->
 <section class="courses-section" id="materials">
   <div class="container">
-    <div class="section-label">See the Quality First</div>
-    <div class="section-title">Sample Handouts. Judge for Yourself.</div>
-    <p class="section-desc">Every course comes with custom-built handouts featuring escalating difficulty, worked solutions, and the pattern-recognition triggers that make our method click. Here's a taste.</p>
+    <div class="section-label reveal">See the Quality First</div>
+    <div class="section-title reveal">Sample Handouts. Judge for Yourself.</div>
+    <p class="section-desc reveal">Every course comes with custom-built handouts featuring escalating difficulty, worked solutions, and the pattern-recognition triggers that make our method click. Here's a taste.</p>
 
     <div class="samples-grid">
 
-      <div class="sample-card chem-sample">
+      <div class="sample-card chem-sample reveal reveal-delay-1">
         <div class="sample-icon">⚗️</div>
         <div class="sample-title">Acid-Base & Buffers</div>
         <div class="sample-subtitle">Honors Chemistry → AP Chemistry → USNCO / IChO</div>
@@ -1110,7 +1148,7 @@ footer a { color: var(--teal); text-decoration: none; }
         <a href="sample-chemistry.pdf" target="_blank" class="sample-btn">📄 View Handout (PDF)</a>
       </div>
 
-      <div class="sample-card" style="position:relative;overflow:hidden;">
+      <div class="sample-card reveal reveal-delay-2" style="position:relative;overflow:hidden;">
         <div style="content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;background:linear-gradient(90deg,#f59e0b,#f97316);"></div>
         <div class="sample-icon">🔢</div>
         <div class="sample-title">Complex Numbers & Roots of Unity</div>
@@ -1125,7 +1163,7 @@ footer a { color: var(--teal); text-decoration: none; }
         <a href="sample-math.pdf" target="_blank" class="sample-btn">📄 View Handout (PDF)</a>
       </div>
 
-      <div class="sample-card bio-sample">
+      <div class="sample-card bio-sample reveal reveal-delay-3">
         <div class="sample-icon">🧬</div>
         <div class="sample-title">Cell & Molecular Biology</div>
         <div class="sample-subtitle">Honors Bio → AP Bio → USABO Open → USABO Semifinal</div>
@@ -1139,7 +1177,7 @@ footer a { color: var(--teal); text-decoration: none; }
         <a href="sample-biology.pdf" target="_blank" class="sample-btn">📄 View Handout (PDF)</a>
       </div>
 
-      <div class="sample-card phys-sample">
+      <div class="sample-card phys-sample reveal reveal-delay-4">
         <div class="sample-icon">⚡</div>
         <div class="sample-title">Physics Problem Ladder</div>
         <div class="sample-subtitle">AP Physics 1 → AP Physics C → F = ma → USAPhO</div>
@@ -1160,12 +1198,12 @@ footer a { color: var(--teal); text-decoration: none; }
 <!-- SCHEDULE -->
 <section class="schedule-section" id="schedule">
   <div class="container">
-    <div class="section-label">Season I · Summer 2026</div>
-    <div class="section-title">Plan Your Summer.</div>
-    <p class="section-desc">All classes live online via Zoom. 4-week program: June 30 – July 31, 2026.</p>
+    <div class="section-label reveal">Season I · Summer 2026</div>
+    <div class="section-title reveal">Plan Your Summer.</div>
+    <p class="section-desc reveal">All classes live online via Zoom. 4-week program: June 30 – July 31, 2026.</p>
     <p style="color: var(--gray); font-size: 0.85rem; font-style: italic; margin-top: -0.5rem; margin-bottom: 1.5rem;">Click any course card above to jump to its schedule. All times are Eastern (ET).</p>
 
-    <table class="schedule-table">
+    <table class="schedule-table reveal">
       <thead>
         <tr>
           <th>Course</th>
@@ -1268,9 +1306,9 @@ footer a { color: var(--teal); text-decoration: none; }
 <!-- ENROLL CTA -->
 <section class="cta-section" id="enroll">
   <div class="container">
-    <div class="section-label">Limited Seats</div>
-    <div class="cta-title">Reserve Your Spot.</div>
-    <p class="cta-desc">Classes fill fast. Drop your info and we'll reach out within 24 hours.</p>
+    <div class="section-label reveal">Limited Seats</div>
+    <div class="cta-title reveal">Reserve Your Spot.</div>
+    <p class="cta-desc reveal">Classes fill fast. Drop your info and we'll reach out within 24 hours.</p>
 
     <div style="max-width: 500px; margin: 0 auto 2rem; background: rgba(6,182,212,0.06); border: 1px solid rgba(6,182,212,0.15); border-radius: 12px; padding: 1.25rem 1.5rem; text-align: left;">
       <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.4rem; color: var(--teal);">Admission by Interview</div>
@@ -1398,6 +1436,52 @@ document.querySelectorAll('.course-card[data-sched]').forEach(card => {
     }, 400);
   });
 });
+</script>
+
+<script>
+// Scroll reveal using Intersection Observer
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Counter animation for stats
+function animateCounter(el) {
+  const text = el.textContent.trim();
+  const match = text.match(/^(\d[\d,]*)/);
+  if (!match) return;
+  const target = parseInt(match[1].replace(/,/g, ''));
+  const suffix = text.slice(match[0].length);
+  const duration = 1500;
+  const start = performance.now();
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(target * eased);
+    el.textContent = current.toLocaleString() + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.stat-number').forEach(animateCounter);
+      statsObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+const statsBar = document.querySelector('.stats-bar');
+if (statsBar) statsObserver.observe(statsBar);
 </script>
 
 </body>

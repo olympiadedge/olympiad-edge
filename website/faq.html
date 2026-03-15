@@ -78,6 +78,14 @@ h1 {
 }
 .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245,158,11,0.25); }
 
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.faq-item { transition: border-color 0.2s, box-shadow 0.2s; }
+.faq-item:hover { border-color: rgba(6,182,212,0.2); box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+
 footer { text-align: center; padding: 2rem; border-top: 1px solid var(--card-border); color: var(--gray); font-size: 0.85rem; }
 footer a { color: var(--teal); text-decoration: none; }
 
@@ -110,10 +118,10 @@ footer a { color: var(--teal); text-decoration: none; }
 
 <div class="container">
 
-<h1>Frequently Asked Questions</h1>
-<p class="subtitle">Everything you need to know about Olympiad Edge summer programs.</p>
+<h1 class="reveal">Frequently Asked Questions</h1>
+<p class="subtitle reveal reveal-delay-1">Everything you need to know about Olympiad Edge summer programs.</p>
 
-<div class="faq-section">
+<div class="faq-section reveal reveal-delay-2">
   <div class="faq-section-title">Enrollment & Admissions</div>
 
   <div class="faq-item">
@@ -137,7 +145,7 @@ footer a { color: var(--teal); text-decoration: none; }
   </div>
 </div>
 
-<div class="faq-section">
+<div class="faq-section reveal">
   <div class="faq-section-title">Format & Logistics</div>
 
   <div class="faq-item">
@@ -166,7 +174,7 @@ footer a { color: var(--teal); text-decoration: none; }
   </div>
 </div>
 
-<div class="faq-section">
+<div class="faq-section reveal">
   <div class="faq-section-title">Pricing & Payment</div>
 
   <div class="faq-item">
@@ -190,7 +198,7 @@ footer a { color: var(--teal); text-decoration: none; }
   </div>
 </div>
 
-<div class="faq-section">
+<div class="faq-section reveal">
   <div class="faq-section-title">About the Instructor</div>
 
   <div class="faq-item">
@@ -209,7 +217,7 @@ footer a { color: var(--teal); text-decoration: none; }
   </div>
 </div>
 
-<div class="cta-box">
+<div class="cta-box reveal">
   <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:0.5rem;">Still have questions?</h2>
   <p>Reach out directly — we respond within 24 hours.</p>
   <a href="/#enroll" class="cta-btn">Enroll Now →</a>
@@ -232,6 +240,12 @@ document.querySelectorAll('.faq-q').forEach(q => {
     item.classList.toggle('open');
   });
 });
+
+// Scroll reveal
+const ro = new IntersectionObserver(e => {
+  e.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(e => ro.observe(e));
 </script>
 
 </body>

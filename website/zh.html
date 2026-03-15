@@ -41,7 +41,7 @@ body{font-family:'Noto Sans SC','Outfit',sans-serif;background:var(--navy);color
 .stat-label{font-size:.75rem;color:var(--gray);font-weight:500;margin-top:.2rem}
 section{padding:5rem 2rem}
 .section-label{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--teal);font-weight:600;margin-bottom:.75rem}
-.section-title{font-size:clamp(1.6rem,3.5vw,2.3rem);font-weight:900;margin-bottom:1rem;line-height:1.3}
+.section-title{font-size:clamp(1.6rem,3.5vw,2.3rem);font-weight:900;margin-bottom:1rem;line-height:1.3;background:linear-gradient(135deg,#f8fafc 40%,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .section-desc{color:var(--gray);font-size:1rem;max-width:600px;line-height:1.9}
 .container{max-width:1100px;margin:0 auto}
 .courses-section{background:var(--deep)}
@@ -119,6 +119,12 @@ footer a{color:var(--teal);text-decoration:none}
 @media(max-width:1024px){.nav{padding:1rem 1.5rem}.nav-links{gap:1.25rem}.nav-links a{font-size:.82rem}.courses-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}.why-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.samples-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}section{padding:4rem 1.5rem}}
 @media(max-width:768px){.stats-bar{gap:1.5rem}.courses-grid{grid-template-columns:1fr}.schedule-table{font-size:.82rem}.schedule-table th,.schedule-table td{padding:.75rem}section{padding:3.5rem 1.25rem}.hero{padding:2rem 1.25rem}.nav-links{gap:1rem}.nav-links a{font-size:.78rem}.lang-toggle{font-size:.72rem;padding:.25rem .6rem}}
 @media(max-width:600px){.nav-links{display:none}.nav{padding:1rem 1.25rem}.mobile-lang{display:flex!important;position:fixed;top:.7rem;right:1.25rem;z-index:101;gap:.4rem}.hero h1{font-size:2rem}.stats-bar{gap:1.2rem}.stat-number{font-family:'Outfit',sans-serif;font-size:1.5rem}.schedule-table{font-size:.75rem}.schedule-table th,.schedule-table td{padding:.6rem .5rem}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}.reveal-delay-4{transition-delay:.4s}.reveal-delay-5{transition-delay:.5s}
+.course-card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 16px 48px rgba(0,0,0,.4),0 0 20px rgba(6,182,212,.08)}
+.why-card{transition:all .3s ease}.why-card:hover{transform:translateY(-4px);border-color:rgba(245,158,11,.2);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.sample-card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 16px 48px rgba(0,0,0,.4),0 0 20px rgba(6,182,212,.08)}
 </style>
 </head>
 <body>
@@ -158,11 +164,11 @@ footer a{color:var(--teal);text-decoration:none}
 
 <section class="courses-section" id="courses">
   <div class="container">
-    <div class="section-label">第一期 · 2026暑期</div>
-    <div class="section-title">十二门课程，一个目标：卓越。</div>
-    <p class="section-desc">每门课程都围绕模式识别、系统性解题和深度理解设计 — 让"我不会"变成"这很显然"。</p>
+    <div class="section-label reveal">第一期 · 2026暑期</div>
+    <div class="section-title reveal">十二门课程，一个目标：卓越。</div>
+    <p class="section-desc reveal">每门课程都围绕模式识别、系统性解题和深度理解设计 — 让"我不会"变成"这很显然"。</p>
     <div class="courses-grid">
-      <div class="course-card math">
+      <div class="course-card math reveal reveal-delay-1">
         <div class="course-icon">🏆</div>
         <div class="course-title">几何 Geometry</div>
         <div class="course-title-en">Geometry</div>
@@ -171,7 +177,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">每周2次</span><span class="course-tag">60分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
         <div class="course-price"><span class="amount">$399</span><span class="per">/ 全期</span></div>
       </div>
-      <div class="course-card math" style="border:1px solid rgba(245,158,11,.2)">
+      <div class="course-card math reveal reveal-delay-2" style="border:1px solid rgba(245,158,11,.2)">
         <div class="course-icon">🥈</div>
         <div class="course-title">代数II Algebra II</div>
         <div class="course-title-en">Algebra II</div>
@@ -180,7 +186,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">周六</span><span class="course-tag">3小时/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
         <div class="course-price"><span class="amount">$949</span><span class="per">/ 全期</span></div>
       </div>
-      <div class="course-card math" style="border:1px solid rgba(245,158,11,.35)">
+      <div class="course-card math reveal reveal-delay-3" style="border:1px solid rgba(245,158,11,.35)">
         <div class="course-icon">🥇</div>
         <div class="course-title">预备微积分 Precalculus</div>
         <div class="course-title-en">Precalculus</div>
@@ -189,7 +195,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">周六</span><span class="course-tag">3小时/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
         <div class="course-price"><span class="amount">$1,299</span><span class="per">/ 全期</span></div>
       </div>
-      <div class="course-card math" style="border:1px solid rgba(245,158,11,.25)">
+      <div class="course-card math reveal reveal-delay-1" style="border:1px solid rgba(245,158,11,.25)">
         <div class="course-icon">∫</div>
         <div class="course-title">AB微积分 AB Calculus</div>
         <div class="course-title-en">AB Calculus</div>
@@ -198,7 +204,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">每周2次</span><span class="course-tag">60分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
         <div class="course-price"><span class="amount">$399</span><span class="per">/ 全期</span></div>
       </div>
-      <div class="course-card math">
+      <div class="course-card math reveal reveal-delay-2">
         <div class="course-icon">🔢</div>
         <div class="course-title">预代数 Pre-Algebra</div>
         <div class="course-title-en">Pre-Algebra</div>
@@ -207,7 +213,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">每周2次</span><span class="course-tag">60分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
         <div class="course-price"><span class="amount">$275</span><span class="per">/ 全期</span></div>
       </div>
-      <div class="course-card math">
+      <div class="course-card math reveal reveal-delay-3">
         <div class="course-icon">🔤</div>
         <div class="course-title">代数I Algebra I</div>
         <div class="course-title-en">Algebra I</div>
@@ -216,7 +222,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">每周2次</span><span class="course-tag">60分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
         <div class="course-price"><span class="amount">$299</span><span class="per">/ 全期</span></div>
       </div>
-      <div class="course-card math" style="border:1px solid rgba(245,158,11,.2)">
+      <div class="course-card math reveal reveal-delay-1" style="border:1px solid rgba(245,158,11,.2)">
         <div class="course-icon">🏅</div>
         <div class="course-title">AMC 8 / 竞赛数学入门</div>
         <div class="course-title-en">AMC 8 / Competition Math Intro</div>
@@ -225,7 +231,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">周六</span><span class="course-tag">90分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
         <div class="course-price"><span class="amount">$299</span><span class="per">/ 全期</span></div>
       </div>
-      <div class="course-card sat">
+      <div class="course-card sat reveal reveal-delay-2">
         <div class="course-icon">🏫</div>
         <div class="course-title">SHSAT备考班</div>
         <div class="course-title-en">SHSAT Prep</div>
@@ -234,7 +240,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">周六</span><span class="course-tag">60分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
         <div class="course-price"><span class="amount">$399</span><span class="per">/ 全期</span></div>
       </div>
-      <div class="course-card chem">
+      <div class="course-card chem reveal reveal-delay-3">
         <div class="course-icon">⚗️</div>
         <div class="course-title">AP化学速成班</div>
         <div class="course-title-en">AP Chemistry Crash Course</div>
@@ -243,7 +249,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">每周2次</span><span class="course-tag">60分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
         <div class="course-price"><span class="amount">$399</span><span class="per">/ 全期</span></div>
       </div>
-      <div class="course-card phys">
+      <div class="course-card phys reveal reveal-delay-1">
         <div class="course-icon">⚡</div>
         <div class="course-title">AP物理1预备班</div>
         <div class="course-title-en">AP Physics 1 Prep</div>
@@ -252,7 +258,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">每周2次</span><span class="course-tag">90分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
         <div class="course-price"><span class="amount">$399</span><span class="per">/ 全期</span></div>
       </div>
-      <div class="course-card bio">
+      <div class="course-card bio reveal reveal-delay-2">
         <div class="course-icon">🧬</div>
         <div class="course-title">AP生物速成班</div>
         <div class="course-title-en">AP Biology Crash Course</div>
@@ -261,7 +267,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">每周2次</span><span class="course-tag">90分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
         <div class="course-price"><span class="amount">$399</span><span class="per">/ 全期</span></div>
       </div>
-      <div class="course-card sat">
+      <div class="course-card sat reveal reveal-delay-3">
         <div class="course-icon">📐</div>
         <div class="course-title">SAT强化冲刺班</div>
         <div class="course-title-en">SAT Prep Intensive</div>
@@ -276,14 +282,14 @@ footer a{color:var(--teal);text-decoration:none}
 
 <section id="why">
   <div class="container">
-    <div class="section-label">奥赛先锋的不同之处</div>
-    <div class="section-title">不是普通补习班。</div>
-    <p class="section-desc">大型培训机构面向中等水平教学。我们面向顶尖 — 以深度和强度将优秀学生培养成卓越人才。</p>
+    <div class="section-label reveal">奥赛先锋的不同之处</div>
+    <div class="section-title reveal">不是普通补习班。</div>
+    <p class="section-desc reveal">大型培训机构面向中等水平教学。我们面向顶尖 — 以深度和强度将优秀学生培养成卓越人才。</p>
     <div class="why-grid">
-      <div class="why-card"><div class="why-icon a">🎯</div><div class="why-title">顶尖竞赛背景</div><div class="why-desc">授课老师为USAMO入围者（全美前十）、AMC 12B满分150、USACO铂金级、2次USABO半决赛入围者、纽约市USNCO预备赛受邀者。这不是二手知识。</div></div>
-      <div class="why-card"><div class="why-icon b">🧠</div><div class="why-title">模式识别教学法</div><div class="why-desc">独创的颜色编码框架和"识别触发点"训练大脑在动笔前就看到解题路径。让问题变得"显而易见" — 而非随机猜测。</div></div>
-      <div class="why-card"><div class="why-icon c">👥</div><div class="why-title">小班精英制</div><div class="why-desc">每班最多8–12人。每位学生都能获得个性化关注、实时反馈，以及充分提问的空间 — 像office hours一样，而非大课堂。</div></div>
-      <div class="why-card"><div class="why-icon d">📊</div><div class="why-title">实战教材，真实成果</div><div class="why-desc">自主编写的讲义包含详解范例、难度递进和真实竞赛/AP考试真题练习集。与AwesomeMath同等级别的教学材料。</div></div>
+      <div class="why-card reveal reveal-delay-1"><div class="why-icon a">🎯</div><div class="why-title">顶尖竞赛背景</div><div class="why-desc">授课老师为USAMO入围者（全美前十）、AMC 12B满分150、USACO铂金级、2次USABO半决赛入围者、纽约市USNCO预备赛受邀者。这不是二手知识。</div></div>
+      <div class="why-card reveal reveal-delay-2"><div class="why-icon b">🧠</div><div class="why-title">模式识别教学法</div><div class="why-desc">独创的颜色编码框架和"识别触发点"训练大脑在动笔前就看到解题路径。让问题变得"显而易见" — 而非随机猜测。</div></div>
+      <div class="why-card reveal reveal-delay-3"><div class="why-icon c">👥</div><div class="why-title">小班精英制</div><div class="why-desc">每班最多8–12人。每位学生都能获得个性化关注、实时反馈，以及充分提问的空间 — 像office hours一样，而非大课堂。</div></div>
+      <div class="why-card reveal reveal-delay-4"><div class="why-icon d">📊</div><div class="why-title">实战教材，真实成果</div><div class="why-desc">自主编写的讲义包含详解范例、难度递进和真实竞赛/AP考试真题练习集。与AwesomeMath同等级别的教学材料。</div></div>
     </div>
     <div style="margin-top:3.5rem;background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:2.5rem;display:flex;gap:2rem;flex-wrap:wrap;align-items:start">
       <div style="flex:1;min-width:280px">
@@ -306,11 +312,11 @@ footer a{color:var(--teal);text-decoration:none}
 
 <section class="courses-section" id="materials">
   <div class="container">
-    <div class="section-label">先看教材质量</div>
-    <div class="section-title">样本讲义。质量说话。</div>
-    <p class="section-desc">每门课都配有自主编写的讲义，包含难度递进的题目、完整解答和独创的"模式识别触发点"。以下是部分样本。</p>
+    <div class="section-label reveal">先看教材质量</div>
+    <div class="section-title reveal">样本讲义。质量说话。</div>
+    <p class="section-desc reveal">每门课都配有自主编写的讲义，包含难度递进的题目、完整解答和独创的"模式识别触发点"。以下是部分样本。</p>
     <div class="samples-grid">
-      <div class="sample-card chem-sample">
+      <div class="sample-card chem-sample reveal reveal-delay-1">
         <div class="sample-icon">⚗️</div>
         <div class="sample-title">酸碱与缓冲液</div>
         <div class="sample-subtitle">荣誉化学 → AP化学 → USNCO / IChO</div>
@@ -323,7 +329,7 @@ footer a{color:var(--teal);text-decoration:none}
         </div>
         <a href="sample-chemistry.pdf" target="_blank" class="sample-btn">📄 查看讲义 (PDF)</a>
       </div>
-      <div class="sample-card" style="position:relative;overflow:hidden;">
+      <div class="sample-card reveal reveal-delay-2" style="position:relative;overflow:hidden;">
         <div style="content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;background:linear-gradient(90deg,#f59e0b,#f97316);"></div>
         <div class="sample-icon">🔢</div>
         <div class="sample-title">复数与单位根</div>
@@ -337,7 +343,7 @@ footer a{color:var(--teal);text-decoration:none}
         </div>
         <a href="sample-math.pdf" target="_blank" class="sample-btn">📄 查看讲义 (PDF)</a>
       </div>
-      <div class="sample-card bio-sample">
+      <div class="sample-card bio-sample reveal reveal-delay-3">
         <div class="sample-icon">🧬</div>
         <div class="sample-title">细胞与分子生物学</div>
         <div class="sample-subtitle">荣誉生物 → AP生物 → USABO公开赛 → USABO半决赛</div>
@@ -350,7 +356,7 @@ footer a{color:var(--teal);text-decoration:none}
         </div>
         <a href="sample-biology.pdf" target="_blank" class="sample-btn">📄 查看讲义 (PDF)</a>
       </div>
-      <div class="sample-card phys-sample">
+      <div class="sample-card phys-sample reveal reveal-delay-4">
         <div class="sample-icon">⚡</div>
         <div class="sample-title">物理阶梯题集</div>
         <div class="sample-subtitle">AP物理1 → AP物理C → F = ma → USAPhO</div>
@@ -369,11 +375,11 @@ footer a{color:var(--teal);text-decoration:none}
 
 <section class="schedule-section" id="schedule">
   <div class="container">
-    <div class="section-label">第一期 · 2026暑期</div>
-    <div class="section-title">规划您的暑假。</div>
-    <p class="section-desc">所有课程均通过Zoom线上直播进行。6月30日 – 7月11日。</p>
+    <div class="section-label reveal">第一期 · 2026暑期</div>
+    <div class="section-title reveal">规划您的暑假。</div>
+    <p class="section-desc reveal">所有课程均通过Zoom线上直播进行。6月30日 – 7月11日。</p>
     <p style="color:var(--gray);font-size:.85rem;font-style:italic;margin-top:-.5rem;margin-bottom:1.5rem">课程安排为暂定，可能调整。</p>
-    <table class="schedule-table">
+    <table class="schedule-table reveal">
       <thead><tr><th>课程</th><th>日期</th><th>上课日</th><th>时间</th><th>费用</th></tr></thead>
       <tbody>
         <tr><td class="course-name-cell"><span class="dot math"></span>几何</td><td>6/30 – 7/31</td><td>周二、四</td><td>10:00 – 11:00 AM</td><td>$399</td></tr>
@@ -395,9 +401,9 @@ footer a{color:var(--teal);text-decoration:none}
 
 <section class="cta-section" id="enroll">
   <div class="container">
-    <div class="section-label">名额有限</div>
-    <div class="cta-title">预约您的席位。</div>
-    <p class="cta-desc">名额紧张，先到先得。留下您的信息，我们将在24小时内与您联系。</p>
+    <div class="section-label reveal">名额有限</div>
+    <div class="cta-title reveal">预约您的席位。</div>
+    <p class="cta-desc reveal">名额紧张，先到先得。留下您的信息，我们将在24小时内与您联系。</p>
     <div style="max-width:500px;margin:0 auto 2rem;background:rgba(6,182,212,.06);border:1px solid rgba(6,182,212,.15);border-radius:12px;padding:1.25rem 1.5rem;text-align:left">
       <div style="font-weight:700;font-size:.95rem;margin-bottom:.4rem;color:var(--teal)">面试入学制</div>
       <div style="font-size:.88rem;color:var(--gray);line-height:1.8">所有申请学生需经过面试筛选，以确定是否适合该课程。录取由授课老师全权决定。这确保每位在场学生都能达到课程要求的水平。</div>
@@ -445,6 +451,13 @@ function handleSubmit(e){
   .then(function(r){if(r.ok){form.innerHTML='<div style="text-align:center;padding:2rem 0"><div style="font-size:2.5rem;margin-bottom:.75rem">✓</div><div style="font-size:1.3rem;font-weight:800;margin-bottom:.5rem">已收到您的信息！</div><div style="color:var(--gray);font-size:.95rem;line-height:1.9">感谢您对奥赛先锋的关注。我们将在24小时内与您联系，讨论后续步骤并安排面试。</div></div>'}else{throw new Error('fail')}})
   .catch(function(){alert('出错了，请重试或致电 (631) 392-8326。');btn.textContent=orig;btn.disabled=false;btn.style.opacity='1'});
 }
+</script>
+<script>
+const ro=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&(e.target.classList.add('visible'),ro.unobserve(e.target))})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(e=>ro.observe(e));
+function animateCounter(el){const t=el.textContent.trim(),m=t.match(/^(\d[\d,]*)/);if(!m)return;const target=parseInt(m[1].replace(/,/g,'')),suffix=t.slice(m[0].length),dur=1500,start=performance.now();function u(now){const p=Math.min((now-start)/dur,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(target*e).toLocaleString()+suffix;if(p<1)requestAnimationFrame(u)}requestAnimationFrame(u)}
+const so=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&(e.target.querySelectorAll('.stat-number').forEach(animateCounter),so.unobserve(e.target))})},{threshold:.3});
+const sb=document.querySelector('.stats-bar');if(sb)so.observe(sb);
 </script>
 </body>
 </html>

@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Olympiad Edge — 엘리트 STEM 여름 프로그램 | 헌팅턴, 롱아일랜드</title>
 <meta name="description" content="헌팅턴 롱아일랜드 & 온라인 엘리트 STEM 여름 프로그램. 기초수학부터 미적분, AMC 8, SHSAT, AP 화학/물리/생물, SAT 수학. USAMO 전국 Top 10 강사, AwesomeMath 강사, 소수정예.">
-<meta name="keywords" content="USAMO, AMC, AIME, USACO, AP 화학, AP物理, AP 생물, SAT数学, 长岛, 亨廷顿, 수학, 대수, 기하, 미적분, AMC 8, SHSAT, 스타이베선트, 여름학원, 暑期班, 补习">
-<meta property="og:title" content="奥赛先锋 Olympiad Edge — 精英STEM暑期课程">
+<meta name="keywords" content="USAMO, AMC, AIME, USACO, AP 화학, AP 물리, AP 생물, SAT 수학, 롱아일랜드, 헌팅턴, 수학, 대수, 기하, 미적분, AMC 8, SHSAT, 스타이베선트, 여름학원, 여름캠프, 과외">
+<meta property="og:title" content="Olympiad Edge — 엘리트 STEM 여름 프로그램">
 <meta property="og:description" content="수학, AP 과학, SAT 대비. USAMO 전국 Top 10 강사 직강. 온라인.">
 <meta property="og:url" content="https://olympiadedge.academy/ko.html">
 <meta property="og:type" content="website">
@@ -40,7 +40,7 @@ body{font-family:'Noto Sans KR','Noto Sans SC','Outfit',sans-serif;background:va
 .stat-label{font-size:.75rem;color:var(--gray);font-weight:500;margin-top:.2rem}
 section{padding:5rem 2rem}
 .section-label{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--teal);font-weight:600;margin-bottom:.75rem}
-.section-title{font-size:clamp(1.6rem,3.5vw,2.3rem);font-weight:900;margin-bottom:1rem;line-height:1.3}
+.section-title{font-size:clamp(1.6rem,3.5vw,2.3rem);font-weight:900;margin-bottom:1rem;line-height:1.3;background:linear-gradient(135deg,#f8fafc 40%,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .section-desc{color:var(--gray);font-size:1rem;max-width:600px;line-height:1.9}
 .container{max-width:1100px;margin:0 auto}
 .courses-section{background:var(--deep)}
@@ -118,6 +118,12 @@ footer a{color:var(--teal);text-decoration:none}
 @media(max-width:1024px){.nav{padding:1rem 1.5rem}.nav-links{gap:1.25rem}.nav-links a{font-size:.82rem}.courses-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}.why-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.samples-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}section{padding:4rem 1.5rem}}
 @media(max-width:768px){.stats-bar{gap:1.5rem}.courses-grid{grid-template-columns:1fr}.schedule-table{font-size:.82rem}.schedule-table th,.schedule-table td{padding:.75rem}section{padding:3.5rem 1.25rem}.hero{padding:2rem 1.25rem}.nav-links{gap:1rem}.nav-links a{font-size:.78rem}.lang-toggle{font-size:.72rem;padding:.25rem .6rem}}
 @media(max-width:600px){.nav-links{display:none}.nav{padding:1rem 1.25rem}.mobile-lang{display:flex!important;position:fixed;top:.7rem;right:1.25rem;z-index:101;gap:.4rem}.hero h1{font-size:2rem}.stats-bar{gap:1.2rem}.stat-number{font-family:'Outfit',sans-serif;font-size:1.5rem}.schedule-table{font-size:.75rem}.schedule-table th,.schedule-table td{padding:.6rem .5rem}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}.reveal-delay-4{transition-delay:.4s}.reveal-delay-5{transition-delay:.5s}
+.course-card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 16px 48px rgba(0,0,0,.4),0 0 20px rgba(6,182,212,.08)}
+.why-card{transition:all .3s ease}.why-card:hover{transform:translateY(-4px);border-color:rgba(245,158,11,.2);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.sample-card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 16px 48px rgba(0,0,0,.4),0 0 20px rgba(6,182,212,.08)}
 </style>
 </head>
 <body>
@@ -157,11 +163,11 @@ footer a{color:var(--teal);text-decoration:none}
 
 <section class="courses-section" id="courses">
   <div class="container">
-    <div class="section-label">시즌 I · 2026 여름</div>
-    <div class="section-title">12개 강좌. 하나의 목표: 탁월함.</div>
-    <p class="section-desc">모든 강좌는 패턴 인식, 체계적 문제 해결, 깊은 이해를 중심으로 설계되어 "모르겠어"를 "당연하지"로 바꿉니다.</p>
+    <div class="section-label reveal">시즌 I · 2026 여름</div>
+    <div class="section-title reveal">12개 강좌. 하나의 목표: 탁월함.</div>
+    <p class="section-desc reveal">모든 강좌는 패턴 인식, 체계적 문제 해결, 깊은 이해를 중심으로 설계되어 "모르겠어"를 "당연하지"로 바꿉니다.</p>
     <div class="courses-grid">
-      <div class="course-card math">
+      <div class="course-card reveal reveal-delay-1 math">
         <div class="course-icon">🏆</div>
         <div class="course-title">기하학 Geometry</div>
         <div class="course-title-en">Geometry</div>
@@ -170,7 +176,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">주 2회</span><span class="course-tag">60분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
         <div class="course-price"><span class="amount">$399</span><span class="per">/ 전체 프로그램</span></div>
       </div>
-      <div class="course-card math" style="border:1px solid rgba(245,158,11,.2)">
+      <div class="course-card reveal reveal-delay-2 math" style="border:1px solid rgba(245,158,11,.2)">
         <div class="course-icon">🥈</div>
         <div class="course-title">대수 II Algebra II</div>
         <div class="course-title-en">Algebra II</div>
@@ -179,7 +185,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">토요일</span><span class="course-tag">3시간</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
         <div class="course-price"><span class="amount">$949</span><span class="per">/ 전체 프로그램</span></div>
       </div>
-      <div class="course-card math" style="border:1px solid rgba(245,158,11,.35)">
+      <div class="course-card reveal reveal-delay-3 math" style="border:1px solid rgba(245,158,11,.35)">
         <div class="course-icon">🥇</div>
         <div class="course-title">예비미적분 Precalculus</div>
         <div class="course-title-en">Precalculus</div>
@@ -188,7 +194,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">토요일</span><span class="course-tag">3시간</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
         <div class="course-price"><span class="amount">$1,299</span><span class="per">/ 전체 프로그램</span></div>
       </div>
-      <div class="course-card math" style="border:1px solid rgba(245,158,11,.25)">
+      <div class="course-card reveal reveal-delay-1 math" style="border:1px solid rgba(245,158,11,.25)">
         <div class="course-icon">∫</div>
         <div class="course-title">AB 미적분 AB Calculus</div>
         <div class="course-title-en">AB Calculus</div>
@@ -197,7 +203,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">주 2회</span><span class="course-tag">60분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
         <div class="course-price"><span class="amount">$399</span><span class="per">/ 전체 프로그램</span></div>
       </div>
-      <div class="course-card math">
+      <div class="course-card reveal reveal-delay-2 math">
         <div class="course-icon">🔢</div>
         <div class="course-title">기초대수 Pre-Algebra</div>
         <div class="course-title-en">Pre-Algebra</div>
@@ -206,7 +212,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">주 2회</span><span class="course-tag">60분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
         <div class="course-price"><span class="amount">$275</span><span class="per">/ 전체 프로그램</span></div>
       </div>
-      <div class="course-card math">
+      <div class="course-card reveal reveal-delay-3 math">
         <div class="course-icon">🔤</div>
         <div class="course-title">대수 I Algebra I</div>
         <div class="course-title-en">Algebra I</div>
@@ -215,7 +221,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">주 2회</span><span class="course-tag">60분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
         <div class="course-price"><span class="amount">$299</span><span class="per">/ 전체 프로그램</span></div>
       </div>
-      <div class="course-card math" style="border:1px solid rgba(245,158,11,.2)">
+      <div class="course-card reveal reveal-delay-1 math" style="border:1px solid rgba(245,158,11,.2)">
         <div class="course-icon">🏅</div>
         <div class="course-title">AMC 8 / 경시수학 입문</div>
         <div class="course-title-en">AMC 8 / Competition Math Intro</div>
@@ -224,7 +230,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">토요일</span><span class="course-tag">90분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
         <div class="course-price"><span class="amount">$299</span><span class="per">/ 전체 프로그램</span></div>
       </div>
-      <div class="course-card sat">
+      <div class="course-card reveal reveal-delay-2 sat">
         <div class="course-icon">🏫</div>
         <div class="course-title">SHSAT 대비반</div>
         <div class="course-title-en">SHSAT Prep</div>
@@ -233,7 +239,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">토요일</span><span class="course-tag">60분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
         <div class="course-price"><span class="amount">$399</span><span class="per">/ 전체 프로그램</span></div>
       </div>
-      <div class="course-card chem">
+      <div class="course-card reveal reveal-delay-3 chem">
         <div class="course-icon">⚗️</div>
         <div class="course-title">AP 화학 집중반</div>
         <div class="course-title-en">AP Chemistry Crash Course</div>
@@ -242,7 +248,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">주 2회</span><span class="course-tag">60분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
         <div class="course-price"><span class="amount">$399</span><span class="per">/ 전체 프로그램</span></div>
       </div>
-      <div class="course-card phys">
+      <div class="course-card reveal reveal-delay-1 phys">
         <div class="course-icon">⚡</div>
         <div class="course-title">AP 물리 1 대비반</div>
         <div class="course-title-en">AP Physics 1 Prep</div>
@@ -251,7 +257,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">주 2회</span><span class="course-tag">60분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
         <div class="course-price"><span class="amount">$399</span><span class="per">/ 전체 프로그램</span></div>
       </div>
-      <div class="course-card bio">
+      <div class="course-card reveal reveal-delay-2 bio">
         <div class="course-icon">🧬</div>
         <div class="course-title">AP 생물 집중반</div>
         <div class="course-title-en">AP Biology Crash Course</div>
@@ -260,7 +266,7 @@ footer a{color:var(--teal);text-decoration:none}
         <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">주 2회</span><span class="course-tag">60분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
         <div class="course-price"><span class="amount">$399</span><span class="per">/ 전체 프로그램</span></div>
       </div>
-      <div class="course-card sat">
+      <div class="course-card reveal reveal-delay-3 sat">
         <div class="course-icon">📐</div>
         <div class="course-title">SAT 수학 집중반</div>
         <div class="course-title-en">SAT Prep Intensive</div>
@@ -275,18 +281,18 @@ footer a{color:var(--teal);text-decoration:none}
 
 <section id="why">
   <div class="container">
-    <div class="section-label">Olympiad Edge의 차이점</div>
-    <div class="section-title">평범한 학원이 아닙니다.</div>
-    <p class="section-desc">대형 학원은 중간 수준에 맞춥니다. 우리는 최상위를 겨냥합니다 — 깊이와 강도로 우수한 학생을 탁월한 인재로 키웁니다.</p>
+    <div class="section-label reveal">Olympiad Edge의 차이점</div>
+    <div class="section-title reveal">평범한 학원이 아닙니다.</div>
+    <p class="section-desc reveal">대형 학원은 중간 수준에 맞춥니다. 우리는 최상위를 겨냥합니다 — 깊이와 강도로 우수한 학생을 탁월한 인재로 키웁니다.</p>
     <div class="why-grid">
-      <div class="why-card"><div class="why-icon a">🎯</div><div class="why-title">최정상급 경시대회 이력</div><div class="why-desc">강사는 USAMO 입상자(전국 Top 10), AMC 12B 만점 150, USACO 플래티넘, USABO 준결승 2회, NYC USNCO 초청자. 간접 지식이 아닌 직접 경험입니다.</div></div>
-      <div class="why-card"><div class="why-icon b">🧠</div><div class="why-title">패턴 인식 교수법</div><div class="why-desc">독자적인 색상 코딩 프레임워크와 "인식 트리거"로 펜을 들기 전에 풀이 경로를 보도록 두뇌를 훈련합니다. 문제가 "당연하게" 느껴지도록.</div></div>
-      <div class="why-card"><div class="why-icon c">👥</div><div class="why-title">소수정예 수업</div><div class="why-desc">반당 최대 8–12명. 모든 학생이 개인별 관심, 실시간 피드백, 충분한 질문 시간을 보장받습니다 — 대형 강의가 아닌 오피스아워처럼.</div></div>
-      <div class="why-card"><div class="why-icon d">📊</div><div class="why-title">실전 교재, 실제 성과</div><div class="why-desc">자체 제작 교재에 상세한 풀이 예시, 난이도 단계별 진행, 실제 경시대회/AP 시험 기출 연습문제 수록. AwesomeMath와 동등한 수준.</div></div>
+      <div class="why-card reveal reveal-delay-1"><div class="why-icon a">🎯</div><div class="why-title">최정상급 경시대회 이력</div><div class="why-desc">강사는 USAMO 입상자(전국 Top 10), AMC 12B 만점 150, USACO 플래티넘, USABO 준결승 2회, NYC USNCO 초청자. 간접 지식이 아닌 직접 경험입니다.</div></div>
+      <div class="why-card reveal reveal-delay-2"><div class="why-icon b">🧠</div><div class="why-title">패턴 인식 교수법</div><div class="why-desc">독자적인 색상 코딩 프레임워크와 "인식 트리거"로 펜을 들기 전에 풀이 경로를 보도록 두뇌를 훈련합니다. 문제가 "당연하게" 느껴지도록.</div></div>
+      <div class="why-card reveal reveal-delay-3"><div class="why-icon c">👥</div><div class="why-title">소수정예 수업</div><div class="why-desc">반당 최대 8–12명. 모든 학생이 개인별 관심, 실시간 피드백, 충분한 질문 시간을 보장받습니다 — 대형 강의가 아닌 오피스아워처럼.</div></div>
+      <div class="why-card reveal reveal-delay-1"><div class="why-icon d">📊</div><div class="why-title">실전 교재, 실제 성과</div><div class="why-desc">자체 제작 교재에 상세한 풀이 예시, 난이도 단계별 진행, 실제 경시대회/AP 시험 기출 연습문제 수록. AwesomeMath와 동등한 수준.</div></div>
     </div>
     <div style="margin-top:3.5rem;background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:2.5rem;display:flex;gap:2rem;flex-wrap:wrap;align-items:start">
       <div style="flex:1;min-width:280px">
-        <div class="section-label">강사 소개</div>
+        <div class="section-label reveal">강사 소개</div>
         <div style="font-size:1.5rem;font-weight:800;margin-bottom:.25rem">Joshua Gao</div>
         <div style="color:var(--teal);font-weight:500;font-size:.95rem;margin-bottom:1.25rem">컴퓨터과학 & 수학 학사 · B.S. Computer Science &amp; Mathematics</div>
         <div style="color:var(--gray);font-size:.9rem;line-height:1.9">스타이베선트 고등학교 졸업. 현재 AwesomeMath 강사로 7개 경시수학 과목의 교재, 시험, 평가자료를 직접 집필하며 1:1 멘토링 진행. 전 Princeton Review 튜터(AP 생물/화학/물리). 스타이베선트 수학팀 출신, PUMAC 1위(2020, 2021), HMMT 3위(2019, 2021), CMIMC·버클리 수학대회 Top 5.</div>
@@ -305,11 +311,11 @@ footer a{color:var(--teal);text-decoration:none}
 
 <section class="courses-section" id="materials">
   <div class="container">
-    <div class="section-label">교재 품질을 직접 확인하세요</div>
-    <div class="section-title">샘플 교재. 품질이 말합니다.</div>
-    <p class="section-desc">모든 강좌에 난이도별 문제, 완전한 풀이, 독자적 "패턴 인식 트리거"가 포함된 자체 제작 교재가 제공됩니다.</p>
+    <div class="section-label reveal">교재 품질을 직접 확인하세요</div>
+    <div class="section-title reveal">샘플 교재. 품질이 말합니다.</div>
+    <p class="section-desc reveal">모든 강좌에 난이도별 문제, 완전한 풀이, 독자적 "패턴 인식 트리거"가 포함된 자체 제작 교재가 제공됩니다.</p>
     <div class="samples-grid">
-      <div class="sample-card chem-sample">
+      <div class="sample-card reveal reveal-delay-1 chem-sample">
         <div class="sample-icon">⚗️</div>
         <div class="sample-title">산-염기 & 완충용액</div>
         <div class="sample-subtitle">Honors Chemistry → AP Chemistry → USNCO / IChO</div>
@@ -322,7 +328,7 @@ footer a{color:var(--teal);text-decoration:none}
         </div>
         <a href="sample-chemistry.pdf" target="_blank" class="sample-btn">📄 교재 보기 (PDF)</a>
       </div>
-      <div class="sample-card" style="position:relative;overflow:hidden;">
+      <div class="sample-card reveal reveal-delay-2" style="position:relative;overflow:hidden;">
         <div style="content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;background:linear-gradient(90deg,#f59e0b,#f97316);"></div>
         <div class="sample-icon">🔢</div>
         <div class="sample-title">복소수 & 단위근</div>
@@ -336,7 +342,7 @@ footer a{color:var(--teal);text-decoration:none}
         </div>
         <a href="sample-math.pdf" target="_blank" class="sample-btn">📄 교재 보기 (PDF)</a>
       </div>
-      <div class="sample-card bio-sample">
+      <div class="sample-card reveal reveal-delay-3 bio-sample">
         <div class="sample-icon">🧬</div>
         <div class="sample-title">세포 & 분자생물학</div>
         <div class="sample-subtitle">Honors Bio → AP Bio → USABO Open → USABO Semifinal</div>
@@ -349,11 +355,11 @@ footer a{color:var(--teal);text-decoration:none}
         </div>
         <a href="sample-biology.pdf" target="_blank" class="sample-btn">📄 교재 보기 (PDF)</a>
       </div>
-      <div class="sample-card phys-sample">
+      <div class="sample-card reveal reveal-delay-1 phys-sample">
         <div class="sample-icon">⚡</div>
         <div class="sample-title">물리 Problem Ladder</div>
         <div class="sample-subtitle">AP Physics 1 → AP Physics C → F = ma → USAPhO</div>
-        <div class="sample-desc">抛体运动、能量方法与碰撞 — 从AP到奥赛逐级提升。包含2024年F = ma真题和2023年USAPhO真题，附완전한 풀이和解题技巧。</div>
+        <div class="sample-desc">포물체 운동, 에너지 방법, 충돌 — AP에서 올림피아드까지 단계별 실력 향상. 2024년 F = ma 기출과 2023년 USAPhO 기출 포함, 완전한 풀이와 해법 기법 수록.</div>
         <div class="sample-tags">
           <span class="course-tag">6문항</span>
           <span class="course-tag">4단계</span>
@@ -368,11 +374,11 @@ footer a{color:var(--teal);text-decoration:none}
 
 <section class="schedule-section" id="schedule">
   <div class="container">
-    <div class="section-label">시즌 I · 2026 여름</div>
-    <div class="section-title">여름 일정을 계획하세요.</div>
-    <p class="section-desc">모든 강좌는 Zoom 실시간 온라인으로 진행됩니다. 6월 30일 – 7월 11일. </p>
+    <div class="section-label reveal">시즌 I · 2026 여름</div>
+    <div class="section-title reveal">여름 일정을 계획하세요.</div>
+    <p class="section-desc reveal">모든 강좌는 Zoom 실시간 온라인으로 진행됩니다. 6월 30일 – 7월 11일. </p>
     <p style="color:var(--gray);font-size:.85rem;font-style:italic;margin-top:-.5rem;margin-bottom:1.5rem">일정은 잠정적이며 변경될 수 있습니다.</p>
-    <table class="schedule-table">
+    <table class="schedule-table reveal">
       <thead><tr><th>강좌</th><th>날짜</th><th>요일</th><th>시간</th><th>비용</th></tr></thead>
       <tbody>
         <tr><td class="course-name-cell"><span class="dot math"></span>기하학</td><td>6/30 – 7/31</td><td>화·목</td><td>10:00 – 11:00 AM</td><td>$399</td></tr>
@@ -394,12 +400,12 @@ footer a{color:var(--teal);text-decoration:none}
 
 <section class="cta-section" id="enroll">
   <div class="container">
-    <div class="section-label">인원 제한</div>
-    <div class="cta-title">자리를 예약하세요.</div>
-    <p class="cta-desc">자리가 빠르게 마감됩니다. 정보를 남겨주시면 24시간 내에 연락드리겠습니다.</p>
+    <div class="section-label reveal">인원 제한</div>
+    <div class="cta-title reveal">자리를 예약하세요.</div>
+    <p class="cta-desc reveal">자리가 빠르게 마감됩니다. 정보를 남겨주시면 24시간 내에 연락드리겠습니다.</p>
     <div style="max-width:500px;margin:0 auto 2rem;background:rgba(6,182,212,.06);border:1px solid rgba(6,182,212,.15);border-radius:12px;padding:1.25rem 1.5rem;text-align:left">
       <div style="font-weight:700;font-size:.95rem;margin-bottom:.4rem;color:var(--teal)">면접 입학제</div>
-      <div style="font-size:.88rem;color:var(--gray);line-height:1.8">所有申请学生需经过面试筛选，以确定是否适合该课程。录取由강사 소개全权决定。这确保每位在场学生都能达到课程要求的水平。</div>
+      <div style="font-size:.88rem;color:var(--gray);line-height:1.8">모든 지원 학생은 해당 강좌에 적합한지 판단하기 위해 면접 심사를 거칩니다. 입학 결정은 강사가 전적으로 내립니다. 이를 통해 모든 수강생이 강좌가 요구하는 수준에 도달할 수 있도록 보장합니다.</div>
     </div>
     <div class="form-container">
       <form id="enrollForm" onsubmit="handleSubmit(event)">
@@ -419,7 +425,6 @@ footer a{color:var(--teal);text-decoration:none}
           <select name="format">
             <option></option>
             <option>온라인 (Zoom)</option>
-            <option/option>
           </select>
         </div>
         <div class="form-row"><label>질문 또는 메모 (선택)</label><textarea name="message" placeholder="알려주실 내용이 있으시면..."></textarea></div>
@@ -444,6 +449,13 @@ function handleSubmit(e){
   .then(function(r){if(r.ok){form.innerHTML='<div style="text-align:center;padding:2rem 0"><div style="font-size:2.5rem;margin-bottom:.75rem">✓</div><div style="font-size:1.3rem;font-weight:800;margin-bottom:.5rem">접수되었습니다!</div><div style="color:var(--gray);font-size:.95rem;line-height:1.9">Olympiad Edge에 관심을 가져주셔서 감사합니다. 24시간 내에 연락드려 다음 단계를 안내하고 면접을 잡겠습니다.</div></div>'}else{throw new Error('fail')}})
   .catch(function(){alert('오류가 발생했습니다. 다시 시도하시거나 (631) 392-8326으로 전화주세요.');btn.textContent=orig;btn.disabled=false;btn.style.opacity='1'});
 }
+</script>
+<script>
+const ro=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&(e.target.classList.add('visible'),ro.unobserve(e.target))})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(e=>ro.observe(e));
+function animateCounter(el){const t=el.textContent.trim(),m=t.match(/^(\d[\d,]*)/);if(!m)return;const target=parseInt(m[1].replace(/,/g,'')),suffix=t.slice(m[0].length),dur=1500,start=performance.now();function u(now){const p=Math.min((now-start)/dur,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(target*e).toLocaleString()+suffix;if(p<1)requestAnimationFrame(u)}requestAnimationFrame(u)}
+const so=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&(e.target.querySelectorAll('.stat-number').forEach(animateCounter),so.unobserve(e.target))})},{threshold:.3});
+const sb=document.querySelector('.stats-bar');if(sb)so.observe(sb);
 </script>
 </body>
 </html>
