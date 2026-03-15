@@ -1,3 +1,4 @@
 _build.typ
 handouts/**/*.pdf
-.claude/settings.json
+.claude/
+.wrangler/
