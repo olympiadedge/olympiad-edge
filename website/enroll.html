@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enroll — Olympiad Edge · 奥赛先锋</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,400&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0e17;
+  --surface: #111827;
+  --surface2: #1a2236;
+  --accent: #38bdf8;
+  --accent2: #818cf8;
+  --gold: #fbbf24;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --border: rgba(56, 189, 248, 0.15);
+  --input-bg: #0f172a;
+  --error: #f87171;
+  --success: #34d399;
+}
+
+html { font-size: 16px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.form-container {
+  max-width: 480px;
+  width: 100%;
+  position: relative;
+}
+
+/* ───── HEADER ───── */
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.form-header::before {
+  content: '';
+  position: absolute;
+  top: -60px; left: -40%;
+  width: 180%; height: 200px;
+  background:
+    radial-gradient(ellipse at 40% 50%, rgba(56, 189, 248, 0.1) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 30%, rgba(129, 140, 248, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.brand-icon {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 0.9rem;
+  color: var(--bg);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.3);
+}
+
+.brand-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #fff 40%, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.form-header h1 {
+  position: relative;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.form-header .subtitle {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.form-header .subtitle .zh {
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+/* ───── FORM CARD ───── */
+.form-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+}
+
+.field {
+  margin-bottom: 1.1rem;
+}
+
+.field:last-of-type { margin-bottom: 0; }
+
+label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+label .zh {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-left: 0.3rem;
+  opacity: 0.7;
+}
+
+input:not([type="checkbox"]), select, textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+}
+
+input:not([type="checkbox"])::placeholder, textarea::placeholder {
+  color: var(--muted);
+  opacity: 0.5;
+}
+
+input:not([type="checkbox"]):focus, select:focus, textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+}
+
+select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  padding-right: 2.5rem;
+}
+
+select option {
+  background: var(--surface);
+  color: var(--text);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+/* ───── COURSE CHECKBOXES ───── */
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin: 1.4rem 0 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.course-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.6rem 0.85rem;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.check-item:hover {
+  border-color: rgba(56, 189, 248, 0.3);
+  background: var(--surface2);
+}
+
+.check-item input[type="checkbox"] {
+  width: 18px; height: 18px;
+  flex-shrink: 0;
+  padding: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+.check-item .course-label {
+  flex: 1;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.check-item .course-label .zh {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-weight: 400;
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-left: 0.3rem;
+}
+
+.check-item .price {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+/* ───── SUBMIT ───── */
+.submit-area {
+  margin-top: 1.75rem;
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 0.9rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: var(--bg);
+  font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(56, 189, 248, 0.25);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.submit-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 28px rgba(56, 189, 248, 0.35);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.submit-note {
+  text-align: center;
+  margin-top: 0.75rem;
+  font-size: 0.68rem;
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+/* ───── SUCCESS STATE ───── */
+.success-msg {
+  display: none;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+}
+
+.success-msg .icon {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+}
+
+.success-msg h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 0.4rem;
+}
+
+.success-msg p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.success-msg .zh {
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+/* ───── FOOTER ───── */
+.form-footer {
+  text-align: center;
+  padding: 1.5rem 0 0.5rem;
+  font-size: 0.6rem;
+  color: var(--muted);
+  opacity: 0.5;
+}
+
+@media (max-width: 380px) {
+  .row { grid-template-columns: 1fr; }
+  .form-card { padding: 1.25rem 1rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="form-container">
+
+  <div class="form-header">
+    <div class="brand">
+      <div class="brand-icon">OE</div>
+      <div class="brand-text">Olympiad Edge</div>
+    </div>
+    <h1>Enrollment Inquiry</h1>
+    <div class="subtitle">报名咨询 <span class="zh">· Season I: June 30 – July 11, 2026</span></div>
+  </div>
+
+  <div class="form-card">
+    <div id="formContent">
+
+      <div class="row">
+        <div class="field">
+          <label>Student Name <span class="zh">学生姓名</span></label>
+          <input type="text" id="studentName" placeholder="Full name" required>
+        </div>
+        <div class="field">
+          <label>Grade (Fall '26) <span class="zh">年级</span></label>
+          <select id="grade">
+            <option value="" disabled selected>Select</option>
+            <option>6th</option>
+            <option>7th</option>
+            <option>8th</option>
+            <option>9th</option>
+            <option>10th</option>
+            <option>11th</option>
+            <option>12th</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Parent / Guardian Name <span class="zh">家长姓名</span></label>
+        <input type="text" id="parentName" placeholder="Full name">
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Email <span class="zh">邮箱</span></label>
+          <input type="email" id="email" placeholder="you@email.com" required>
+        </div>
+        <div class="field">
+          <label>Phone <span class="zh">电话</span></label>
+          <input type="tel" id="phone" placeholder="(516) 555-0123">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>School <span class="zh">学校</span></label>
+        <input type="text" id="school" placeholder="Current school name">
+      </div>
+
+      <div class="field">
+        <label>Format <span class="zh">形式</span></label>
+        <select id="format">
+          <option value="Online">Online (Zoom) · 线上直播</option>
+          
+        </select>
+      </div>
+
+      <div class="section-label">Courses of Interest · 感兴趣的课程</div>
+
+      <div class="course-checks">
+        <label class="check-item">
+          <input type="checkbox" name="course" value="Geometry">
+          <span class="course-label">Geometry <span class="zh">几何</span></span>
+          <span class="price">$399</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="course" value="Algebra II">
+          <span class="course-label">Algebra II <span class="zh">代数II</span></span>
+          <span class="price">$399</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="course" value="Precalculus">
+          <span class="course-label">Precalculus <span class="zh">预备微积分</span></span>
+          <span class="price">$399</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="course" value="AB Calculus">
+          <span class="course-label">AB Calculus <span class="zh">AB微积分</span></span>
+          <span class="price">$399</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="course" value="Pre-Algebra">
+          <span class="course-label">Pre-Algebra <span class="zh">预代数</span></span>
+          <span class="price">$275</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="course" value="Algebra I">
+          <span class="course-label">Algebra I <span class="zh">代数I</span></span>
+          <span class="price">$299</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="course" value="AMC 8 / Competition Intro">
+          <span class="course-label">AMC 8 / Competition Intro <span class="zh">竞赛入门</span></span>
+          <span class="price">$299</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="course" value="SHSAT Prep">
+          <span class="course-label">SHSAT Prep <span class="zh">特殊高中备考</span></span>
+          <span class="price">$399</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="course" value="AP Chemistry">
+          <span class="course-label">AP Chemistry <span class="zh">AP 化学</span></span>
+          <span class="price">$399</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="course" value="AP Physics 1">
+          <span class="course-label">AP Physics 1 <span class="zh">AP 物理 1</span></span>
+          <span class="price">$399</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="course" value="AP Biology">
+          <span class="course-label">AP Biology <span class="zh">AP 生物</span></span>
+          <span class="price">$399</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="course" value="SAT Math Prep">
+          <span class="course-label">SAT Math Prep <span class="zh">SAT 数学备考</span></span>
+          <span class="price">$275</span>
+        </label>
+      </div>
+
+      <div class="section-label">Competition Background · 竞赛背景</div>
+
+      <div class="field">
+        <label>Math Competitions <span class="zh">数学竞赛经历</span></label>
+        <input type="text" id="mathComp" placeholder="e.g., AMC 10 score 120, MATHCOUNTS States">
+      </div>
+
+      <div class="field">
+        <label>Science Competitions <span class="zh">科学竞赛经历</span></label>
+        <input type="text" id="sciComp" placeholder="e.g., Science Olympiad Regionals, USABO">
+      </div>
+
+      <div class="field">
+        <label>Anything else? <span class="zh">其他想告诉我们的</span></label>
+        <textarea id="notes" placeholder="Goals, questions, scheduling concerns..."></textarea>
+      </div>
+
+      <div class="submit-area">
+        <button class="submit-btn" onclick="submitForm()">
+          SUBMIT INQUIRY · 提交咨询
+        </button>
+        <div class="submit-note">Admission is by interview. We'll reach out within 48 hours. · 面试入学，48小时内回复</div>
+      </div>
+
+    </div>
+
+    <div class="success-msg" id="successMsg">
+      <div class="icon">✓</div>
+      <h2>We Got It!</h2>
+      <p>
+        Thanks for your interest in Olympiad Edge. We'll be in touch within 48 hours to schedule an interview.
+        <br><br>
+        <span class="zh">感谢您对奥赛先锋的关注。我们将在48小时内联系您安排面试。</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="form-footer">
+    © 2026 Olympiad Edge · Huntington, Long Island · (631) 392-8326
+  </div>
+
+</div>
+
+<script>
+function submitForm() {
+  // Gather form data
+  const data = {
+    studentName: document.getElementById('studentName').value.trim(),
+    grade: document.getElementById('grade').value,
+    parentName: document.getElementById('parentName').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    school: document.getElementById('school').value.trim(),
+    format: document.getElementById('format').value,
+    courses: [...document.querySelectorAll('input[name="course"]:checked')].map(c => c.value),
+    mathComp: document.getElementById('mathComp').value.trim(),
+    sciComp: document.getElementById('sciComp').value.trim(),
+    notes: document.getElementById('notes').value.trim(),
+    timestamp: new Date().toISOString()
+  };
+
+  // Basic validation
+  if (!data.studentName || !data.email) {
+    alert('Please fill in at least the student name and email.');
+    return;
+  }
+
+  if (data.courses.length === 0) {
+    alert('Please select at least one course.');
+    return;
+  }
+
+  const btn = document.querySelector('.submit-btn');
+  btn.textContent = 'SUBMITTING… 提交中…';
+  btn.disabled = true;
+  btn.style.opacity = '0.6';
+
+  fetch('https://formspree.io/f/mbdzrvqy', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(response => {
+    if (response.ok) {
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    } else {
+      alert('Something went wrong. Please try again or call (631) 392-8326.');
+      btn.textContent = 'SUBMIT INQUIRY · 提交咨询';
+      btn.disabled = false;
+      btn.style.opacity = '1';
+    }
+  })
+  .catch(err => {
+    console.error('Submit error:', err);
+    alert('Network error. Please try again or call (631) 392-8326.');
+    btn.textContent = 'SUBMIT INQUIRY · 提交咨询';
+    btn.disabled = false;
+    btn.style.opacity = '1';
+  });
+}
+</script>
+
+</body>
+</html>

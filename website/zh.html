@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奥赛先锋 Olympiad Edge — 精英STEM暑期课程 | 长岛亨廷顿</title>
+<meta name="description" content="精英STEM暑期集训班，Zoom线上直播。预代数、代数I、几何、代数II、预备微积分、AB微积分、AMC 8、SHSAT、AP化学、AP物理、AP生物、SAT数学。USAMO全国前十名师授课，AwesomeMath讲师，小班精英制。">
+<meta name="keywords" content="USAMO, AMC, AIME, USACO, AP化学, AP物理, AP生物, SAT数学, 长岛, 亨廷顿, 预代数, 代数, 几何, 微积分, AMC 8, SHSAT, 史岱文森, 暑期班, 补习">
+<meta property="og:title" content="奥赛先锋 Olympiad Edge — 精英STEM暑期课程">
+<meta property="og:description" content="竞赛级数学、科学与考试辅导。USAMO全国前十名师授课。线上直播（Zoom）。">
+<meta property="og:url" content="https://olympiadedge.academy/zh.html">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://olympiadedge.academy/zh.html">
+<link rel="alternate" hreflang="en" href="https://olympiadedge.academy/">
+<link rel="alternate" hreflang="zh" href="https://olympiadedge.academy/zh.html">
+<link rel="alternate" hreflang="ko" href="https://olympiadedge.academy/ko.html">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0a1628;--deep:#111d33;--accent:#f59e0b;--accent-hover:#fbbf24;--teal:#06b6d4;--white:#f8fafc;--gray:#94a3b8;--light-gray:#cbd5e1;--card-bg:#162036;--card-border:#1e2d4a;--success:#10b981}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Noto Sans SC','Outfit',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;line-height:1.8}
+.en{font-family:'Outfit',sans-serif}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;background:radial-gradient(ellipse 80% 60% at 50% 20%,rgba(6,182,212,.08) 0%,transparent 70%),radial-gradient(ellipse 60% 40% at 70% 80%,rgba(245,158,11,.06) 0%,transparent 70%),var(--navy)}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20% 30%,rgba(255,255,255,.15) 0%,transparent 100%),radial-gradient(1px 1px at 40% 70%,rgba(255,255,255,.1) 0%,transparent 100%),radial-gradient(1px 1px at 60% 20%,rgba(255,255,255,.12) 0%,transparent 100%),radial-gradient(1px 1px at 80% 50%,rgba(255,255,255,.08) 0%,transparent 100%);pointer-events:none}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.25);border-radius:100px;padding:.4rem 1.2rem;font-size:.85rem;color:var(--teal);font-weight:500;margin-bottom:2rem;animation:fadeDown .8s ease}
+.badge::before{content:'';width:6px;height:6px;background:var(--teal);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;line-height:1.25;margin-bottom:1.5rem;animation:fadeUp .8s ease .1s both}
+.hero h1 .highlight{background:linear-gradient(135deg,var(--accent),#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h1 .sub-en{display:block;font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:700;color:var(--gray);letter-spacing:-.02em;margin-top:.5rem;-webkit-text-fill-color:var(--gray)}
+.hero-sub{font-size:clamp(1rem,1.8vw,1.15rem);color:var(--gray);max-width:620px;margin:0 auto 2.5rem;line-height:2;animation:fadeUp .8s ease .2s both}
+.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s ease .3s both}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:var(--navy);font-family:'Noto Sans SC','Outfit',sans-serif;font-weight:700;font-size:1rem;padding:.9rem 2rem;border-radius:12px;text-decoration:none;transition:all .25s;border:none;cursor:pointer}
+.btn-primary:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,158,11,.25)}
+.btn-secondary{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--white);font-family:'Noto Sans SC','Outfit',sans-serif;font-weight:600;font-size:1rem;padding:.9rem 2rem;border-radius:12px;text-decoration:none;border:1px solid var(--card-border);transition:all .25s}
+.btn-secondary:hover{border-color:var(--gray);background:rgba(255,255,255,.03)}
+.stats-bar{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;margin-top:4rem;animation:fadeUp .8s ease .4s both}
+.stat{text-align:center}
+.stat-number{font-family:'Outfit',sans-serif;font-size:2rem;font-weight:800;color:var(--teal)}
+.stat-label{font-size:.75rem;color:var(--gray);font-weight:500;margin-top:.2rem}
+section{padding:5rem 2rem}
+.section-label{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--teal);font-weight:600;margin-bottom:.75rem}
+.section-title{font-size:clamp(1.6rem,3.5vw,2.3rem);font-weight:900;margin-bottom:1rem;line-height:1.3}
+.section-desc{color:var(--gray);font-size:1rem;max-width:600px;line-height:1.9}
+.container{max-width:1100px;margin:0 auto}
+.courses-section{background:var(--deep)}
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-top:3rem}
+.course-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:2rem;transition:all .3s;position:relative;overflow:hidden}
+.course-card:hover{border-color:rgba(6,182,212,.3);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.course-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0}
+.course-card.math::after{background:linear-gradient(90deg,#f59e0b,#f97316)}
+.course-card.chem::after{background:linear-gradient(90deg,#06b6d4,#3b82f6)}
+.course-card.phys::after{background:linear-gradient(90deg,#8b5cf6,#a855f7)}
+.course-card.bio::after{background:linear-gradient(90deg,#22c55e,#16a34a)}
+.course-card.sat::after{background:linear-gradient(90deg,#ef4444,#f97316)}
+.course-icon{font-size:2rem;margin-bottom:1rem}
+.course-title{font-size:1.2rem;font-weight:700;margin-bottom:.15rem}
+.course-title-en{font-family:'Outfit',sans-serif;font-size:.85rem;color:var(--gray);font-weight:500;margin-bottom:.75rem}
+.course-target{font-size:.82rem;color:var(--teal);font-weight:500;margin-bottom:1rem}
+.course-desc{font-size:.9rem;color:var(--gray);line-height:1.8;margin-bottom:1.25rem}
+.course-details{display:flex;flex-wrap:wrap;gap:.5rem}
+.course-tag{font-size:.78rem;padding:.3rem .75rem;border-radius:100px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--light-gray);font-weight:500}
+.course-price{display:flex;align-items:baseline;gap:.3rem;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--card-border)}
+.course-price .amount{font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:var(--accent)}
+.course-price .per{font-size:.85rem;color:var(--gray)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem}
+.why-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:2rem}
+.why-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.25rem}
+.why-icon.a{background:rgba(245,158,11,.12)}.why-icon.b{background:rgba(6,182,212,.12)}.why-icon.c{background:rgba(139,92,246,.12)}.why-icon.d{background:rgba(16,185,129,.12)}
+.why-title{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
+.why-desc{font-size:.9rem;color:var(--gray);line-height:1.8}
+.schedule-section{background:var(--deep)}
+.samples-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3rem}
+.sample-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:2rem;transition:all .3s;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.sample-card:hover{border-color:rgba(6,182,212,.3);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.sample-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0}
+.sample-card.chem-sample::before{background:linear-gradient(90deg,#06b6d4,#3b82f6)}
+.sample-card.bio-sample::before{background:linear-gradient(90deg,#22c55e,#16a34a)}
+.sample-card.phys-sample::before{background:linear-gradient(90deg,#8b5cf6,#a855f7)}
+.sample-icon{font-size:2rem;margin-bottom:1rem}.sample-title{font-size:1.15rem;font-weight:700;margin-bottom:.3rem}
+.sample-subtitle{font-size:.82rem;color:var(--teal);font-weight:500;margin-bottom:.75rem}
+.sample-desc{font-size:.88rem;color:var(--gray);line-height:1.8;margin-bottom:1.25rem;flex:1}
+.sample-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem}
+.sample-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:.7rem 1.25rem;background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.2);border-radius:10px;color:var(--teal);font-family:'Noto Sans SC','Outfit',sans-serif;font-weight:600;font-size:.88rem;text-decoration:none;transition:all .2s}
+.sample-btn:hover{background:rgba(6,182,212,.15);border-color:rgba(6,182,212,.4)}
+.schedule-table{width:100%;margin-top:2.5rem;border-collapse:separate;border-spacing:0;border-radius:16px;overflow:hidden;border:1px solid var(--card-border)}
+.schedule-table th{background:var(--card-bg);text-align:left;padding:1rem 1.25rem;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gray);font-weight:600}
+.schedule-table td{padding:1rem 1.25rem;border-top:1px solid var(--card-border);font-size:.9rem}
+.schedule-table tbody tr{transition:background .2s}.schedule-table tbody tr:hover{background:rgba(255,255,255,.02)}
+.schedule-table .course-name-cell{font-weight:600}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:.5rem}
+.dot.math{background:#f59e0b}.dot.chem{background:#06b6d4}.dot.phys{background:#8b5cf6}.dot.sat{background:#ef4444}
+.cta-section{text-align:center;padding:6rem 2rem;position:relative;background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(245,158,11,.06) 0%,transparent 70%),var(--navy)}
+.cta-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;margin-bottom:1rem}
+.cta-desc{color:var(--gray);font-size:1.05rem;max-width:500px;margin:0 auto 2rem;line-height:1.9}
+.form-container{max-width:500px;margin:2rem auto 0;text-align:left}
+.form-row{margin-bottom:1rem}
+.form-row label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem;color:var(--light-gray)}
+.form-row input,.form-row select,.form-row textarea{width:100%;padding:.75rem 1rem;background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;color:var(--white);font-family:'Noto Sans SC','Outfit',sans-serif;font-size:.95rem;transition:border-color .2s}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--teal)}
+.form-row select option{background:var(--navy)}
+.form-row textarea{resize:vertical;min-height:80px}
+.submit-btn{width:100%;margin-top:.5rem}
+.form-note{text-align:center;font-size:.82rem;color:var(--gray);margin-top:1rem}
+footer{text-align:center;padding:2rem;border-top:1px solid var(--card-border);color:var(--gray);font-size:.85rem}
+footer a{color:var(--teal);text-decoration:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:rgba(10,22,40,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
+.nav-logo{font-family:'Noto Sans SC',sans-serif;font-weight:900;font-size:1.15rem}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{color:var(--gray);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.lang-toggle{display:inline-flex;align-items:center;gap:.35rem;padding:.3rem .75rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:var(--light-gray);text-decoration:none;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;transition:all .2s}
+.lang-toggle:hover{background:rgba(255,255,255,.1);color:var(--white)}
+.mobile-lang{display:none!important}
+@media(max-width:1024px){.nav{padding:1rem 1.5rem}.nav-links{gap:1.25rem}.nav-links a{font-size:.82rem}.courses-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}.why-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.samples-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}section{padding:4rem 1.5rem}}
+@media(max-width:768px){.stats-bar{gap:1.5rem}.courses-grid{grid-template-columns:1fr}.schedule-table{font-size:.82rem}.schedule-table th,.schedule-table td{padding:.75rem}section{padding:3.5rem 1.25rem}.hero{padding:2rem 1.25rem}.nav-links{gap:1rem}.nav-links a{font-size:.78rem}.lang-toggle{font-size:.72rem;padding:.25rem .6rem}}
+@media(max-width:600px){.nav-links{display:none}.nav{padding:1rem 1.25rem}.mobile-lang{display:flex!important;position:fixed;top:.7rem;right:1.25rem;z-index:101;gap:.4rem}.hero h1{font-size:2rem}.stats-bar{gap:1.2rem}.stat-number{font-family:'Outfit',sans-serif;font-size:1.5rem}.schedule-table{font-size:.75rem}.schedule-table th,.schedule-table td{padding:.6rem .5rem}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">奥赛<span>先锋</span></div>
+  <ul class="nav-links">
+    <li><a href="#courses">课程</a></li>
+    <li><a href="#why">优势</a></li>
+    <li><a href="#materials">教材</a></li>
+    <li><a href="#schedule">时间表</a></li>
+    <li><a href="#enroll">报名</a></li>
+    <li><a href="/faq.html">FAQ</a></li>
+    <li><a href="/" class="lang-toggle">EN</a></li>
+    <li><a href="/ko.html" class="lang-toggle">한국어</a></li>
+  </ul>
+</nav>
+<div class="mobile-lang"><a href="/" class="lang-toggle">EN</a><a href="/ko.html" class="lang-toggle">한국어</a></div>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="badge">第一期：2026年6月30日 – 7月11日 · 线上</div>
+    <h1>培养未来<span class="highlight">STEM冠军</span>的摇篮<span class="sub-en">Where Future STEM Champions Are Made</span></h1>
+    <p class="hero-sub">从预代数到微积分、AMC 8、SHSAT、AP科学与SAT辅导 — 线上直播（Zoom）。由USAMO入围者、AMC 12B满分获得者、USACO铂金级选手及AwesomeMath讲师亲自授课，SAT数学满分800。</p>
+    <div class="hero-cta">
+      <a href="#enroll" class="btn-primary">立即报名 →</a>
+      <a href="#courses" class="btn-secondary">查看课程</a>
+    </div>
+    <div class="stats-bar">
+      <div class="stat"><div class="stat-number en">150/150</div><div class="stat-label">AMC 12B 满分</div></div>
+      <div class="stat"><div class="stat-number en">Top 10</div><div class="stat-label">USAMO 入围</div></div>
+      <div class="stat"><div class="stat-number en">Platinum</div><div class="stat-label">USACO 铂金级</div></div>
+      <div class="stat"><div class="stat-number en">2× Semi</div><div class="stat-label">USABO 半决赛</div></div>
+      <div class="stat"><div class="stat-number en">1550</div><div class="stat-label">SAT（数学800）</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="courses-section" id="courses">
+  <div class="container">
+    <div class="section-label">第一期 · 2026暑期</div>
+    <div class="section-title">十二门课程，一个目标：卓越。</div>
+    <p class="section-desc">每门课程都围绕模式识别、系统性解题和深度理解设计 — 让"我不会"变成"这很显然"。</p>
+    <div class="courses-grid">
+      <div class="course-card math">
+        <div class="course-icon">🏆</div>
+        <div class="course-title">几何 Geometry</div>
+        <div class="course-title-en">Geometry</div>
+        <div class="course-target">适合9–10年级学生</div>
+        <div class="course-desc">证明、全等、相似、圆、面积、体积与坐标几何 — 以严谨性和直觉培养真正的数学思维，而非单纯记公式。</div>
+        <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">每周2次</span><span class="course-tag">60分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
+        <div class="course-price"><span class="amount">$399</span><span class="per">/ 全期</span></div>
+      </div>
+      <div class="course-card math" style="border:1px solid rgba(245,158,11,.2)">
+        <div class="course-icon">🥈</div>
+        <div class="course-title">代数II Algebra II</div>
+        <div class="course-title-en">Algebra II</div>
+        <div class="course-target">适合10–11年级学生</div>
+        <div class="course-desc">多项式、有理表达式、对数、数列、方程组与复数。建立扎实的代数功底，为后续所有课程打下基础。</div>
+        <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">周六</span><span class="course-tag">3小时/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
+        <div class="course-price"><span class="amount">$949</span><span class="per">/ 全期</span></div>
+      </div>
+      <div class="course-card math" style="border:1px solid rgba(245,158,11,.35)">
+        <div class="course-icon">🥇</div>
+        <div class="course-title">预备微积分 Precalculus</div>
+        <div class="course-title-en">Precalculus</div>
+        <div class="course-target">适合11–12年级学生</div>
+        <div class="course-desc">三角函数、极坐标、向量、圆锥曲线与极限 — 通往微积分的桥梁。掌握大多数学生在学导数之前就卡住的概念飞跃。</div>
+        <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">周六</span><span class="course-tag">3小时/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
+        <div class="course-price"><span class="amount">$1,299</span><span class="per">/ 全期</span></div>
+      </div>
+      <div class="course-card math" style="border:1px solid rgba(245,158,11,.25)">
+        <div class="course-icon">∫</div>
+        <div class="course-title">AB微积分 AB Calculus</div>
+        <div class="course-title-en">AB Calculus</div>
+        <div class="course-target">适合11–12年级学生 · AP备考</div>
+        <div class="course-desc">极限、导数、积分与微积分基本定理 — 完全对标AP Calculus AB考试。全面覆盖FRQ和MCQ题型，以模式识别教学法将3分提升到5分。</div>
+        <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">每周2次</span><span class="course-tag">60分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
+        <div class="course-price"><span class="amount">$399</span><span class="per">/ 全期</span></div>
+      </div>
+      <div class="course-card math">
+        <div class="course-icon">🔢</div>
+        <div class="course-title">预代数 Pre-Algebra</div>
+        <div class="course-title-en">Pre-Algebra</div>
+        <div class="course-target">适合6–7年级学生</div>
+        <div class="course-desc">整数、分数、小数、比例与变量入门 — 最基础也最关键的数学积木。让学生在接触方程之前就建立信心和流畅度。</div>
+        <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">每周2次</span><span class="course-tag">60分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
+        <div class="course-price"><span class="amount">$275</span><span class="per">/ 全期</span></div>
+      </div>
+      <div class="course-card math">
+        <div class="course-icon">🔤</div>
+        <div class="course-title">代数I Algebra I</div>
+        <div class="course-title-en">Algebra I</div>
+        <div class="course-target">适合7–8年级学生</div>
+        <div class="course-desc">一元方程、不等式、方程组、指数、二次方程与图形。培养决定高中数学成败的代数推理能力。</div>
+        <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">每周2次</span><span class="course-tag">60分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
+        <div class="course-price"><span class="amount">$299</span><span class="per">/ 全期</span></div>
+      </div>
+      <div class="course-card math" style="border:1px solid rgba(245,158,11,.2)">
+        <div class="course-icon">🏅</div>
+        <div class="course-title">AMC 8 / 竞赛数学入门</div>
+        <div class="course-title-en">AMC 8 / Competition Math Intro</div>
+        <div class="course-target">适合5–8年级学生</div>
+        <div class="course-desc">创造性解题、计数、数论与几何推理 — AMC 8竞赛级别。想开始参加数学竞赛或想换个角度看数学的学生的最佳起点。</div>
+        <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">周六</span><span class="course-tag">90分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
+        <div class="course-price"><span class="amount">$299</span><span class="per">/ 全期</span></div>
+      </div>
+      <div class="course-card sat">
+        <div class="course-icon">🏫</div>
+        <div class="course-title">SHSAT备考班</div>
+        <div class="course-title-en">SHSAT Prep</div>
+        <div class="course-target">适合8–9年级学生</div>
+        <div class="course-desc">纽约特殊高中入学考试（SHSAT）全面覆盖 — 英语与数学。系统化策略、限时练习，以及帮助学生考入史岱文森、布朗克斯科学和布鲁克林科技的应试直觉。由史岱文森校友亲自授课。</div>
+        <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">周六</span><span class="course-tag">60分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
+        <div class="course-price"><span class="amount">$399</span><span class="per">/ 全期</span></div>
+      </div>
+      <div class="course-card chem">
+        <div class="course-icon">⚗️</div>
+        <div class="course-title">AP化学速成班</div>
+        <div class="course-title-en">AP Chemistry Crash Course</div>
+        <div class="course-target">11–12年级学生</div>
+        <div class="course-desc">全面覆盖平衡、热力学、动力学、电化学等核心内容，以及College Board最常考的FRQ题型。基于真实考试模式构建。</div>
+        <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">每周2次</span><span class="course-tag">60分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
+        <div class="course-price"><span class="amount">$399</span><span class="per">/ 全期</span></div>
+      </div>
+      <div class="course-card phys">
+        <div class="course-icon">⚡</div>
+        <div class="course-title">AP物理1预备班</div>
+        <div class="course-title-en">AP Physics 1 Prep</div>
+        <div class="course-target">11–12年级学生</div>
+        <div class="course-desc">代数基础物理，涵盖运动学、力学、能量、动量、转动与简谐运动。重点培养概念理解能力和实验设计题解题技巧。</div>
+        <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">每周2次</span><span class="course-tag">90分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
+        <div class="course-price"><span class="amount">$399</span><span class="per">/ 全期</span></div>
+      </div>
+      <div class="course-card bio">
+        <div class="course-icon">🧬</div>
+        <div class="course-title">AP生物速成班</div>
+        <div class="course-title-en">AP Biology Crash Course</div>
+        <div class="course-target">11–12年级学生</div>
+        <div class="course-desc">涵盖细胞生物学、遗传学、进化、生态学与生理学 — 以USABO级别的深度教授。专攻数据分析和实验设计FRQ，帮助从4分突破到5分。</div>
+        <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">每周2次</span><span class="course-tag">90分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
+        <div class="course-price"><span class="amount">$399</span><span class="per">/ 全期</span></div>
+      </div>
+      <div class="course-card sat">
+        <div class="course-icon">📐</div>
+        <div class="course-title">SAT强化冲刺班</div>
+        <div class="course-title-en">SAT Prep Intensive</div>
+        <div class="course-target">11–12年级学生</div>
+        <div class="course-desc">数学+读写全覆盖。每种题型配有识别触发点和速解技巧。由1550分（数学满分800）获得者授课，通过系统性模式掌握冲刺1500+。</div>
+        <div class="course-details"><span class="course-tag">2周</span><span class="course-tag">每周2次</span><span class="course-tag">90分钟/节</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">线上</span></div>
+        <div class="course-price"><span class="amount">$275</span><span class="per">/ 全期</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="container">
+    <div class="section-label">奥赛先锋的不同之处</div>
+    <div class="section-title">不是普通补习班。</div>
+    <p class="section-desc">大型培训机构面向中等水平教学。我们面向顶尖 — 以深度和强度将优秀学生培养成卓越人才。</p>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon a">🎯</div><div class="why-title">顶尖竞赛背景</div><div class="why-desc">授课老师为USAMO入围者（全美前十）、AMC 12B满分150、USACO铂金级、2次USABO半决赛入围者、纽约市USNCO预备赛受邀者。这不是二手知识。</div></div>
+      <div class="why-card"><div class="why-icon b">🧠</div><div class="why-title">模式识别教学法</div><div class="why-desc">独创的颜色编码框架和"识别触发点"训练大脑在动笔前就看到解题路径。让问题变得"显而易见" — 而非随机猜测。</div></div>
+      <div class="why-card"><div class="why-icon c">👥</div><div class="why-title">小班精英制</div><div class="why-desc">每班最多8–12人。每位学生都能获得个性化关注、实时反馈，以及充分提问的空间 — 像office hours一样，而非大课堂。</div></div>
+      <div class="why-card"><div class="why-icon d">📊</div><div class="why-title">实战教材，真实成果</div><div class="why-desc">自主编写的讲义包含详解范例、难度递进和真实竞赛/AP考试真题练习集。与AwesomeMath同等级别的教学材料。</div></div>
+    </div>
+    <div style="margin-top:3.5rem;background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:2.5rem;display:flex;gap:2rem;flex-wrap:wrap;align-items:start">
+      <div style="flex:1;min-width:280px">
+        <div class="section-label">授课老师</div>
+        <div style="font-size:1.5rem;font-weight:800;margin-bottom:.25rem">高老师 <span class="en" style="font-size:1rem;color:var(--gray);font-weight:500">Joshua G.</span></div>
+        <div style="color:var(--teal);font-weight:500;font-size:.95rem;margin-bottom:1.25rem">计算机科学与数学学士 · B.S. Computer Science &amp; Mathematics</div>
+        <div style="color:var(--gray);font-size:.9rem;line-height:1.9">史岱文森高中（Stuyvesant High School）校友。现任AwesomeMath讲师，编写7门竞赛数学课程的讲义、测试和评估材料，并进行1对1辅导。曾任Princeton Review的AP生物、AP化学和AP物理导师。史岱文森数学队成员，该队曾获PUMAC第一名（2020、2021）、HMMT第三名（2019、2021）、CMIMC和伯克利数学锦标赛前五。</div>
+        <div style="margin-top:1.25rem;display:flex;flex-wrap:wrap;gap:.5rem">
+          <span class="course-tag" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.25);color:#fbbf24">USAMO 入围</span>
+          <span class="course-tag" style="background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.25);color:#22d3ee">USACO 铂金级</span>
+          <span class="course-tag" style="background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.25);color:#a78bfa">2× USABO 半决赛</span>
+          <span class="course-tag" style="background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.25);color:#34d399">NYC USNCO 受邀</span>
+          <span class="course-tag" style="background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.25);color:#f87171">SAT 1550（数学800）</span>
+          <span class="course-tag" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.25);color:#fbbf24">AMC 12B 满分</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="courses-section" id="materials">
+  <div class="container">
+    <div class="section-label">先看教材质量</div>
+    <div class="section-title">样本讲义。质量说话。</div>
+    <p class="section-desc">每门课都配有自主编写的讲义，包含难度递进的题目、完整解答和独创的"模式识别触发点"。以下是部分样本。</p>
+    <div class="samples-grid">
+      <div class="sample-card chem-sample">
+        <div class="sample-icon">⚗️</div>
+        <div class="sample-title">酸碱与缓冲液</div>
+        <div class="sample-subtitle">荣誉化学 → AP化学 → USNCO / IChO</div>
+        <div class="sample-desc">3个难度等级共18道题。ICE表、Henderson-Hasselbalch方程、滴定、开放与封闭缓冲系统、三元氨基酸。每题附完整解答和识别触发点。</div>
+        <div class="sample-tags">
+          <span class="course-tag">18道题</span>
+          <span class="course-tag">3个等级</span>
+          <span class="course-tag">14页</span>
+          <span class="course-tag">完整解答</span>
+        </div>
+        <a href="sample-chemistry.pdf" target="_blank" class="sample-btn">📄 查看讲义 (PDF)</a>
+      </div>
+      <div class="sample-card" style="position:relative;overflow:hidden;">
+        <div style="content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;background:linear-gradient(90deg,#f59e0b,#f97316);"></div>
+        <div class="sample-icon">🔢</div>
+        <div class="sample-title">复数与单位根</div>
+        <div class="sample-subtitle">AMC 12 → AIME 专题</div>
+        <div class="sample-desc">5大单位根核心工具、2道AIME完整范例、5道竞赛题附解答。分圆多项式分解、根滤波器、距离-正弦桥公式。</div>
+        <div class="sample-tags">
+          <span class="course-tag">7道题</span>
+          <span class="course-tag">10页</span>
+          <span class="course-tag">AIME级别</span>
+          <span class="course-tag">完整解答</span>
+        </div>
+        <a href="sample-math.pdf" target="_blank" class="sample-btn">📄 查看讲义 (PDF)</a>
+      </div>
+      <div class="sample-card bio-sample">
+        <div class="sample-icon">🧬</div>
+        <div class="sample-title">细胞与分子生物学</div>
+        <div class="sample-subtitle">荣誉生物 → AP生物 → USABO公开赛 → USABO半决赛</div>
+        <div class="sample-desc">4个难度等级共8道原创题。孟德尔遗传、Hardy-Weinberg平衡、膜电位、信号转导、分子进化。半决赛级别的实验设计题。</div>
+        <div class="sample-tags">
+          <span class="course-tag">8道题</span>
+          <span class="course-tag">4个等级</span>
+          <span class="course-tag">14页</span>
+          <span class="course-tag">原创题目</span>
+        </div>
+        <a href="sample-biology.pdf" target="_blank" class="sample-btn">📄 查看讲义 (PDF)</a>
+      </div>
+      <div class="sample-card phys-sample">
+        <div class="sample-icon">⚡</div>
+        <div class="sample-title">物理阶梯题集</div>
+        <div class="sample-subtitle">AP物理1 → AP物理C → F = ma → USAPhO</div>
+        <div class="sample-desc">抛体运动、能量方法与碰撞 — 从AP到奥赛逐级提升。包含2024年F = ma真题和2023年USAPhO真题，附完整解答和解题技巧。</div>
+        <div class="sample-tags">
+          <span class="course-tag">6道题</span>
+          <span class="course-tag">4个等级</span>
+          <span class="course-tag">10页</span>
+          <span class="course-tag">竞赛真题</span>
+        </div>
+        <a href="sample-physics.pdf" target="_blank" class="sample-btn">📄 查看讲义 (PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="schedule-section" id="schedule">
+  <div class="container">
+    <div class="section-label">第一期 · 2026暑期</div>
+    <div class="section-title">规划您的暑假。</div>
+    <p class="section-desc">所有课程均通过Zoom线上直播进行。6月30日 – 7月11日。</p>
+    <p style="color:var(--gray);font-size:.85rem;font-style:italic;margin-top:-.5rem;margin-bottom:1.5rem">课程安排为暂定，可能调整。</p>
+    <table class="schedule-table">
+      <thead><tr><th>课程</th><th>日期</th><th>上课日</th><th>时间</th><th>费用</th></tr></thead>
+      <tbody>
+        <tr><td class="course-name-cell"><span class="dot math"></span>几何</td><td>6/30 – 7/31</td><td>周二、四</td><td>10:00 – 11:00 AM</td><td>$399</td></tr>
+        <tr><td class="course-name-cell"><span class="dot math"></span>代数II</td><td>6/30 – 7/31</td><td>周二、四</td><td>11:15 AM – 12:15 PM</td><td>$399</td></tr>
+        <tr><td class="course-name-cell"><span class="dot math"></span>预备微积分</td><td>6/30 – 7/31</td><td>周一、三</td><td>10:00 – 11:00 AM</td><td>$399</td></tr>
+        <tr><td class="course-name-cell"><span class="dot math"></span>AB微积分</td><td>6/30 – 7/31</td><td>周一、三</td><td>11:15 AM – 12:15 PM</td><td>$399</td></tr>
+        <tr><td class="course-name-cell"><span class="dot math"></span>预代数</td><td>6/30 – 7/31</td><td>周六</td><td>1:30 – 3:00 PM</td><td>$275</td></tr>
+        <tr><td class="course-name-cell"><span class="dot math"></span>代数I</td><td>6/30 – 7/31</td><td>周六</td><td>10:00 – 11:30 AM</td><td>$299</td></tr>
+        <tr><td class="course-name-cell"><span class="dot math"></span>AMC 8 竞赛入门</td><td>6/30 – 7/31</td><td>周六</td><td>11:45 AM – 1:15 PM</td><td>$299</td></tr>
+        <tr><td class="course-name-cell"><span class="dot sat"></span>SHSAT备考</td><td>6/30 – 7/31</td><td>周一、三</td><td>2:15 – 3:15 PM</td><td>$399</td></tr>
+        <tr><td class="course-name-cell"><span class="dot chem"></span>AP化学</td><td>6/30 – 7/31</td><td>周二、四</td><td>1:00 – 2:00 PM</td><td>$399</td></tr>
+        <tr><td class="course-name-cell"><span class="dot phys"></span>AP物理1</td><td>6/30 – 7/31</td><td>周一、三</td><td>1:00 – 2:00 PM</td><td>$399</td></tr>
+        <tr><td class="course-name-cell"><span class="dot" style="background:#22c55e"></span>AP生物</td><td>6/30 – 7/31</td><td>周二、四</td><td>2:15 – 3:15 PM</td><td>$399</td></tr>
+        <tr><td class="course-name-cell"><span class="dot sat"></span>SAT强化班</td><td>6/30 – 7/31</td><td>周六</td><td>3:15 – 4:45 PM</td><td>$275</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="cta-section" id="enroll">
+  <div class="container">
+    <div class="section-label">名额有限</div>
+    <div class="cta-title">预约您的席位。</div>
+    <p class="cta-desc">名额紧张，先到先得。留下您的信息，我们将在24小时内与您联系。</p>
+    <div style="max-width:500px;margin:0 auto 2rem;background:rgba(6,182,212,.06);border:1px solid rgba(6,182,212,.15);border-radius:12px;padding:1.25rem 1.5rem;text-align:left">
+      <div style="font-weight:700;font-size:.95rem;margin-bottom:.4rem;color:var(--teal)">面试入学制</div>
+      <div style="font-size:.88rem;color:var(--gray);line-height:1.8">所有申请学生需经过面试筛选，以确定是否适合该课程。录取由授课老师全权决定。这确保每位在场学生都能达到课程要求的水平。</div>
+    </div>
+    <div class="form-container">
+      <form id="enrollForm" onsubmit="handleSubmit(event)">
+        <div class="form-row"><label>家长/监护人姓名</label><input type="text" name="parentName" required placeholder="全名"></div>
+        <div class="form-row"><label>学生姓名及年级（2026年秋季）</label><input type="text" name="studentInfo" required placeholder="例：张明，即将升入10年级"></div>
+        <div class="form-row"><label>邮箱</label><input type="email" name="email" required placeholder="your@email.com"></div>
+        <div class="form-row"><label>电话</label><input type="tel" name="phone" placeholder="(516) 555-0123"></div>
+        <div class="form-row"><label>感兴趣的课程</label>
+          <select name="course">
+            <option>几何 Geometry</option><option>代数II Algebra II</option><option>预备微积分 Precalculus</option><option>AB微积分 AB Calculus</option>
+            <option>预代数 Pre-Algebra</option><option>代数I Algebra I</option><option>AMC 8 竞赛数学入门</option><option>SHSAT备考班</option>
+            <option>AP化学速成班</option><option>AP物理1预备班</option><option>AP生物速成班</option>
+            <option>SAT强化冲刺班</option><option>多门课程（请在下方说明）</option>
+          </select>
+        </div>
+        <div class="form-row"><label>形式</label>
+          <select name="format">
+            <option></option>
+            <option>线上直播（Zoom）</option>
+            <option></option>
+          </select>
+        </div>
+        <div class="form-row"><label>问题或备注（可选）</label><textarea name="message" placeholder="任何您想让我们知道的信息..."></textarea></div>
+        <button type="submit" class="btn-primary submit-btn">提交报名意向 →</button>
+      </form>
+      <p class="form-note">无需提前付费。我们会确认名额并发送后续步骤。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 奥赛先锋 Olympiad Edge · 长岛亨廷顿 · <a href="mailto:prodigyprepli@gmail.com">prodigyprepli@gmail.com</a> · <a href="tel:6313928326">(631) 392-8326</a></p>
+</footer>
+
+<script>
+function handleSubmit(e){
+  e.preventDefault();
+  var form=e.target,btn=form.querySelector('.submit-btn'),orig=btn.textContent;
+  btn.textContent='提交中...';btn.disabled=true;btn.style.opacity='.6';
+  var data=new FormData(form);data.append('language','zh');
+  fetch('https://formspree.io/f/mbdzrvqy',{method:'POST',body:data,headers:{'Accept':'application/json'}})
+  .then(function(r){if(r.ok){form.innerHTML='<div style="text-align:center;padding:2rem 0"><div style="font-size:2.5rem;margin-bottom:.75rem">✓</div><div style="font-size:1.3rem;font-weight:800;margin-bottom:.5rem">已收到您的信息！</div><div style="color:var(--gray);font-size:.95rem;line-height:1.9">感谢您对奥赛先锋的关注。我们将在24小时内与您联系，讨论后续步骤并安排面试。</div></div>'}else{throw new Error('fail')}})
+  .catch(function(){alert('出错了，请重试或致电 (631) 392-8326。');btn.textContent=orig;btn.disabled=false;btn.style.opacity='1'});
+}
+</script>
+</body>
+</html>

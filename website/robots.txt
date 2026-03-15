@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://olympiadedge.academy/sitemap.xml

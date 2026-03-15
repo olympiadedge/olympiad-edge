@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Olympiad Edge</title>
+<meta name="description" content="Frequently asked questions about Olympiad Edge summer programs — enrollment, pricing, format, schedule, and more.">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a1628;
+  --deep: #111d33;
+  --accent: #f59e0b;
+  --teal: #06b6d4;
+  --white: #f8fafc;
+  --gray: #94a3b8;
+  --light-gray: #cbd5e1;
+  --card-bg: #162036;
+  --card-border: #1e2d4a;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Outfit', sans-serif; background: var(--navy); color: var(--white); line-height: 1.7; }
+
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 2rem; background: rgba(10,22,40,0.85);
+  backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.nav-logo { font-weight: 800; font-size: 1.15rem; text-decoration: none; color: var(--white); }
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a { color: var(--gray); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--white); }
+@media (max-width: 600px) { .nav-links { display: none; } .nav { padding: 1rem 1.25rem; } }
+
+.container { max-width: 800px; margin: 0 auto; padding: 7rem 2rem 4rem; }
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+.subtitle { color: var(--gray); font-size: 1.05rem; margin-bottom: 3rem; font-family: 'Source Serif 4', serif; }
+
+.faq-section { margin-bottom: 2.5rem; }
+.faq-section-title {
+  font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--teal); font-weight: 600; margin-bottom: 1rem;
+}
+
+.faq-item {
+  background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px;
+  margin-bottom: 0.75rem; overflow: hidden;
+}
+.faq-q {
+  padding: 1.25rem 1.5rem; cursor: pointer; display: flex; justify-content: space-between;
+  align-items: center; font-weight: 600; font-size: 0.95rem; transition: color 0.2s;
+}
+.faq-q:hover { color: var(--teal); }
+.faq-q .arrow { font-size: 1.2rem; color: var(--gray); transition: transform 0.3s; }
+.faq-item.open .arrow { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
+  padding: 0 1.5rem; color: var(--gray); font-size: 0.9rem; line-height: 1.8;
+}
+.faq-item.open .faq-a { max-height: 500px; padding: 0 1.5rem 1.25rem; }
+
+.cta-box {
+  margin-top: 3rem; text-align: center; background: var(--card-bg);
+  border: 1px solid var(--card-border); border-radius: 16px; padding: 2.5rem;
+}
+.cta-box p { color: var(--gray); margin-bottom: 1.25rem; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent);
+  color: var(--navy); font-weight: 700; font-size: 1rem; padding: 0.9rem 2rem;
+  border-radius: 12px; text-decoration: none; transition: all 0.25s;
+}
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245,158,11,0.25); }
+
+footer { text-align: center; padding: 2rem; border-top: 1px solid var(--card-border); color: var(--gray); font-size: 0.85rem; }
+footer a { color: var(--teal); text-decoration: none; }
+
+@media (max-width: 768px) {
+  .container { padding: 6rem 1.25rem 3rem; }
+  h1 { font-size: 1.8rem; }
+  .faq-q { font-size: 0.9rem; padding: 1rem 1.25rem; }
+  .faq-a { font-size: 0.85rem; }
+}
+
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .nav { padding: 1rem 1.25rem; }
+  .container { padding: 5rem 1rem 2.5rem; }
+  .cta-box { padding: 1.75rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo">Olympiad <span>Edge</span></a>
+  <ul class="nav-links">
+    <li><a href="/#courses">Courses</a></li>
+    <li><a href="/#materials">Materials</a></li>
+    <li><a href="/#schedule">Schedule</a></li>
+    <li><a href="/#enroll">Enroll</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+<h1>Frequently Asked Questions</h1>
+<p class="subtitle">Everything you need to know about Olympiad Edge summer programs.</p>
+
+<div class="faq-section">
+  <div class="faq-section-title">Enrollment & Admissions</div>
+
+  <div class="faq-item">
+    <div class="faq-q">Who can enroll?<span class="arrow">+</span></div>
+    <div class="faq-a">We offer courses for students in grades 5 through 12. Our younger track (Pre-Algebra, Algebra I, AMC 8, SHSAT) serves rising 5th–9th graders, while our upper track (Geometry through AB Calculus, AP sciences, SAT) serves rising 9th–12th graders.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What does "admission by interview" mean?<span class="arrow">+</span></div>
+    <div class="faq-a">After you submit an enrollment inquiry, Joshua will reach out to schedule a brief conversation with the student (and parent, if desired). This isn't a test — it's a two-way fit check. We want to make sure the student is at the right level for the course and motivated to engage. Every student admitted is ready to learn at the pace the course demands.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Is there a placement test?<span class="arrow">+</span></div>
+    <div class="faq-a">Not a formal test. During the interview, Joshua will ask a few diagnostic questions to gauge the student's current level. For math courses, this might be a couple of problems; for science courses, a quick chat about what they've covered. The goal is to place students where they'll be challenged but not overwhelmed.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Can my child take multiple courses?<span class="arrow">+</span></div>
+    <div class="faq-a">Absolutely. The schedule is designed so that core math courses (Pre-Algebra through Precalculus) don't overlap, meaning a student could theoretically take all five. Most students take 2–3 courses. We're happy to help you find the right combination during the interview.</div>
+  </div>
+</div>
+
+<div class="faq-section">
+  <div class="faq-section-title">Format & Logistics</div>
+
+  <div class="faq-item">
+    <div class="faq-q">How are classes delivered?<span class="arrow">+</span></div>
+    <div class="faq-a">Yes. Every course is offered live online via Zoom. All students participate in real-time — same instructor, same materials, same pace.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Where are classes held?<span class="arrow">+</span></div>
+    <div class="faq-a">All classes are held live online via Zoom. No physical location needed.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">How big are the classes?<span class="arrow">+</span></div>
+    <div class="faq-a">8–12 students maximum per section. This ensures every student gets individual attention and real-time feedback. It's closer to office hours than a lecture hall.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What materials are provided?<span class="arrow">+</span></div>
+    <div class="faq-a">Every course comes with custom-built handouts written by Joshua — featuring worked examples, difficulty progressions, pattern-recognition triggers, and practice sets drawn from real competition and AP exam problems. You can preview samples on the <a href="/#materials" style="color:var(--teal);">Materials</a> section of our homepage. All materials are included in the course fee.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Are classes recorded?<span class="arrow">+</span></div>
+    <div class="faq-a">Yes. All live sessions are recorded and shared with enrolled students within 24 hours. If you miss a class, you won't fall behind.</div>
+  </div>
+</div>
+
+<div class="faq-section">
+  <div class="faq-section-title">Pricing & Payment</div>
+
+  <div class="faq-item">
+    <div class="faq-q">How much do the courses cost?<span class="arrow">+</span></div>
+    <div class="faq-a">Pre-Algebra is $275, Algebra I and AMC 8 are $299 each, and all other courses (Geometry, Algebra II, Precalculus, AB Calculus, AP Chemistry, AP Physics, AP Biology, SHSAT) are $399. SAT Prep is $275. All prices are for the full 2-week program.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Is there a multi-course discount?<span class="arrow">+</span></div>
+    <div class="faq-a">Yes — students enrolling in 3 or more courses receive a 10% discount on the total. Sibling discounts are also available. Mention it during the interview and we'll work out the details.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What payment methods do you accept?<span class="arrow">+</span></div>
+    <div class="faq-a">We accept Zelle, Venmo, check, and cash. Payment details are provided after enrollment confirmation. No payment is required to submit an inquiry or complete the interview.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Is there a refund policy?<span class="arrow">+</span></div>
+    <div class="faq-a">Full refund if you withdraw before the first class. 50% refund if you withdraw within the first week. No refunds after the first week. If you're unsure about fit, the interview process is designed to help with that decision before you commit.</div>
+  </div>
+</div>
+
+<div class="faq-section">
+  <div class="faq-section-title">About the Instructor</div>
+
+  <div class="faq-item">
+    <div class="faq-q">Who is Joshua Gao?<span class="arrow">+</span></div>
+    <div class="faq-a">Joshua is a Stuyvesant High School alumnus pursuing a B.S. in Computer Science & Mathematics. His competition credentials include USAMO qualifier (top 10 nationally), perfect AMC 12B score (150), USACO Platinum (Gold division perfect score 1000), 2x USABO Semifinalist, and SAT 1550 (Math 800). He currently teaches at AwesomeMath and has previously tutored for The Princeton Review.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What results have his students achieved?<span class="arrow">+</span></div>
+    <div class="faq-a">Joshua has personally coached two female students to qualify for USAMO and USACO Platinum respectively. At AwesomeMath, he writes handouts, tests, and assessments for 7 competition math classes and mentors students 1-on-1.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Is this a large tutoring company?<span class="arrow">+</span></div>
+    <div class="faq-a">No — and that's the point. Olympiad Edge is a small, instructor-led program. Joshua teaches every class personally. There are no TAs, no outsourced instructors, and no generic curriculum. Every handout, every lesson plan, and every assessment is written by the person standing in front of the room.</div>
+  </div>
+</div>
+
+<div class="cta-box">
+  <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:0.5rem;">Still have questions?</h2>
+  <p>Reach out directly — we respond within 24 hours.</p>
+  <a href="/#enroll" class="cta-btn">Enroll Now →</a>
+  <div style="margin-top:1rem;font-size:0.85rem;color:var(--gray);">
+    Or email <a href="mailto:prodigyprepli@gmail.com" style="color:var(--teal);">prodigyprepli@gmail.com</a> · Call <a href="tel:6313928326" style="color:var(--teal);">(631) 392-8326</a>
+  </div>
+</div>
+
+</div>
+
+<footer>
+  <p>© 2026 Olympiad Edge · Huntington, Long Island · <a href="mailto:prodigyprepli@gmail.com">prodigyprepli@gmail.com</a> · <a href="tel:6313928326">(631) 392-8326</a></p>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    document.querySelectorAll('.faq-item').forEach(i => { if (i !== item) i.classList.remove('open'); });
+    item.classList.toggle('open');
+  });
+});
+</script>
+
+</body>
+</html>

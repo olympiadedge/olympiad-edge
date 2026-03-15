@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olympiad Edge — 엘리트 STEM 여름 프로그램 | 헌팅턴, 롱아일랜드</title>
+<meta name="description" content="헌팅턴 롱아일랜드 & 온라인 엘리트 STEM 여름 프로그램. 기초수학부터 미적분, AMC 8, SHSAT, AP 화학/물리/생물, SAT 수학. USAMO 전국 Top 10 강사, AwesomeMath 강사, 소수정예.">
+<meta name="keywords" content="USAMO, AMC, AIME, USACO, AP 화학, AP物理, AP 생물, SAT数学, 长岛, 亨廷顿, 수학, 대수, 기하, 미적분, AMC 8, SHSAT, 스타이베선트, 여름학원, 暑期班, 补习">
+<meta property="og:title" content="奥赛先锋 Olympiad Edge — 精英STEM暑期课程">
+<meta property="og:description" content="수학, AP 과학, SAT 대비. USAMO 전국 Top 10 강사 직강. 온라인.">
+<meta property="og:url" content="https://olympiadedge.academy/ko.html">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://olympiadedge.academy/ko.html">
+<link rel="alternate" hreflang="en" href="https://olympiadedge.academy/">
+<link rel="alternate" hreflang="ko" href="https://olympiadedge.academy/ko.html">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0a1628;--deep:#111d33;--accent:#f59e0b;--accent-hover:#fbbf24;--teal:#06b6d4;--white:#f8fafc;--gray:#94a3b8;--light-gray:#cbd5e1;--card-bg:#162036;--card-border:#1e2d4a;--success:#10b981}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR','Noto Sans SC','Outfit',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;line-height:1.8}
+.en{font-family:'Outfit',sans-serif}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;background:radial-gradient(ellipse 80% 60% at 50% 20%,rgba(6,182,212,.08) 0%,transparent 70%),radial-gradient(ellipse 60% 40% at 70% 80%,rgba(245,158,11,.06) 0%,transparent 70%),var(--navy)}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20% 30%,rgba(255,255,255,.15) 0%,transparent 100%),radial-gradient(1px 1px at 40% 70%,rgba(255,255,255,.1) 0%,transparent 100%),radial-gradient(1px 1px at 60% 20%,rgba(255,255,255,.12) 0%,transparent 100%),radial-gradient(1px 1px at 80% 50%,rgba(255,255,255,.08) 0%,transparent 100%);pointer-events:none}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.25);border-radius:100px;padding:.4rem 1.2rem;font-size:.85rem;color:var(--teal);font-weight:500;margin-bottom:2rem;animation:fadeDown .8s ease}
+.badge::before{content:'';width:6px;height:6px;background:var(--teal);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;line-height:1.25;margin-bottom:1.5rem;animation:fadeUp .8s ease .1s both}
+.hero h1 .highlight{background:linear-gradient(135deg,var(--accent),#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h1 .sub-en{display:block;font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:700;color:var(--gray);letter-spacing:-.02em;margin-top:.5rem;-webkit-text-fill-color:var(--gray)}
+.hero-sub{font-size:clamp(1rem,1.8vw,1.15rem);color:var(--gray);max-width:620px;margin:0 auto 2.5rem;line-height:2;animation:fadeUp .8s ease .2s both}
+.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s ease .3s both}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:var(--navy);font-family:'Noto Sans KR','Noto Sans SC','Outfit',sans-serif;font-weight:700;font-size:1rem;padding:.9rem 2rem;border-radius:12px;text-decoration:none;transition:all .25s;border:none;cursor:pointer}
+.btn-primary:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,158,11,.25)}
+.btn-secondary{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--white);font-family:'Noto Sans KR','Noto Sans SC','Outfit',sans-serif;font-weight:600;font-size:1rem;padding:.9rem 2rem;border-radius:12px;text-decoration:none;border:1px solid var(--card-border);transition:all .25s}
+.btn-secondary:hover{border-color:var(--gray);background:rgba(255,255,255,.03)}
+.stats-bar{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;margin-top:4rem;animation:fadeUp .8s ease .4s both}
+.stat{text-align:center}
+.stat-number{font-family:'Outfit',sans-serif;font-size:2rem;font-weight:800;color:var(--teal)}
+.stat-label{font-size:.75rem;color:var(--gray);font-weight:500;margin-top:.2rem}
+section{padding:5rem 2rem}
+.section-label{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--teal);font-weight:600;margin-bottom:.75rem}
+.section-title{font-size:clamp(1.6rem,3.5vw,2.3rem);font-weight:900;margin-bottom:1rem;line-height:1.3}
+.section-desc{color:var(--gray);font-size:1rem;max-width:600px;line-height:1.9}
+.container{max-width:1100px;margin:0 auto}
+.courses-section{background:var(--deep)}
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-top:3rem}
+.course-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:2rem;transition:all .3s;position:relative;overflow:hidden}
+.course-card:hover{border-color:rgba(6,182,212,.3);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.course-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0}
+.course-card.math::after{background:linear-gradient(90deg,#f59e0b,#f97316)}
+.course-card.chem::after{background:linear-gradient(90deg,#06b6d4,#3b82f6)}
+.course-card.phys::after{background:linear-gradient(90deg,#8b5cf6,#a855f7)}
+.course-card.bio::after{background:linear-gradient(90deg,#22c55e,#16a34a)}
+.course-card.sat::after{background:linear-gradient(90deg,#ef4444,#f97316)}
+.course-icon{font-size:2rem;margin-bottom:1rem}
+.course-title{font-size:1.2rem;font-weight:700;margin-bottom:.15rem}
+.course-title-en{font-family:'Outfit',sans-serif;font-size:.85rem;color:var(--gray);font-weight:500;margin-bottom:.75rem}
+.course-target{font-size:.82rem;color:var(--teal);font-weight:500;margin-bottom:1rem}
+.course-desc{font-size:.9rem;color:var(--gray);line-height:1.8;margin-bottom:1.25rem}
+.course-details{display:flex;flex-wrap:wrap;gap:.5rem}
+.course-tag{font-size:.78rem;padding:.3rem .75rem;border-radius:100px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--light-gray);font-weight:500}
+.course-price{display:flex;align-items:baseline;gap:.3rem;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--card-border)}
+.course-price .amount{font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:var(--accent)}
+.course-price .per{font-size:.85rem;color:var(--gray)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem}
+.why-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:2rem}
+.why-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.25rem}
+.why-icon.a{background:rgba(245,158,11,.12)}.why-icon.b{background:rgba(6,182,212,.12)}.why-icon.c{background:rgba(139,92,246,.12)}.why-icon.d{background:rgba(16,185,129,.12)}
+.why-title{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
+.why-desc{font-size:.9rem;color:var(--gray);line-height:1.8}
+.schedule-section{background:var(--deep)}
+.samples-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3rem}
+.sample-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:2rem;transition:all .3s;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.sample-card:hover{border-color:rgba(6,182,212,.3);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.sample-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0}
+.sample-card.chem-sample::before{background:linear-gradient(90deg,#06b6d4,#3b82f6)}
+.sample-card.bio-sample::before{background:linear-gradient(90deg,#22c55e,#16a34a)}
+.sample-card.phys-sample::before{background:linear-gradient(90deg,#8b5cf6,#a855f7)}
+.sample-icon{font-size:2rem;margin-bottom:1rem}.sample-title{font-size:1.15rem;font-weight:700;margin-bottom:.3rem}
+.sample-subtitle{font-size:.82rem;color:var(--teal);font-weight:500;margin-bottom:.75rem}
+.sample-desc{font-size:.88rem;color:var(--gray);line-height:1.8;margin-bottom:1.25rem;flex:1}
+.sample-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem}
+.sample-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:.7rem 1.25rem;background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.2);border-radius:10px;color:var(--teal);font-family:'Noto Sans KR','Noto Sans SC','Outfit',sans-serif;font-weight:600;font-size:.88rem;text-decoration:none;transition:all .2s}
+.sample-btn:hover{background:rgba(6,182,212,.15);border-color:rgba(6,182,212,.4)}
+.schedule-table{width:100%;margin-top:2.5rem;border-collapse:separate;border-spacing:0;border-radius:16px;overflow:hidden;border:1px solid var(--card-border)}
+.schedule-table th{background:var(--card-bg);text-align:left;padding:1rem 1.25rem;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gray);font-weight:600}
+.schedule-table td{padding:1rem 1.25rem;border-top:1px solid var(--card-border);font-size:.9rem}
+.schedule-table tbody tr{transition:background .2s}.schedule-table tbody tr:hover{background:rgba(255,255,255,.02)}
+.schedule-table .course-name-cell{font-weight:600}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:.5rem}
+.dot.math{background:#f59e0b}.dot.chem{background:#06b6d4}.dot.phys{background:#8b5cf6}.dot.sat{background:#ef4444}
+.cta-section{text-align:center;padding:6rem 2rem;position:relative;background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(245,158,11,.06) 0%,transparent 70%),var(--navy)}
+.cta-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;margin-bottom:1rem}
+.cta-desc{color:var(--gray);font-size:1.05rem;max-width:500px;margin:0 auto 2rem;line-height:1.9}
+.form-container{max-width:500px;margin:2rem auto 0;text-align:left}
+.form-row{margin-bottom:1rem}
+.form-row label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem;color:var(--light-gray)}
+.form-row input,.form-row select,.form-row textarea{width:100%;padding:.75rem 1rem;background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;color:var(--white);font-family:'Noto Sans KR','Noto Sans SC','Outfit',sans-serif;font-size:.95rem;transition:border-color .2s}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--teal)}
+.form-row select option{background:var(--navy)}
+.form-row textarea{resize:vertical;min-height:80px}
+.submit-btn{width:100%;margin-top:.5rem}
+.form-note{text-align:center;font-size:.82rem;color:var(--gray);margin-top:1rem}
+footer{text-align:center;padding:2rem;border-top:1px solid var(--card-border);color:var(--gray);font-size:.85rem}
+footer a{color:var(--teal);text-decoration:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:rgba(10,22,40,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
+.nav-logo{font-family:'Noto Sans SC',sans-serif;font-weight:900;font-size:1.15rem}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{color:var(--gray);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.lang-toggle{display:inline-flex;align-items:center;gap:.35rem;padding:.3rem .75rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:var(--light-gray);text-decoration:none;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;transition:all .2s}
+.lang-toggle:hover{background:rgba(255,255,255,.1);color:var(--white)}
+.mobile-lang{display:none!important}
+@media(max-width:1024px){.nav{padding:1rem 1.5rem}.nav-links{gap:1.25rem}.nav-links a{font-size:.82rem}.courses-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}.why-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.samples-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}section{padding:4rem 1.5rem}}
+@media(max-width:768px){.stats-bar{gap:1.5rem}.courses-grid{grid-template-columns:1fr}.schedule-table{font-size:.82rem}.schedule-table th,.schedule-table td{padding:.75rem}section{padding:3.5rem 1.25rem}.hero{padding:2rem 1.25rem}.nav-links{gap:1rem}.nav-links a{font-size:.78rem}.lang-toggle{font-size:.72rem;padding:.25rem .6rem}}
+@media(max-width:600px){.nav-links{display:none}.nav{padding:1rem 1.25rem}.mobile-lang{display:flex!important;position:fixed;top:.7rem;right:1.25rem;z-index:101;gap:.4rem}.hero h1{font-size:2rem}.stats-bar{gap:1.2rem}.stat-number{font-family:'Outfit',sans-serif;font-size:1.5rem}.schedule-table{font-size:.75rem}.schedule-table th,.schedule-table td{padding:.6rem .5rem}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">Olympiad <span>Edge</span></div>
+  <ul class="nav-links">
+    <li><a href="#courses">강좌</a></li>
+    <li><a href="#why">강점</a></li>
+    <li><a href="#materials">교재</a></li>
+    <li><a href="#schedule">시간표</a></li>
+    <li><a href="#enroll">등록</a></li>
+    <li><a href="/faq.html">FAQ</a></li>
+    <li><a href="/" class="lang-toggle">EN</a></li>
+    <li><a href="/zh.html" class="lang-toggle">中文</a></li>
+  </ul>
+</nav>
+<div class="mobile-lang"><a href="/" class="lang-toggle">EN</a><a href="/zh.html" class="lang-toggle">中文</a></div>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="badge">시즌 I: 2026년 6월 30일 – 7월 11일 · 온라인</div>
+    <h1>미래의 <span class="highlight">STEM 챔피언</span>을 만드는 곳<span class="sub-en">Where Future STEM Champions Are Made</span></h1>
+    <p class="hero-sub">기초수학부터 미적분, AMC 8, SHSAT, AP 과학, SAT 대비 — 실시간 온라인 수업 (Zoom). USAMO 입상자, AMC 12B 만점자, USACO 플래티넘, AwesomeMath 강사 직강. SAT 수학 만점 800.</p>
+    <div class="hero-cta">
+      <a href="#enroll" class="btn-primary">지금 등록 →</a>
+      <a href="#courses" class="btn-secondary">강좌 보기</a>
+    </div>
+    <div class="stats-bar">
+      <div class="stat"><div class="stat-number en">150/150</div><div class="stat-label">AMC 12B 만점</div></div>
+      <div class="stat"><div class="stat-number en">Top 10</div><div class="stat-label">USAMO 입상</div></div>
+      <div class="stat"><div class="stat-number en">Platinum</div><div class="stat-label">USACO 플래티넘</div></div>
+      <div class="stat"><div class="stat-number en">2× Semi</div><div class="stat-label">USABO 준결승</div></div>
+      <div class="stat"><div class="stat-number en">1550</div><div class="stat-label">SAT (수학 800)</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="courses-section" id="courses">
+  <div class="container">
+    <div class="section-label">시즌 I · 2026 여름</div>
+    <div class="section-title">12개 강좌. 하나의 목표: 탁월함.</div>
+    <p class="section-desc">모든 강좌는 패턴 인식, 체계적 문제 해결, 깊은 이해를 중심으로 설계되어 "모르겠어"를 "당연하지"로 바꿉니다.</p>
+    <div class="courses-grid">
+      <div class="course-card math">
+        <div class="course-icon">🏆</div>
+        <div class="course-title">기하학 Geometry</div>
+        <div class="course-title-en">Geometry</div>
+        <div class="course-target">9–10학년</div>
+        <div class="course-desc">증명, 합동, 닮음, 원, 넓이, 부피, 좌표기하 — 단순 공식 암기가 아닌 진정한 수학적 사고를 키웁니다.</div>
+        <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">주 2회</span><span class="course-tag">60분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
+        <div class="course-price"><span class="amount">$399</span><span class="per">/ 전체 프로그램</span></div>
+      </div>
+      <div class="course-card math" style="border:1px solid rgba(245,158,11,.2)">
+        <div class="course-icon">🥈</div>
+        <div class="course-title">대수 II Algebra II</div>
+        <div class="course-title-en">Algebra II</div>
+        <div class="course-target">10–11학년</div>
+        <div class="course-desc">다항식, 유리식, 로그, 수열, 연립방정식, 복소수. 모든 후속 과정의 기초가 되는 탄탄한 대수 실력을 쌓습니다.</div>
+        <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">토요일</span><span class="course-tag">3시간</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
+        <div class="course-price"><span class="amount">$949</span><span class="per">/ 전체 프로그램</span></div>
+      </div>
+      <div class="course-card math" style="border:1px solid rgba(245,158,11,.35)">
+        <div class="course-icon">🥇</div>
+        <div class="course-title">예비미적분 Precalculus</div>
+        <div class="course-title-en">Precalculus</div>
+        <div class="course-target">11–12학년</div>
+        <div class="course-desc">삼각함수, 극좌표, 벡터, 원뿔곡선, 극한 — 미적분으로 가는 다리. 대부분의 학생이 미분 배우기 전에 막히는 개념적 도약을 정복합니다.</div>
+        <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">토요일</span><span class="course-tag">3시간</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
+        <div class="course-price"><span class="amount">$1,299</span><span class="per">/ 전체 프로그램</span></div>
+      </div>
+      <div class="course-card math" style="border:1px solid rgba(245,158,11,.25)">
+        <div class="course-icon">∫</div>
+        <div class="course-title">AB 미적분 AB Calculus</div>
+        <div class="course-title-en">AB Calculus</div>
+        <div class="course-target">11–12학년 · AP备考</div>
+        <div class="course-desc">극한, 미분, 적분, 미적분 기본정리 — AP Calculus AB 시험 완벽 대비. FRQ/MCQ 전 유형 커버, 패턴 인식 교수법으로 3점을 5점으로.</div>
+        <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">주 2회</span><span class="course-tag">60분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
+        <div class="course-price"><span class="amount">$399</span><span class="per">/ 전체 프로그램</span></div>
+      </div>
+      <div class="course-card math">
+        <div class="course-icon">🔢</div>
+        <div class="course-title">기초대수 Pre-Algebra</div>
+        <div class="course-title-en">Pre-Algebra</div>
+        <div class="course-target">6–7학년</div>
+        <div class="course-desc">정수, 분수, 소수, 비율, 변수 입문 — 가장 기초적이면서 가장 중요한 수학 빌딩블록. 방정식을 접하기 전에 자신감과 유창함을 키웁니다.</div>
+        <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">주 2회</span><span class="course-tag">60분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
+        <div class="course-price"><span class="amount">$275</span><span class="per">/ 전체 프로그램</span></div>
+      </div>
+      <div class="course-card math">
+        <div class="course-icon">🔤</div>
+        <div class="course-title">대수 I Algebra I</div>
+        <div class="course-title-en">Algebra I</div>
+        <div class="course-target">7–8학년</div>
+        <div class="course-desc">일차방정식, 부등식, 연립방정식, 지수, 이차방정식, 그래프. 고등학교 수학 성패를 결정짓는 대수적 추론력을 키웁니다.</div>
+        <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">주 2회</span><span class="course-tag">60분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
+        <div class="course-price"><span class="amount">$299</span><span class="per">/ 전체 프로그램</span></div>
+      </div>
+      <div class="course-card math" style="border:1px solid rgba(245,158,11,.2)">
+        <div class="course-icon">🏅</div>
+        <div class="course-title">AMC 8 / 경시수학 입문</div>
+        <div class="course-title-en">AMC 8 / Competition Math Intro</div>
+        <div class="course-target">5–8학년</div>
+        <div class="course-desc">창의적 문제해결, 경우의 수, 정수론, 기하학적 추론 — AMC 8 수준. 수학 경시대회를 시작하거나 수학을 다른 관점에서 보고 싶은 학생에게 최적.</div>
+        <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">토요일</span><span class="course-tag">90분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
+        <div class="course-price"><span class="amount">$299</span><span class="per">/ 전체 프로그램</span></div>
+      </div>
+      <div class="course-card sat">
+        <div class="course-icon">🏫</div>
+        <div class="course-title">SHSAT 대비반</div>
+        <div class="course-title-en">SHSAT Prep</div>
+        <div class="course-target">8–9학년</div>
+        <div class="course-desc">뉴욕 특수목적고 입학시험(SHSAT) 완벽 커버 — 영어 & 수학. 체계적 전략, 시간제한 연습, 스타이베선트·브롱스과학·브루클린테크 합격을 위한 시험 감각. 스타이베선트 졸업생 직강.</div>
+        <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">토요일</span><span class="course-tag">60분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
+        <div class="course-price"><span class="amount">$399</span><span class="per">/ 전체 프로그램</span></div>
+      </div>
+      <div class="course-card chem">
+        <div class="course-icon">⚗️</div>
+        <div class="course-title">AP 화학 집중반</div>
+        <div class="course-title-en">AP Chemistry Crash Course</div>
+        <div class="course-target">11–12학년</div>
+        <div class="course-desc">평형, 열역학, 반응속도론, 전기화학 등 핵심 내용과 College Board 빈출 FRQ 유형 완벽 커버. 실제 시험 패턴 기반.</div>
+        <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">주 2회</span><span class="course-tag">60분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
+        <div class="course-price"><span class="amount">$399</span><span class="per">/ 전체 프로그램</span></div>
+      </div>
+      <div class="course-card phys">
+        <div class="course-icon">⚡</div>
+        <div class="course-title">AP 물리 1 대비반</div>
+        <div class="course-title-en">AP Physics 1 Prep</div>
+        <div class="course-target">11–12학년</div>
+        <div class="course-desc">대수 기반 물리학 — 운동학, 힘, 에너지, 운동량, 회전, 단진동. 개념 이해와 실험 설계 문제 해결 능력을 중점 육성.</div>
+        <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">주 2회</span><span class="course-tag">60분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
+        <div class="course-price"><span class="amount">$399</span><span class="per">/ 전체 프로그램</span></div>
+      </div>
+      <div class="course-card bio">
+        <div class="course-icon">🧬</div>
+        <div class="course-title">AP 생물 집중반</div>
+        <div class="course-title-en">AP Biology Crash Course</div>
+        <div class="course-target">11–12학년</div>
+        <div class="course-desc">세포생물학, 유전학, 진화, 생태학, 생리학 — USABO 수준의 깊이. 4점을 5점으로 올리는 데이터 분석·실험 설계 FRQ 집중 공략.</div>
+        <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">주 2회</span><span class="course-tag">60분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
+        <div class="course-price"><span class="amount">$399</span><span class="per">/ 전체 프로그램</span></div>
+      </div>
+      <div class="course-card sat">
+        <div class="course-icon">📐</div>
+        <div class="course-title">SAT 수학 집중반</div>
+        <div class="course-title-en">SAT Prep Intensive</div>
+        <div class="course-target">11–12학년</div>
+        <div class="course-desc">수학+읽기쓰기 전체 커버. 모든 유형에 인식 트리거와 속풀이 기법. 1550점(수학 만점 800) 취득자가 체계적 패턴 마스터리로 1500+ 달성 지도.</div>
+        <div class="course-details"><span class="course-tag">2주</span><span class="course-tag">주 2회</span><span class="course-tag">60분</span><span class="course-tag" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#34d399">온라인</span></div>
+        <div class="course-price"><span class="amount">$275</span><span class="per">/ 전체 프로그램</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="container">
+    <div class="section-label">Olympiad Edge의 차이점</div>
+    <div class="section-title">평범한 학원이 아닙니다.</div>
+    <p class="section-desc">대형 학원은 중간 수준에 맞춥니다. 우리는 최상위를 겨냥합니다 — 깊이와 강도로 우수한 학생을 탁월한 인재로 키웁니다.</p>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon a">🎯</div><div class="why-title">최정상급 경시대회 이력</div><div class="why-desc">강사는 USAMO 입상자(전국 Top 10), AMC 12B 만점 150, USACO 플래티넘, USABO 준결승 2회, NYC USNCO 초청자. 간접 지식이 아닌 직접 경험입니다.</div></div>
+      <div class="why-card"><div class="why-icon b">🧠</div><div class="why-title">패턴 인식 교수법</div><div class="why-desc">독자적인 색상 코딩 프레임워크와 "인식 트리거"로 펜을 들기 전에 풀이 경로를 보도록 두뇌를 훈련합니다. 문제가 "당연하게" 느껴지도록.</div></div>
+      <div class="why-card"><div class="why-icon c">👥</div><div class="why-title">소수정예 수업</div><div class="why-desc">반당 최대 8–12명. 모든 학생이 개인별 관심, 실시간 피드백, 충분한 질문 시간을 보장받습니다 — 대형 강의가 아닌 오피스아워처럼.</div></div>
+      <div class="why-card"><div class="why-icon d">📊</div><div class="why-title">실전 교재, 실제 성과</div><div class="why-desc">자체 제작 교재에 상세한 풀이 예시, 난이도 단계별 진행, 실제 경시대회/AP 시험 기출 연습문제 수록. AwesomeMath와 동등한 수준.</div></div>
+    </div>
+    <div style="margin-top:3.5rem;background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:2.5rem;display:flex;gap:2rem;flex-wrap:wrap;align-items:start">
+      <div style="flex:1;min-width:280px">
+        <div class="section-label">강사 소개</div>
+        <div style="font-size:1.5rem;font-weight:800;margin-bottom:.25rem">Joshua Gao</div>
+        <div style="color:var(--teal);font-weight:500;font-size:.95rem;margin-bottom:1.25rem">컴퓨터과학 & 수학 학사 · B.S. Computer Science &amp; Mathematics</div>
+        <div style="color:var(--gray);font-size:.9rem;line-height:1.9">스타이베선트 고등학교 졸업. 현재 AwesomeMath 강사로 7개 경시수학 과목의 교재, 시험, 평가자료를 직접 집필하며 1:1 멘토링 진행. 전 Princeton Review 튜터(AP 생물/화학/물리). 스타이베선트 수학팀 출신, PUMAC 1위(2020, 2021), HMMT 3위(2019, 2021), CMIMC·버클리 수학대회 Top 5.</div>
+        <div style="margin-top:1.25rem;display:flex;flex-wrap:wrap;gap:.5rem">
+          <span class="course-tag" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.25);color:#fbbf24">USAMO 입상</span>
+          <span class="course-tag" style="background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.25);color:#22d3ee">USACO 플래티넘</span>
+          <span class="course-tag" style="background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.25);color:#a78bfa">2× USABO 준결승</span>
+          <span class="course-tag" style="background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.25);color:#34d399">NYC USNCO 초청</span>
+          <span class="course-tag" style="background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.25);color:#f87171">SAT 1550 (수학 800)</span>
+          <span class="course-tag" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.25);color:#fbbf24">AMC 12B 만점</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="courses-section" id="materials">
+  <div class="container">
+    <div class="section-label">교재 품질을 직접 확인하세요</div>
+    <div class="section-title">샘플 교재. 품질이 말합니다.</div>
+    <p class="section-desc">모든 강좌에 난이도별 문제, 완전한 풀이, 독자적 "패턴 인식 트리거"가 포함된 자체 제작 교재가 제공됩니다.</p>
+    <div class="samples-grid">
+      <div class="sample-card chem-sample">
+        <div class="sample-icon">⚗️</div>
+        <div class="sample-title">산-염기 & 완충용액</div>
+        <div class="sample-subtitle">Honors Chemistry → AP Chemistry → USNCO / IChO</div>
+        <div class="sample-desc">3단계 난이도 18문항. ICE표, Henderson-Hasselbalch, 적정, 완충계, 삼양성자 아미노산. 모든 문제에 완전한 풀이와 인식 트리거.</div>
+        <div class="sample-tags">
+          <span class="course-tag">18문항</span>
+          <span class="course-tag">3단계</span>
+          <span class="course-tag">14페이지</span>
+          <span class="course-tag">완전한 풀이</span>
+        </div>
+        <a href="sample-chemistry.pdf" target="_blank" class="sample-btn">📄 교재 보기 (PDF)</a>
+      </div>
+      <div class="sample-card" style="position:relative;overflow:hidden;">
+        <div style="content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;background:linear-gradient(90deg,#f59e0b,#f97316);"></div>
+        <div class="sample-icon">🔢</div>
+        <div class="sample-title">복소수 & 단위근</div>
+        <div class="sample-subtitle">AMC 12 → AIME 워크숍</div>
+        <div class="sample-desc">5대 단위근 핵심 도구, AIME 완전 풀이 2문항, 경시 문제 5문항. 원분다항식, 근 필터, 거리-사인 공식.</div>
+        <div class="sample-tags">
+          <span class="course-tag">7문항</span>
+          <span class="course-tag">10페이지</span>
+          <span class="course-tag">AIME 수준</span>
+          <span class="course-tag">완전한 풀이</span>
+        </div>
+        <a href="sample-math.pdf" target="_blank" class="sample-btn">📄 교재 보기 (PDF)</a>
+      </div>
+      <div class="sample-card bio-sample">
+        <div class="sample-icon">🧬</div>
+        <div class="sample-title">세포 & 분자생물학</div>
+        <div class="sample-subtitle">Honors Bio → AP Bio → USABO Open → USABO Semifinal</div>
+        <div class="sample-desc">4단계 난이도 8문항 오리지널. 멘델유전, Hardy-Weinberg, 막전위, 신호전달, 분자진화. 준결승 수준 실험설계.</div>
+        <div class="sample-tags">
+          <span class="course-tag">8문항</span>
+          <span class="course-tag">4단계</span>
+          <span class="course-tag">14페이지</span>
+          <span class="course-tag">오리지널 문제</span>
+        </div>
+        <a href="sample-biology.pdf" target="_blank" class="sample-btn">📄 교재 보기 (PDF)</a>
+      </div>
+      <div class="sample-card phys-sample">
+        <div class="sample-icon">⚡</div>
+        <div class="sample-title">물리 Problem Ladder</div>
+        <div class="sample-subtitle">AP Physics 1 → AP Physics C → F = ma → USAPhO</div>
+        <div class="sample-desc">抛体运动、能量方法与碰撞 — 从AP到奥赛逐级提升。包含2024年F = ma真题和2023年USAPhO真题，附완전한 풀이和解题技巧。</div>
+        <div class="sample-tags">
+          <span class="course-tag">6문항</span>
+          <span class="course-tag">4단계</span>
+          <span class="course-tag">10페이지</span>
+          <span class="course-tag">경시 기출</span>
+        </div>
+        <a href="sample-physics.pdf" target="_blank" class="sample-btn">📄 교재 보기 (PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="schedule-section" id="schedule">
+  <div class="container">
+    <div class="section-label">시즌 I · 2026 여름</div>
+    <div class="section-title">여름 일정을 계획하세요.</div>
+    <p class="section-desc">모든 강좌는 Zoom 실시간 온라인으로 진행됩니다. 6월 30일 – 7월 11일. </p>
+    <p style="color:var(--gray);font-size:.85rem;font-style:italic;margin-top:-.5rem;margin-bottom:1.5rem">일정은 잠정적이며 변경될 수 있습니다.</p>
+    <table class="schedule-table">
+      <thead><tr><th>강좌</th><th>날짜</th><th>요일</th><th>시간</th><th>비용</th></tr></thead>
+      <tbody>
+        <tr><td class="course-name-cell"><span class="dot math"></span>기하학</td><td>6/30 – 7/31</td><td>화·목</td><td>10:00 – 11:00 AM</td><td>$399</td></tr>
+        <tr><td class="course-name-cell"><span class="dot math"></span>대수 II</td><td>6/30 – 7/31</td><td>화·목</td><td>11:15 AM – 12:15 PM</td><td>$399</td></tr>
+        <tr><td class="course-name-cell"><span class="dot math"></span>예비미적분</td><td>6/30 – 7/31</td><td>월·수</td><td>10:00 – 11:00 AM</td><td>$399</td></tr>
+        <tr><td class="course-name-cell"><span class="dot math"></span>AB 미적분</td><td>6/30 – 7/31</td><td>월·수</td><td>11:15 AM – 12:15 PM</td><td>$399</td></tr>
+        <tr><td class="course-name-cell"><span class="dot math"></span>기초대수</td><td>6/30 – 7/31</td><td>토</td><td>1:30 – 3:00 PM</td><td>$275</td></tr>
+        <tr><td class="course-name-cell"><span class="dot math"></span>대수 I</td><td>6/30 – 7/31</td><td>토</td><td>10:00 – 11:30 AM</td><td>$299</td></tr>
+        <tr><td class="course-name-cell"><span class="dot math"></span>AMC 8 경시 입문</td><td>6/30 – 7/31</td><td>토</td><td>11:45 AM – 1:15 PM</td><td>$299</td></tr>
+        <tr><td class="course-name-cell"><span class="dot sat"></span>SHSAT 대비</td><td>6/30 – 7/31</td><td>월·수</td><td>2:15 – 3:15 PM</td><td>$399</td></tr>
+        <tr><td class="course-name-cell"><span class="dot chem"></span>AP 화학</td><td>6/30 – 7/31</td><td>화·목</td><td>1:00 – 2:00 PM</td><td>$399</td></tr>
+        <tr><td class="course-name-cell"><span class="dot phys"></span>AP 물리 1</td><td>6/30 – 7/31</td><td>월·수</td><td>1:00 – 2:00 PM</td><td>$399</td></tr>
+        <tr><td class="course-name-cell"><span class="dot" style="background:#22c55e"></span>AP 생물</td><td>6/30 – 7/31</td><td>화·목</td><td>2:15 – 3:15 PM</td><td>$399</td></tr>
+        <tr><td class="course-name-cell"><span class="dot sat"></span>SAT 수학</td><td>6/30 – 7/31</td><td>토</td><td>3:15 – 4:45 PM</td><td>$275</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="cta-section" id="enroll">
+  <div class="container">
+    <div class="section-label">인원 제한</div>
+    <div class="cta-title">자리를 예약하세요.</div>
+    <p class="cta-desc">자리가 빠르게 마감됩니다. 정보를 남겨주시면 24시간 내에 연락드리겠습니다.</p>
+    <div style="max-width:500px;margin:0 auto 2rem;background:rgba(6,182,212,.06);border:1px solid rgba(6,182,212,.15);border-radius:12px;padding:1.25rem 1.5rem;text-align:left">
+      <div style="font-weight:700;font-size:.95rem;margin-bottom:.4rem;color:var(--teal)">면접 입학제</div>
+      <div style="font-size:.88rem;color:var(--gray);line-height:1.8">所有申请学生需经过面试筛选，以确定是否适合该课程。录取由강사 소개全权决定。这确保每位在场学生都能达到课程要求的水平。</div>
+    </div>
+    <div class="form-container">
+      <form id="enrollForm" onsubmit="handleSubmit(event)">
+        <div class="form-row"><label>학부모/보호자 성명</label><input type="text" name="parentName" required placeholder="全名"></div>
+        <div class="form-row"><label>학생 이름 및 학년 (2026년 가을)</label><input type="text" name="studentInfo" required placeholder="예: 김민준, 10학년 진학 예정"></div>
+        <div class="form-row"><label>이메일</label><input type="email" name="email" required placeholder="your@email.com"></div>
+        <div class="form-row"><label>전화</label><input type="tel" name="phone" placeholder="(516) 555-0123"></div>
+        <div class="form-row"><label>관심 강좌</label>
+          <select name="course">
+            <option>기하학 Geometry</option><option>대수 II Algebra II</option><option>예비미적분 Precalculus</option><option>AB 미적분 AB Calculus</option>
+            <option>기초대수 Pre-Algebra</option><option>대수 I Algebra I</option><option>AMC 8 경시수학 입문</option><option>SHSAT 대비반</option>
+            <option>AP 화학 집중반</option><option>AP 물리 1 대비반</option><option>AP 생물 집중반</option>
+            <option>SAT 수학 집중반</option><option>복수 강좌 (아래에 기재)</option>
+          </select>
+        </div>
+        <div class="form-row"><label>수업 형식</label>
+          <select name="format">
+            <option></option>
+            <option>온라인 (Zoom)</option>
+            <option/option>
+          </select>
+        </div>
+        <div class="form-row"><label>질문 또는 메모 (선택)</label><textarea name="message" placeholder="알려주실 내용이 있으시면..."></textarea></div>
+        <button type="submit" class="btn-primary submit-btn">등록 문의 제출 →</button>
+      </form>
+      <p class="form-note">사전 결제 불필요. 자리를 확인하고 다음 단계를 안내드립니다.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Olympiad Edge · 헌팅턴, 롱아일랜드 · <a href="mailto:prodigyprepli@gmail.com">prodigyprepli@gmail.com</a> · <a href="tel:6313928326">(631) 392-8326</a></p>
+</footer>
+
+<script>
+function handleSubmit(e){
+  e.preventDefault();
+  var form=e.target,btn=form.querySelector('.submit-btn'),orig=btn.textContent;
+  btn.textContent='제출 중...';btn.disabled=true;btn.style.opacity='.6';
+  var data=new FormData(form);data.append('language','ko');
+  fetch('https://formspree.io/f/mbdzrvqy',{method:'POST',body:data,headers:{'Accept':'application/json'}})
+  .then(function(r){if(r.ok){form.innerHTML='<div style="text-align:center;padding:2rem 0"><div style="font-size:2.5rem;margin-bottom:.75rem">✓</div><div style="font-size:1.3rem;font-weight:800;margin-bottom:.5rem">접수되었습니다!</div><div style="color:var(--gray);font-size:.95rem;line-height:1.9">Olympiad Edge에 관심을 가져주셔서 감사합니다. 24시간 내에 연락드려 다음 단계를 안내하고 면접을 잡겠습니다.</div></div>'}else{throw new Error('fail')}})
+  .catch(function(){alert('오류가 발생했습니다. 다시 시도하시거나 (631) 392-8326으로 전화주세요.');btn.textContent=orig;btn.disabled=false;btn.style.opacity='1'});
+}
+</script>
+</body>
+</html>
