@@ -180,11 +180,10 @@
 // ════════════════════════════════════════════════════════════
 // TABLE OF CONTENTS
 // ════════════════════════════════════════════════════════════
-#page(header: none, footer: none)[
-  #text(size: 20pt, fill: navy, weight: "bold")[Table of Contents]
-  #v(4pt)
-  #outline(indent: 1.5em, depth: 2)
-]
+#set page(header: none, footer: none)
+#text(size: 20pt, fill: navy, weight: "bold")[Table of Contents]
+#v(4pt)
+#outline(indent: 1.5em, depth: 2)
 
 // ════════════════════════════════════════════════════════════
 // CHAPTER 1: FOUNDATIONS
