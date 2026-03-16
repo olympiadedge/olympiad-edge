@@ -958,6 +958,68 @@ footer a { color: var(--teal); text-decoration: none; }
   .wechat-fab svg { width: 24px; height: 24px; }
   .section-nav { display: none; }
 }
+/* Weekly view */
+.schedule-toggle { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+.schedule-toggle button {
+  padding: 0.45rem 1.1rem;
+  border-radius: 100px;
+  border: 1px solid var(--card-border);
+  background: transparent;
+  color: var(--gray);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.schedule-toggle button.active {
+  background: rgba(245,158,11,0.1);
+  border-color: rgba(245,158,11,0.3);
+  color: var(--accent);
+}
+.week-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+.day-col h4 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gray);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--card-border);
+}
+.time-block {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-left: 3px solid;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.6rem;
+  transition: all 0.25s;
+  cursor: default;
+}
+.time-block:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  border-color: rgba(255,255,255,0.1);
+}
+.time-block .block-name { font-weight: 700; font-size: 0.88rem; margin-bottom: 0.15rem; }
+.time-block .block-time { font-size: 0.72rem; color: var(--gray); }
+.time-block .block-price { font-size: 0.78rem; color: var(--accent); font-weight: 700; margin-top: 0.3rem; }
+.time-block.math { border-left-color: #f59e0b; }
+.time-block.chem { border-left-color: #06b6d4; }
+.time-block.phys { border-left-color: #8b5cf6; }
+.time-block.bio { border-left-color: #22c55e; }
+.time-block.sat { border-left-color: #ef4444; }
+@media (max-width: 768px) {
+  .week-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
 </style>
 </head>
 <body>
@@ -1403,6 +1465,83 @@ footer a { color: var(--teal); text-decoration: none; }
     <p class="section-desc reveal">All classes live online via Zoom. 4-week program: June 30 – July 31, 2026.</p>
     <p style="color: var(--gray); font-size: 0.85rem; font-style: italic; margin-top: -0.5rem; margin-bottom: 1.5rem;">Click any course card above to jump to its schedule. All times are Eastern (ET).</p>
 
+    <div class="schedule-toggle reveal">
+      <button class="active" onclick="toggleSchedule('week')">Weekly View</button>
+      <button onclick="toggleSchedule('table')">Table View</button>
+    </div>
+
+    <div id="weekView" class="week-grid reveal">
+      <div class="day-col">
+        <h4>Mon / Wed</h4>
+        <div class="time-block math">
+          <div class="block-name">Precalculus</div>
+          <div class="block-time">10:00 – 11:00 AM</div>
+          <div class="block-price">$399</div>
+        </div>
+        <div class="time-block math">
+          <div class="block-name">AB Calculus</div>
+          <div class="block-time">11:15 AM – 12:15 PM</div>
+          <div class="block-price">$399</div>
+        </div>
+        <div class="time-block phys">
+          <div class="block-name">AP Physics 1</div>
+          <div class="block-time">1:00 – 2:00 PM</div>
+          <div class="block-price">$399</div>
+        </div>
+        <div class="time-block sat">
+          <div class="block-name">SHSAT Prep</div>
+          <div class="block-time">2:15 – 3:15 PM</div>
+          <div class="block-price">$399</div>
+        </div>
+      </div>
+      <div class="day-col">
+        <h4>Tue / Thu</h4>
+        <div class="time-block math">
+          <div class="block-name">Geometry</div>
+          <div class="block-time">10:00 – 11:00 AM</div>
+          <div class="block-price">$399</div>
+        </div>
+        <div class="time-block math">
+          <div class="block-name">Algebra II</div>
+          <div class="block-time">11:15 AM – 12:15 PM</div>
+          <div class="block-price">$399</div>
+        </div>
+        <div class="time-block chem">
+          <div class="block-name">AP Chemistry</div>
+          <div class="block-time">1:00 – 2:00 PM</div>
+          <div class="block-price">$399</div>
+        </div>
+        <div class="time-block bio">
+          <div class="block-name">AP Biology</div>
+          <div class="block-time">2:15 – 3:15 PM</div>
+          <div class="block-price">$399</div>
+        </div>
+      </div>
+      <div class="day-col">
+        <h4>Saturday</h4>
+        <div class="time-block math">
+          <div class="block-name">Algebra I</div>
+          <div class="block-time">10:00 – 11:30 AM</div>
+          <div class="block-price">$299</div>
+        </div>
+        <div class="time-block math">
+          <div class="block-name">AMC 8 / Comp. Intro</div>
+          <div class="block-time">11:45 AM – 1:15 PM</div>
+          <div class="block-price">$299</div>
+        </div>
+        <div class="time-block math">
+          <div class="block-name">Pre-Algebra</div>
+          <div class="block-time">1:30 – 3:00 PM</div>
+          <div class="block-price">$275</div>
+        </div>
+        <div class="time-block sat">
+          <div class="block-name">SAT Math</div>
+          <div class="block-time">3:15 – 4:45 PM</div>
+          <div class="block-price">$275</div>
+        </div>
+      </div>
+    </div>
+
     <table class="schedule-table reveal">
       <thead>
         <tr>
@@ -1551,13 +1690,8 @@ footer a { color: var(--teal); text-decoration: none; }
             <option>Multiple Courses (specify below)</option>
           </select>
         </div>
-        <div class="form-row">
-          <label>Format</label>
-          <select name="format">
-            <option>Online (Live Zoom)</option>
-            <option>Online (Zoom)</option>
-          </select>
-        </div>
+        <input type="hidden" name="format" value="Online (Zoom)">
+        <div style="font-size:0.82rem;color:var(--gray);margin-bottom:1rem;">All classes are live online via Zoom.</div>
         <div class="form-row">
           <label>Questions or Notes (optional)</label>
           <textarea name="message" placeholder="Anything you'd like us to know..."></textarea>
@@ -1726,6 +1860,27 @@ function updateSectionNav() {
 
 window.addEventListener('scroll', updateSectionNav, { passive: true });
 updateSectionNav();
+
+function toggleSchedule(view) {
+  const weekEl = document.getElementById('weekView');
+  const tableEl = document.querySelector('.schedule-table');
+  const btns = document.querySelectorAll('.schedule-toggle button');
+  btns.forEach(b => b.classList.remove('active'));
+  if (view === 'week') {
+    weekEl.style.display = 'grid';
+    tableEl.style.display = 'none';
+    btns[0].classList.add('active');
+  } else {
+    weekEl.style.display = 'none';
+    tableEl.style.display = '';
+    btns[1].classList.add('active');
+  }
+}
+// Start with table hidden
+document.addEventListener('DOMContentLoaded', () => {
+  const tableEl = document.querySelector('.schedule-table');
+  if (tableEl) tableEl.style.display = 'none';
+});
 </script>
 
 </body>

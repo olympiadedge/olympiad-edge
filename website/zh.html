@@ -423,13 +423,8 @@ footer a{color:var(--teal);text-decoration:none}
             <option>SAT强化冲刺班</option><option>多门课程（请在下方说明）</option>
           </select>
         </div>
-        <div class="form-row"><label>形式</label>
-          <select name="format">
-            <option></option>
-            <option>线上直播（Zoom）</option>
-            <option></option>
-          </select>
-        </div>
+        <input type="hidden" name="format" value="Online (Zoom)">
+        <div style="font-size:.82rem;color:var(--gray);margin-bottom:1rem">所有课程均通过Zoom线上直播进行。</div>
         <div class="form-row"><label>问题或备注（可选）</label><textarea name="message" placeholder="任何您想让我们知道的信息..."></textarea></div>
         <button type="submit" class="btn-primary submit-btn">提交报名意向 →</button>
       </form>

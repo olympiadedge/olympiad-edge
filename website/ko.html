@@ -422,12 +422,8 @@ footer a{color:var(--teal);text-decoration:none}
             <option>SAT 수학 집중반</option><option>복수 강좌 (아래에 기재)</option>
           </select>
         </div>
-        <div class="form-row"><label>수업 형식</label>
-          <select name="format">
-            <option></option>
-            <option>온라인 (Zoom)</option>
-          </select>
-        </div>
+        <input type="hidden" name="format" value="Online (Zoom)">
+        <div style="font-size:.82rem;color:var(--gray);margin-bottom:1rem">모든 강좌는 Zoom 실시간 온라인으로 진행됩니다.</div>
         <div class="form-row"><label>질문 또는 메모 (선택)</label><textarea name="message" placeholder="알려주실 내용이 있으시면..."></textarea></div>
         <button type="submit" class="btn-primary submit-btn">등록 문의 제출 →</button>
       </form>
