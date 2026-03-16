@@ -977,48 +977,136 @@ footer a { color: var(--teal); text-decoration: none; }
   border-color: rgba(245,158,11,0.3);
   color: var(--accent);
 }
-.week-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1.25rem;
-  margin-bottom: 2rem;
+/* Calendar widget */
+.calendar-wrap {
+  overflow-x: auto;
+  margin: 2rem 0;
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  background: var(--card-bg);
 }
-.day-col h4 {
-  font-size: 0.75rem;
+.calendar {
+  display: grid;
+  grid-template-columns: 65px 1fr 1fr 1fr;
+  grid-template-rows: auto repeat(28, minmax(12px, 1fr));
+  min-width: 600px;
+  position: relative;
+}
+/* Header row */
+.cal-corner { grid-column: 1; grid-row: 1; padding: 1rem 0.5rem; border-bottom: 1px solid var(--card-border); border-right: 1px solid var(--card-border); }
+.cal-header {
+  grid-row: 1;
+  font-size: 0.72rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--gray);
-  font-weight: 600;
-  margin-bottom: 1rem;
   text-align: center;
-  padding-bottom: 0.75rem;
+  padding: 1rem 0;
   border-bottom: 1px solid var(--card-border);
 }
-.time-block {
+.cal-header:not(:last-child) { border-right: 1px solid var(--card-border); }
+
+/* Time labels on left */
+.cal-time {
+  grid-column: 1;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--gray);
+  text-align: right;
+  padding-right: 0.75rem;
+  align-self: start;
+  margin-top: -0.4em;
+  border-right: 1px solid var(--card-border);
+  position: relative;
+}
+/* Horizontal gridlines */
+.cal-line {
+  grid-column: 2 / -1;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  pointer-events: none;
+}
+
+/* Event blocks */
+.cal-event {
+  border-radius: 6px;
+  padding: 0.5rem 0.65rem;
+  margin: 1px 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: default;
+  transition: all 0.2s;
+  border-left: 3px solid;
+  position: relative;
+  z-index: 1;
+}
+.cal-event:hover {
+  transform: scale(1.03);
+  z-index: 5;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+.cal-event .ev-name { font-weight: 700; font-size: 0.78rem; line-height: 1.2; }
+.cal-event .ev-time { font-size: 0.62rem; opacity: 0.7; margin-top: 0.15rem; }
+.cal-event .ev-price { font-size: 0.68rem; font-weight: 700; margin-top: auto; padding-top: 0.2rem; }
+
+/* Category colors */
+.cal-event.math { background: rgba(245,158,11,0.15); border-left-color: #f59e0b; color: #fbbf24; }
+.cal-event.chem { background: rgba(6,182,212,0.15); border-left-color: #06b6d4; color: #22d3ee; }
+.cal-event.phys { background: rgba(139,92,246,0.15); border-left-color: #8b5cf6; color: #a78bfa; }
+.cal-event.bio { background: rgba(34,197,94,0.15); border-left-color: #22c55e; color: #4ade80; }
+.cal-event.sat { background: rgba(239,68,68,0.15); border-left-color: #ef4444; color: #f87171; }
+
+/* Mobile: day selector tabs */
+.cal-mobile-tabs {
+  display: none;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.cal-mobile-tab {
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  border: 1px solid var(--card-border);
+  background: transparent;
+  color: var(--gray);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.cal-mobile-tab.active {
+  background: rgba(245,158,11,0.1);
+  border-color: rgba(245,158,11,0.3);
+  color: var(--accent);
+}
+.cal-mobile-list {
+  display: none;
+}
+.cal-mobile-list .mobile-event {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-left: 3px solid;
   border-radius: 10px;
-  padding: 0.85rem 1rem;
-  margin-bottom: 0.6rem;
-  transition: all 0.25s;
-  cursor: default;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.time-block:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-  border-color: rgba(255,255,255,0.1);
-}
-.time-block .block-name { font-weight: 700; font-size: 0.88rem; margin-bottom: 0.15rem; }
-.time-block .block-time { font-size: 0.72rem; color: var(--gray); }
-.time-block .block-price { font-size: 0.78rem; color: var(--accent); font-weight: 700; margin-top: 0.3rem; }
-.time-block.math { border-left-color: #f59e0b; }
-.time-block.chem { border-left-color: #06b6d4; }
-.time-block.phys { border-left-color: #8b5cf6; }
-.time-block.bio { border-left-color: #22c55e; }
-.time-block.sat { border-left-color: #ef4444; }
+.cal-mobile-list .mobile-event .me-left .me-name { font-weight: 700; font-size: 0.9rem; }
+.cal-mobile-list .mobile-event .me-left .me-time { font-size: 0.78rem; color: var(--gray); margin-top: 0.15rem; }
+.cal-mobile-list .mobile-event .me-price { font-weight: 700; color: var(--accent); }
+.cal-mobile-list .mobile-event.math { border-left-color: #f59e0b; }
+.cal-mobile-list .mobile-event.chem { border-left-color: #06b6d4; }
+.cal-mobile-list .mobile-event.phys { border-left-color: #8b5cf6; }
+.cal-mobile-list .mobile-event.bio { border-left-color: #22c55e; }
+.cal-mobile-list .mobile-event.sat { border-left-color: #ef4444; }
+
 @media (max-width: 768px) {
-  .week-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .calendar-wrap { display: none; }
+  .cal-mobile-tabs { display: flex; }
+  .cal-mobile-list { display: block; }
 }
 </style>
 </head>
@@ -1470,74 +1558,107 @@ footer a { color: var(--teal); text-decoration: none; }
       <button onclick="toggleSchedule('table')">Table View</button>
     </div>
 
-    <div id="weekView" class="week-grid reveal">
-      <div class="day-col">
-        <h4>Mon / Wed</h4>
-        <div class="time-block math">
-          <div class="block-name">Precalculus</div>
-          <div class="block-time">10:00 – 11:00 AM</div>
-          <div class="block-price">$399</div>
-        </div>
-        <div class="time-block math">
-          <div class="block-name">AB Calculus</div>
-          <div class="block-time">11:15 AM – 12:15 PM</div>
-          <div class="block-price">$399</div>
-        </div>
-        <div class="time-block phys">
-          <div class="block-name">AP Physics 1</div>
-          <div class="block-time">1:00 – 2:00 PM</div>
-          <div class="block-price">$399</div>
-        </div>
-        <div class="time-block sat">
-          <div class="block-name">SHSAT Prep</div>
-          <div class="block-time">2:15 – 3:15 PM</div>
-          <div class="block-price">$399</div>
-        </div>
+    <div id="weekView" class="reveal">
+      <!-- Mobile: day tabs + list -->
+      <div class="cal-mobile-tabs">
+        <button class="cal-mobile-tab active" onclick="showMobileDay('mw', this)">Mon/Wed</button>
+        <button class="cal-mobile-tab" onclick="showMobileDay('tt', this)">Tue/Thu</button>
+        <button class="cal-mobile-tab" onclick="showMobileDay('sat', this)">Saturday</button>
       </div>
-      <div class="day-col">
-        <h4>Tue / Thu</h4>
-        <div class="time-block math">
-          <div class="block-name">Geometry</div>
-          <div class="block-time">10:00 – 11:00 AM</div>
-          <div class="block-price">$399</div>
-        </div>
-        <div class="time-block math">
-          <div class="block-name">Algebra II</div>
-          <div class="block-time">11:15 AM – 12:15 PM</div>
-          <div class="block-price">$399</div>
-        </div>
-        <div class="time-block chem">
-          <div class="block-name">AP Chemistry</div>
-          <div class="block-time">1:00 – 2:00 PM</div>
-          <div class="block-price">$399</div>
-        </div>
-        <div class="time-block bio">
-          <div class="block-name">AP Biology</div>
-          <div class="block-time">2:15 – 3:15 PM</div>
-          <div class="block-price">$399</div>
-        </div>
+      <div class="cal-mobile-list" id="calMobileList">
+        <!-- Populated by JS -->
       </div>
-      <div class="day-col">
-        <h4>Saturday</h4>
-        <div class="time-block math">
-          <div class="block-name">Algebra I</div>
-          <div class="block-time">10:00 – 11:30 AM</div>
-          <div class="block-price">$299</div>
-        </div>
-        <div class="time-block math">
-          <div class="block-name">AMC 8 / Comp. Intro</div>
-          <div class="block-time">11:45 AM – 1:15 PM</div>
-          <div class="block-price">$299</div>
-        </div>
-        <div class="time-block math">
-          <div class="block-name">Pre-Algebra</div>
-          <div class="block-time">1:30 – 3:00 PM</div>
-          <div class="block-price">$275</div>
-        </div>
-        <div class="time-block sat">
-          <div class="block-name">SAT Math</div>
-          <div class="block-time">3:15 – 4:45 PM</div>
-          <div class="block-price">$275</div>
+
+      <!-- Desktop: calendar grid -->
+      <div class="calendar-wrap">
+        <div class="calendar">
+          <!-- Row 1: Headers -->
+          <div class="cal-corner"></div>
+          <div class="cal-header" style="grid-column:2">Mon / Wed</div>
+          <div class="cal-header" style="grid-column:3">Tue / Thu</div>
+          <div class="cal-header" style="grid-column:4">Saturday</div>
+
+          <!-- Time labels (hourly) -->
+          <div class="cal-time" style="grid-row:2">10 AM</div>
+          <div class="cal-line" style="grid-row:2"></div>
+          <div class="cal-time" style="grid-row:6">11 AM</div>
+          <div class="cal-line" style="grid-row:6"></div>
+          <div class="cal-time" style="grid-row:10">12 PM</div>
+          <div class="cal-line" style="grid-row:10"></div>
+          <div class="cal-time" style="grid-row:14">1 PM</div>
+          <div class="cal-line" style="grid-row:14"></div>
+          <div class="cal-time" style="grid-row:18">2 PM</div>
+          <div class="cal-line" style="grid-row:18"></div>
+          <div class="cal-time" style="grid-row:22">3 PM</div>
+          <div class="cal-line" style="grid-row:22"></div>
+          <div class="cal-time" style="grid-row:26">4 PM</div>
+          <div class="cal-line" style="grid-row:26"></div>
+
+          <!-- Mon/Wed events (column 2) -->
+          <div class="cal-event math" style="grid-column:2;grid-row:2/6">
+            <div class="ev-name">Precalculus</div>
+            <div class="ev-time">10:00 – 11:00 AM</div>
+            <div class="ev-price">$399</div>
+          </div>
+          <div class="cal-event math" style="grid-column:2;grid-row:7/11">
+            <div class="ev-name">AB Calculus</div>
+            <div class="ev-time">11:15 AM – 12:15 PM</div>
+            <div class="ev-price">$399</div>
+          </div>
+          <div class="cal-event phys" style="grid-column:2;grid-row:14/18">
+            <div class="ev-name">AP Physics 1</div>
+            <div class="ev-time">1:00 – 2:00 PM</div>
+            <div class="ev-price">$399</div>
+          </div>
+          <div class="cal-event sat" style="grid-column:2;grid-row:19/23">
+            <div class="ev-name">SHSAT Prep</div>
+            <div class="ev-time">2:15 – 3:15 PM</div>
+            <div class="ev-price">$399</div>
+          </div>
+
+          <!-- Tue/Thu events (column 3) -->
+          <div class="cal-event math" style="grid-column:3;grid-row:2/6">
+            <div class="ev-name">Geometry</div>
+            <div class="ev-time">10:00 – 11:00 AM</div>
+            <div class="ev-price">$399</div>
+          </div>
+          <div class="cal-event math" style="grid-column:3;grid-row:7/11">
+            <div class="ev-name">Algebra II</div>
+            <div class="ev-time">11:15 AM – 12:15 PM</div>
+            <div class="ev-price">$399</div>
+          </div>
+          <div class="cal-event chem" style="grid-column:3;grid-row:14/18">
+            <div class="ev-name">AP Chemistry</div>
+            <div class="ev-time">1:00 – 2:00 PM</div>
+            <div class="ev-price">$399</div>
+          </div>
+          <div class="cal-event bio" style="grid-column:3;grid-row:19/23">
+            <div class="ev-name">AP Biology</div>
+            <div class="ev-time">2:15 – 3:15 PM</div>
+            <div class="ev-price">$399</div>
+          </div>
+
+          <!-- Saturday events (column 4) -->
+          <div class="cal-event math" style="grid-column:4;grid-row:2/8">
+            <div class="ev-name">Algebra I</div>
+            <div class="ev-time">10:00 – 11:30 AM</div>
+            <div class="ev-price">$299</div>
+          </div>
+          <div class="cal-event math" style="grid-column:4;grid-row:9/15">
+            <div class="ev-name">AMC 8 / Comp. Intro</div>
+            <div class="ev-time">11:45 AM – 1:15 PM</div>
+            <div class="ev-price">$299</div>
+          </div>
+          <div class="cal-event math" style="grid-column:4;grid-row:16/22">
+            <div class="ev-name">Pre-Algebra</div>
+            <div class="ev-time">1:30 – 3:00 PM</div>
+            <div class="ev-price">$275</div>
+          </div>
+          <div class="cal-event sat" style="grid-column:4;grid-row:23/29">
+            <div class="ev-name">SAT Math</div>
+            <div class="ev-time">3:15 – 4:45 PM</div>
+            <div class="ev-price">$275</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1867,7 +1988,7 @@ function toggleSchedule(view) {
   const btns = document.querySelectorAll('.schedule-toggle button');
   btns.forEach(b => b.classList.remove('active'));
   if (view === 'week') {
-    weekEl.style.display = 'grid';
+    weekEl.style.display = '';
     tableEl.style.display = 'none';
     btns[0].classList.add('active');
   } else {
@@ -1876,10 +1997,44 @@ function toggleSchedule(view) {
     btns[1].classList.add('active');
   }
 }
-// Start with table hidden
+
+// Mobile calendar data
+const calData = {
+  mw: [
+    { name: 'Precalculus', time: '10:00 – 11:00 AM', price: '$399', cat: 'math' },
+    { name: 'AB Calculus', time: '11:15 AM – 12:15 PM', price: '$399', cat: 'math' },
+    { name: 'AP Physics 1', time: '1:00 – 2:00 PM', price: '$399', cat: 'phys' },
+    { name: 'SHSAT Prep', time: '2:15 – 3:15 PM', price: '$399', cat: 'sat' }
+  ],
+  tt: [
+    { name: 'Geometry', time: '10:00 – 11:00 AM', price: '$399', cat: 'math' },
+    { name: 'Algebra II', time: '11:15 AM – 12:15 PM', price: '$399', cat: 'math' },
+    { name: 'AP Chemistry', time: '1:00 – 2:00 PM', price: '$399', cat: 'chem' },
+    { name: 'AP Biology', time: '2:15 – 3:15 PM', price: '$399', cat: 'bio' }
+  ],
+  sat: [
+    { name: 'Algebra I', time: '10:00 – 11:30 AM', price: '$299', cat: 'math' },
+    { name: 'AMC 8 / Comp. Intro', time: '11:45 AM – 1:15 PM', price: '$299', cat: 'math' },
+    { name: 'Pre-Algebra', time: '1:30 – 3:00 PM', price: '$275', cat: 'math' },
+    { name: 'SAT Math', time: '3:15 – 4:45 PM', price: '$275', cat: 'sat' }
+  ]
+};
+
+function showMobileDay(day, btn) {
+  document.querySelectorAll('.cal-mobile-tab').forEach(t => t.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  else document.querySelector('.cal-mobile-tab').classList.add('active');
+  const list = document.getElementById('calMobileList');
+  list.innerHTML = calData[day].map(c =>
+    `<div class="mobile-event ${c.cat}"><div class="me-left"><div class="me-name">${c.name}</div><div class="me-time">${c.time}</div></div><div class="me-price">${c.price}</div></div>`
+  ).join('');
+}
+
+// Start with table hidden, init mobile view
 document.addEventListener('DOMContentLoaded', () => {
   const tableEl = document.querySelector('.schedule-table');
   if (tableEl) tableEl.style.display = 'none';
+  showMobileDay('mw', document.querySelector('.cal-mobile-tab'));
 });
 </script>
 
