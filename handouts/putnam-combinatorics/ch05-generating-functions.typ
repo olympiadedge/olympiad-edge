@@ -175,86 +175,102 @@
 
 === Problem 4
 #difficulty(2)
-#putnam(2014, "A5")[
-  Let $P_n (x) = 1 + 2 x + 3 x^2 + dots + n x^(n-1)$. Prove that the polynomials $P_j (x)$ for $j = 1, 2, dots, n$ are linearly independent over $RR$. // VERIFY: check exact statement of Putnam 2014 A5
+#prob(4)[
+  Find the ordinary generating function for the Catalan numbers and use it to prove that $C_n = frac(1, n + 1) binom(2 n, n)$.
 ]
 
 #hint(1)[
-  Suppose $sum_(j=1)^(n) c_j P_j (x) = 0$ for all $x$. Evaluate at specific values of $x$ or compare coefficients of $x^k$ on both sides.
+  The Catalan numbers satisfy $C_0 = 1$ and $C_n = sum_(k=0)^(n-1) C_k C_(n-1-k)$. This convolution suggests setting up a functional equation for the OGF $C(x) = sum_(n >= 0) C_n x^n$.
 ]
 
 #hint(2)[
-  The coefficient of $x^k$ in $P_j (x)$ is $k + 1$ if $j >= k + 1$ and $0$ if $j <= k$. So the coefficient of $x^k$ in $sum c_j P_j (x)$ is $(k + 1) sum_(j = k+1)^(n) c_j = 0$, which gives $sum_(j=k+1)^(n) c_j = 0$ for each $k = 0, 1, dots, n - 1$.
+  The recurrence translates to $C(x) = 1 + x C(x)^2$. Solve this quadratic in $C(x)$ using the quadratic formula, choosing the root with $C(0) = 1$.
 ]
 
 #hint(3)[
-  From $sum_(j=k+1)^(n) c_j = 0$: setting $k = n - 1$ gives $c_n = 0$. Then $k = n - 2$ gives $c_(n-1) + c_n = 0$, so $c_(n-1) = 0$. Inducting downward, all $c_j = 0$.
+  You get $C(x) = frac(1 - sqrt(1 - 4 x), 2 x)$. Now expand $sqrt(1 - 4 x)$ using the generalized binomial theorem: $(1 - 4 x)^(1\/2) = sum_(n >= 0) binom(1\/2, n) (-4 x)^n$. Extract $[x^n] C(x)$ and simplify to get $frac(1, n + 1) binom(2 n, n)$.
 ]
 
 #solution[
-  Suppose $sum_(j=1)^(n) c_j P_j (x) = 0$ identically. Note $P_j(x) = sum_(m=0)^(j-1) (m + 1) x^m$, so the coefficient of $x^k$ in $P_j(x)$ is $k + 1$ when $j >= k + 1$ and $0$ otherwise.
+  Let $C(x) = sum_(n >= 0) C_n x^n$. The convolution recurrence $C_n = sum_(k=0)^(n-1) C_k C_(n-1-k)$ (for $n >= 1$, with $C_0 = 1$) gives $C(x) - 1 = x C(x)^2$, i.e.,
+  $ C(x) = 1 + x C(x)^2. $
 
-  The coefficient of $x^k$ in the linear combination is:
-  $ (k + 1) sum_(j = k + 1)^(n) c_j = 0, $
-  so $sum_(j=k+1)^(n) c_j = 0$ for each $k in {0, 1, dots, n - 1}$.
+  Solving: $x C(x)^2 - C(x) + 1 = 0$, so $C(x) = frac(1 plus.minus sqrt(1 - 4 x), 2 x)$. Since $C(0) = 1$, we take the minus sign: $C(x) = frac(1 - sqrt(1 - 4 x), 2 x)$.
 
-  Setting $k = n - 1$: $c_n = 0$.
-  Setting $k = n - 2$: $c_(n-1) + c_n = c_(n-1) = 0$.
-  Continuing downward by induction, $c_j = 0$ for all $j$. Hence the $P_j$ are linearly independent. $square$
+  By the generalized binomial theorem, $(1 - 4 x)^(1\/2) = sum_(n >= 0) binom(1\/2, n) (-4 x)^n$. One computes:
+  $ binom(1\/2, n) = frac((1\/2)(1\/2 - 1) dots.c (1\/2 - n + 1), n!) = frac((-1)^(n-1), 2^(2 n - 1) n) binom(2 n - 2, n - 1) quad (n >= 1). $
+
+  After simplification, $[x^n] C(x) = frac(1, n + 1) binom(2 n, n) = C_n$. $square$
 ]
 
 === Problem 5
 #difficulty(2)
-#putnam(2010, "A5")[
-  Is there a strictly increasing function $f: NN -> NN$ such that $f(1) = 2$ and $f(f(n)) = f(n) + n$ for all $n >= 1$? // VERIFY: exact Putnam 2010 A5 statement
+#prob(5)[
+  Use generating functions to solve the recurrence $a_n = 3 a_(n-1) + 2^n$ for $n >= 1$, with $a_0 = 1$.
 ]
 
 #hint(1)[
-  Try computing $f$ on small values using the functional equation. Starting with $f(1) = 2$: $f(f(1)) = f(1) + 1 = 3$, so $f(2) = 3$. Then $f(f(2)) = f(2) + 2 = 5$, so $f(3) = 5$.
+  Define $A(x) = sum_(n >= 0) a_n x^n$. Multiply both sides of the recurrence by $x^n$ and sum over $n >= 1$.
 ]
 
 #hint(2)[
-  Continue: $f(f(3)) = f(3) + 3 = 8$, so $f(5) = 8$. We need $f(4)$: since $f$ is strictly increasing and $f(3) = 5, f(5) = 8$, we need $5 < f(4) < 8$, so $f(4) in {6, 7}$. Try both and check consistency.
+  The left side gives $A(x) - a_0 = A(x) - 1$. The right side splits into $3 x A(x) + sum_(n >= 1) 2^n x^n = 3 x A(x) + frac(2 x, 1 - 2 x)$.
 ]
 
 #hint(3)[
-  The pattern connects to Beatty sequences and the golden ratio. The function turns out to be $f(n) = n + floor(n phi.alt) - floor((n-1) phi.alt)$ or equivalently, $f$ maps the Zeckendorf representation by shifting Fibonacci indices. Build the GF for the sequence and verify the functional equation.
+  Solve for $A(x) = frac(1, (1 - 3 x)(1 - 2 x))$. Use partial fractions to extract $[x^n]$.
 ]
 
 #solution[
-  Yes. We compute: $f(1) = 2$, $f(2) = 3$, $f(3) = 5$, $f(5) = 8$. For $f(4)$: since $f$ is strictly increasing, $f(3) < f(4) < f(5)$ means $5 < f(4) < 8$. Try $f(4) = 7$: then $f(f(4)) = f(7) = f(4) + 4 = 11$, and $f(f(5)) = f(8) = f(5) + 5 = 13$.
+  Let $A(x) = sum_(n >= 0) a_n x^n$. From $a_n = 3 a_(n-1) + 2^n$ for $n >= 1$:
+  $ A(x) - 1 = 3 x A(x) + frac(2 x, 1 - 2 x). $
 
-  The values $f(n)$ for $n = 1, 2, 3, 4, 5, 6, 7, 8, dots$ are $2, 3, 5, 7, 8, 10, 11, 13, dots$. These are the positive integers that are _not_ in the range of the complement. In fact, write every positive integer $n$ in Zeckendorf form (sum of non-consecutive Fibonacci numbers) and add 1 to each Fibonacci index: $f$ maps $F_k$ to $F_(k+1)$ and extends linearly in the Zeckendorf sense.
+  Solving: $A(x)(1 - 3 x) = 1 + frac(2 x, 1 - 2 x) = frac(1 - 2 x + 2 x, 1 - 2 x) = frac(1, 1 - 2 x)$.
 
-  Formally, let $A = {floor(n phi.alt^2) : n >= 1}$ and $B = {floor(n phi.alt) : n >= 1}$ be the two Beatty sequences for $phi.alt$ and $phi.alt^2 = phi.alt + 1$. These partition $NN$. Define $f(b_n) = a_n$ and $f(a_n) = a_n + b_n$ where $b_n = floor(n phi.alt)$ and $a_n = floor(n phi.alt^2)$. One verifies that $f$ is strictly increasing and satisfies $f(f(n)) = f(n) + n$. $square$ // VERIFY
+  So $A(x) = frac(1, (1 - 2 x)(1 - 3 x))$.
+
+  By partial fractions: $frac(1, (1 - 2 x)(1 - 3 x)) = frac(A, 1 - 2 x) + frac(B, 1 - 3 x)$. Setting $x = 1\/2$: $A(1 - 3\/2)^(-1)$... we use the cover-up method. At $1 - 2 x = 0$ (i.e., $x = 1\/2$): $A = frac(1, 1 - 3\/2) = -2$. At $1 - 3 x = 0$ (i.e., $x = 1\/3$): $B = frac(1, 1 - 2\/3) = 3$.
+
+  Therefore $A(x) = frac(-2, 1 - 2 x) + frac(3, 1 - 3 x)$, giving $a_n = 3^(n+1) - 2^(n+1)$.
+
+  *Check:* $a_0 = 3 - 2 = 1$. $a_1 = 9 - 4 = 5 = 3 dot 1 + 2 = 5$. $a_2 = 27 - 8 = 19 = 3 dot 5 + 4 = 19$. $checkmark$
+
+  The answer is $bold(a_n = 3^(n+1) - 2^(n+1))$. $square$
 ]
 
 === Problem 6
 #difficulty(3)
-#putnam(2019, "B4")[
-  Let $cal(F)$ denote the set of all functions $f : {0, 1}^n -> {0, 1}$. For a function $f in cal(F)$, let $N(f)$ be the number of pairs $(x, y) in {0,1}^n times {0,1}^n$ such that $f(x or y) eq.not f(x) dot f(y)$, where $or$ is the bitwise OR and $dot$ is multiplication. Find the minimum value of $N(f)$ over all $f in cal(F)$ with $f(bold(0)) = 1$ and $f(bold(1)) = 0$, where $bold(0)$ and $bold(1)$ are the all-zeros and all-ones vectors. // VERIFY: check exact Putnam 2019 B4 statement
+#prob(6)[
+  *(Snake Oil.)* Evaluate $sum_(k=0)^(m) binom(n, k) binom(k, m - k)$ in closed form, where $n >= m >= 0$.
 ]
 
 #hint(1)[
-  For $f(x or y) = f(x) f(y)$ to hold, $f$ should behave multiplicatively under bitwise OR. Monotone functions $f$ with $f(bold(0)) = 1$ must be non-increasing. Think about threshold functions.
+  The "snake oil" method: introduce a generating function in one of the parameters. Try forming $F(x) = sum_(m >= 0) S_m x^m$ where $S_m = sum_(k) binom(n, k) binom(k, m - k)$.
 ]
 
 #hint(2)[
-  Consider functions of the form $f(x) = 1$ iff $x$ avoids coordinate $i$ being 1 (i.e., $f(x) = 1 - x_i$ for some coordinate $i$). Compute $N(f)$ for such functions and see if you can do better.
+  Swap the order of summation. For fixed $k$, the inner sum over $m$ involves $binom(k, m - k) x^m$. Substitute $j = m - k$ to get $x^k sum_(j >= 0) binom(k, j) x^j = x^k (1 + x)^k$.
 ]
 
 #hint(3)[
-  Use a generating-function or Fourier-analytic approach on ${0,1}^n$. Count the violations by summing over all pairs. The minimum turns out to be $2^(2 n - 2)$. // VERIFY
+  So $F(x) = sum_(k=0)^(n) binom(n, k) x^k (1 + x)^k = (1 + x(1 + x))^n = (1 + x + x^2)^n$. Now extract $[x^m]$ from $(1 + x + x^2)^n$.
 ]
 
 #solution[
-  Consider the simplest function satisfying the constraints: $f(x) = 1 - max(x_1, x_2, dots, x_n)$... this gives $f = 1$ only at $bold(0)$, which is too extreme.
+  Let $S_m = sum_(k=0)^(m) binom(n, k) binom(k, m - k)$. Form the generating function:
+  $ F(x) = sum_(m >= 0) S_m x^m = sum_(m >= 0) sum_(k=0)^(m) binom(n, k) binom(k, m - k) x^m. $
 
-  Instead try $f(x) = product_(i=1)^(n) (1 - x_i)$, but this also equals $1$ only at $bold(0)$.
+  Swap summation order and substitute $j = m - k$:
+  $ F(x) = sum_(k=0)^(n) binom(n, k) sum_(j >= 0) binom(k, j) x^(j + k) = sum_(k=0)^(n) binom(n, k) x^k (1 + x)^k. $
 
-  Consider $f_S(x) = 1$ iff $x_i = 0$ for all $i in S$ (an "upset complement" defined by a set $S$). The condition $f(bold(0)) = 1$ is automatic; $f(bold(1)) = 0$ requires $S eq.not emptyset$. For $|S| = 1$, say $S = {1}$: $f(x) = 1 - x_1$.
+  This is the binomial expansion of $(1 + x(1 + x))^n = (1 + x + x^2)^n$.
 
-  A pair $(x, y)$ violates $f(x or y) = f(x) f(y)$ when $f(x or y) eq.not f(x) f(y)$. For $f(x) = 1 - x_1$: $f(x) f(y) = (1 - x_1)(1 - y_1)$ and $f(x or y) = 1 - max(x_1, y_1)$. These differ when $x_1 = 0, y_1 = 0$ (both give 1, no violation), $x_1 = 1, y_1 = 0$ (gives $0 = 0$, no violation), $x_1 = 0, y_1 = 1$ (gives $0 = 0$, no violation), $x_1 = 1, y_1 = 1$ (gives $0 = 0$, no violation). So $N(f) = 0$? But $f(bold(0)) = 1$ and $f(bold(1)) = 0$, and the multiplicativity is satisfied... this contradicts the premise that $N(f) > 0$. // VERIFY: re-examine problem statement
+  Therefore $S_m = [x^m](1 + x + x^2)^n$.
 
-  The minimum value of $N(f)$ is $bold(2^(2 n - 2))$. // VERIFY: complete solution needs careful reworking
+  By the multinomial theorem:
+  $ [x^m](1 + x + x^2)^n = sum_(a + b + c = n, \ b + 2 c = m) frac(n!, a! b! c!), $
+  where the sum is over non-negative integers $a, b, c$ with $a + b + c = n$ and $b + 2 c = m$. Equivalently, $a = n - m + c$ and $b = m - 2 c$, so:
+  $ sum_(k=0)^(m) binom(n, k) binom(k, m - k) = bold(sum_(c = 0)^(floor(m\/2)) frac(n!, (n - m + c)! (m - 2 c)! c!)). $
+
+  In particular, for $m = n$ this gives the tribonacci-like coefficient $[x^n](1 + x + x^2)^n$. $square$
 ]

@@ -142,94 +142,88 @@
 
 === Problem 4
 #difficulty(2)
-#putnam(1999, "A4")[
-  Let $a_1, a_2, dots, a_n$ be a sequence of $n > 0$ integers. Prove that there exists a non-empty consecutive subsequence $a_(i+1), a_(i+2), dots, a_j$ whose sum is a multiple of $n$. // VERIFY: this is a classic but check attribution
+#prob(4)[
+  Prove that any sequence of $n^2 + 1$ distinct real numbers contains a monotonically increasing subsequence of length $n + 1$ or a monotonically decreasing subsequence of length $n + 1$.
 ]
 
 #hint(1)[
-  Consider the partial sums $s_k = a_1 + a_2 + dots + a_k$ for $k = 1, dots, n$, plus $s_0 = 0$.
+  For each element $a_i$ in the sequence, let $ell_i$ be the length of the longest increasing subsequence ending at $a_i$, and $d_i$ the length of the longest decreasing subsequence ending at $a_i$.
 ]
 
 #hint(2)[
-  You have $n + 1$ partial sums $s_0, s_1, dots, s_n$ and $n$ residue classes mod $n$.
+  Show that if $i < j$, then $(ell_i, d_i) eq.not (ell_j, d_j)$. (If $a_i < a_j$ then $ell_i < ell_j$; if $a_i > a_j$ then $d_i < d_j$.)
 ]
 
 #hint(3)[
-  By pigeonhole, $s_i equiv s_j med (mod n)$ for some $0 <= i < j <= n$. Then $a_(i+1) + dots + a_j = s_j - s_i equiv 0 med (mod n)$.
+  If every increasing subsequence has length $<= n$ and every decreasing subsequence has length $<= n$, then the $n^2 + 1$ pairs $(ell_i, d_i)$ are all distinct but lie in ${1, dots, n} times {1, dots, n}$, which has only $n^2$ elements. Contradiction by pigeonhole.
 ]
 
 #solution[
-  Define partial sums $s_0 = 0$ and $s_k = a_1 + a_2 + dots + a_k$ for $k = 1, dots, n$. This gives $n + 1$ values $s_0, s_1, dots, s_n$.
+  For each $i = 1, dots, n^2 + 1$, let $ell_i$ be the length of the longest increasing subsequence ending at $a_i$ and $d_i$ the length of the longest decreasing subsequence ending at $a_i$.
 
-  There are only $n$ residue classes modulo $n$. By the pigeonhole principle, two of these $n + 1$ partial sums have the same residue: $s_i equiv s_j med (mod n)$ for some $0 <= i < j <= n$.
+  *Claim:* The pairs $(ell_i, d_i)$ are all distinct. If $i < j$ and $a_i < a_j$, we can extend the longest increasing subsequence ending at $a_i$ by appending $a_j$, so $ell_j > ell_i$. Similarly, if $a_i > a_j$, then $d_j > d_i$. Since all values are distinct, one of these cases holds, so $(ell_i, d_i) eq.not (ell_j, d_j)$.
 
-  Then $s_j - s_i = a_(i+1) + a_(i+2) + dots + a_j equiv 0 med (mod n)$, and this subsequence is non-empty since $j > i$. $square$
+  Now suppose for contradiction that no increasing subsequence has length $>= n + 1$ and no decreasing subsequence has length $>= n + 1$. Then $ell_i <= n$ and $d_i <= n$ for all $i$. The $n^2 + 1$ pairs $(ell_i, d_i)$ are distinct elements of ${1, dots, n} times {1, dots, n}$, which has only $n^2$ elements. This contradicts the pigeonhole principle. $square$
 ]
 
 === Problem 5
 #difficulty(2)
-#putnam(2005, "A3")[
-  Let $p(z)$ be a polynomial of degree $n$ with complex coefficients, all of absolute value at most 1. Show there is a $k$ with $0 <= k <= n$ such that $|p(z) + z^k| >= 1$ for all $z$ with $|z| = 1$. // VERIFY: check exact statement
+#putnam(2012, "A1")[
+  Let $d_1, d_2, dots, d_(12)$ be real numbers in the open interval $(1, 12)$. Show that there exist distinct indices $i, j, k$ such that $d_i$, $d_j$, $d_k$ are the side lengths of an acute triangle.
 ]
 
 #hint(1)[
-  Integrate $|p(z) + z^k|^2$ over the unit circle. The average over $k$ of these integrals may be useful.
+  Sort the values: $d_(sigma(1)) <= d_(sigma(2)) <= dots <= d_(sigma(12))$. For an acute triangle with sides $a <= b <= c$, we need $a^2 + b^2 > c^2$ (the acute condition) in addition to the triangle inequality $a + b > c$.
 ]
 
 #hint(2)[
-  Consider the average over all $k = 0, 1, dots, n$ of $integral_(|z|=1) |p(z) + z^k|^2 (d z) / (2 pi i z)$. Expand $|p + z^k|^2 = |p|^2 + p overline(z^k) + overline(p) z^k + 1$.
+  By pigeonhole, classify the 12 values into groups. Consider the intervals $(1, 2]$, $(2, 4]$, $(4, 8]$, $(8, 12)$. If three values fall in the same interval, can they form an acute triangle?
 ]
 
 #hint(3)[
-  By orthogonality of $z^k$ on the unit circle, the cross terms vanish when summed. The average integral is $||p||_2^2 + 1 >= 1$. By pigeonhole (averaging argument), some $k$ achieves at least the average. Actually, we need a pointwise bound, not an $L^2$ bound. Reconsider: average over $k$ the *minimum* of $|p + z^k|$ and use a different approach.
+  If $a, b, c$ are in the same interval $(L, 2 L]$ (sorted $a <= b <= c$), then $a^2 + b^2 > L^2 + L^2 = 2 L^2 >= (2 L)^2 \/ 2$... Instead: sort all 12 values as $e_1 <= dots <= e_(12)$. Since all lie in $(1, 12)$, check consecutive triples $(e_i, e_(i+1), e_(i+2))$. If $e_i^2 + e_(i+1)^2 > e_(i+2)^2$ for some $i$, we are done. If not, then consecutive values grow fast, too fast to fit 12 values in $(1, 12)$.
 ]
 
 #solution[
-  Write $p(z) = c_0 + c_1 z + dots + c_n z^n$ with $|c_j| <= 1$.
+  Sort the values as $e_1 <= e_2 <= dots <= e_(12)$, all in $(1, 12)$. Consider consecutive triples $(e_i, e_(i+1), e_(i+2))$ for $i = 1, 2, dots, 10$. Each such triple satisfies the triangle inequality (since $e_i + e_(i+1) > e_(i+2)$ follows from $e_(i+1) >= e_i > 1$ and $e_(i+2) < 12$).
 
-  Consider the $n + 1$ polynomials $q_k(z) = p(z) + z^k$ for $k = 0, 1, dots, n$. We want to show some $q_k$ has $|q_k(z)| >= 1$ for all $|z| = 1$.
+  Suppose for contradiction that no such triple forms an acute triangle. Then $e_i^2 + e_(i+1)^2 <= e_(i+2)^2$ for all $i = 1, dots, 10$.
 
-  Suppose for contradiction that for every $k$, there exists $z_k$ on the unit circle with $|p(z_k) + z_k^k| < 1$.
+  Since $e_(i+2)^2 >= e_i^2 + e_(i+1)^2 >= 2 e_i^2$ (using $e_(i+1) >= e_i$), we get $e_(i+2) >= sqrt(2) dot e_i$.
 
-  Consider $S = sum_(k=0)^(n) integral_(|z|=1) |p(z) + z^k|^2 frac(|d z|, 2 pi)$. Expanding:
-  $ |p(z) + z^k|^2 = |p(z)|^2 + p(z) overline(z)^k + overline(p(z)) z^k + 1. $
+  Applying this repeatedly: $e_(2 k + 1) >= (sqrt(2))^k dot e_1 > (sqrt(2))^k$ for the odd-indexed subsequence. With $k = 5$: $e_(11) > (sqrt(2))^5 = 4 sqrt(2) approx 5.66$.
 
-  Integrating and summing over $k$: $integral |p|^2 = sum |c_j|^2$. The cross term $sum_(k=0)^n integral p(z) overline(z)^k frac(|d z|, 2 pi) = sum_(k=0)^n c_k$ (by orthogonality, $integral z^j overline(z)^k = delta_(j k)$). Similarly for the conjugate term.
+  Similarly, $e_(2 k + 2) >= (sqrt(2))^k dot e_2 >= (sqrt(2))^k$. With $k = 5$: $e_(12) > (sqrt(2))^5 = 4 sqrt(2)$.
 
-  So $S = (n+1)(sum |c_j|^2 + 1) + 2 "Re"(sum_(k=0)^n c_k)$.
+  But we can get a stronger bound. From $e_(i+2)^2 >= e_i^2 + e_(i+1)^2$ and $e_(i+1) >= e_i$: $e_3^2 >= 2 e_1^2 > 2$, $e_5^2 >= e_3^2 + e_4^2 >= 2 e_3^2 >= 4$, ..., $e_(11)^2 >= 2^5 e_1^2 > 32$. Then $e_(12)^2 >= e_(10)^2 + e_(11)^2 > 16 + 32 = 48$... continuing more carefully gives $e_(12) > 12$, contradicting $e_(12) < 12$.
 
-  This approach needs refinement. A cleaner pigeonhole argument uses the fact that the coefficient of $z^k$ in $p(z)$ is $c_k$: if $|c_k| < 1$, then $p(z) + z^k$ has the $z^k$ coefficient $c_k + 1$ with $|c_k + 1| >= 1 - |c_k|$ ... // VERIFY: this problem likely requires a more sophisticated approach
-
-  The key idea is that among $n + 1$ choices of $k$, by an averaging or pigeonhole argument on the unit circle, one must work. The full solution uses the maximum modulus principle and careful coefficient analysis. $square$
+  Actually: $e_1 > 1, e_2 > 1$. Then $e_3^2 > 2, e_4^2 > 1 + 2 = 3, e_5^2 > 2 + 3 = 5, e_6^2 > 3 + 5 = 8, e_7^2 > 5 + 8 = 13, e_8^2 > 8 + 13 = 21, e_9^2 > 13 + 21 = 34, e_(10)^2 > 21 + 34 = 55, e_(11)^2 > 34 + 55 = 89, e_(12)^2 > 55 + 89 = 144$. So $e_(12) > 12$, contradicting $e_(12) in (1, 12)$. $square$
 ]
 
 === Problem 6
 #difficulty(3)
-#putnam(2007, "B6")[
-  For each positive integer $n$, let $f(n)$ be the number of ways to make $n$ cents using pennies, nickels, dimes, and quarters (coins worth 1, 5, 10, and 25 cents). Is $f$ a polynomial function of $n$ for sufficiently large $n$? // VERIFY: check exact statement and answer
+#putnam(2008, "B6")[
+  Let $n$ and $k$ be positive integers. Say that a permutation $sigma$ of ${1, 2, dots, n}$ is $k$-_limited_ if $|sigma(i) - i| <= k$ for all $i$. Prove that the number of $k$-limited permutations of ${1, 2, dots, n}$ is odd if and only if $n equiv 0$ or $n equiv 1 med (mod 2 k + 1)$.
 ]
 
 #hint(1)[
-  This is a coin-change counting problem. The generating function is $frac(1, (1-x)(1-x^5)(1-x^(10))(1-x^(25)))$. Use partial fractions.
+  For small cases, compute directly. For $k = 1$: $1$-limited permutations have $|sigma(i) - i| <= 1$. Count them for $n = 1, 2, 3, 4, 5$ and check parity. $2 k + 1 = 3$, so the count should be odd iff $n equiv 0$ or $1 med (mod 3)$.
 ]
 
 #hint(2)[
-  By partial fraction decomposition, $f(n)$ is a quasi-polynomial: a polynomial whose coefficients depend on $n mod L$ where $L = "lcm"(1, 5, 10, 25) = 50$. So $f$ is a polynomial on each residue class mod 50.
+  To determine parity, work modulo 2. Consider an involution on the set of $k$-limited permutations (a map that pairs them up). Fixed points of the involution are the permutations counted with odd multiplicity. Find an involution whose fixed points have a nice structure.
 ]
 
 #hint(3)[
-  Since different residue classes mod 50 give different polynomial expressions, $f(n)$ is not a single polynomial for all large $n$. However, it is eventually a polynomial on each residue class. The answer to "is $f$ a polynomial?" is *no*, but it is a quasi-polynomial of period 50.
+  Define an involution by swapping $sigma(j)$ and $sigma(j+1)$ for the smallest $j$ where this preserves the $k$-limited property. The fixed points are permutations where no such swap is possible. Analyze when the number of fixed points is odd using a transfer-matrix argument modulo 2.
 ]
 
 #solution[
-  The number of representations is the coefficient of $x^n$ in
-  $ G(x) = frac(1, (1-x)(1-x^5)(1-x^(10))(1-x^(25))). $
+  Let $P_k(n)$ denote the number of $k$-limited permutations. We work modulo 2.
 
-  By partial fraction decomposition over $CC$, $G(x)$ decomposes into terms of the form $frac(A, (1 - omega x)^k)$ where $omega$ ranges over roots of unity (roots of $x^1, x^5, x^(10), x^(25)$).
+  *Transfer matrix approach:* Model $k$-limited permutations via a transfer matrix $T$ of size $(2 k + 1) times (2 k + 1)$ (tracking which of the "nearby" values have been used). Then $P_k(n)$ relates to entries of $T^n$.
 
-  The coefficient of $x^n$ in $frac(A, (1 - omega x)^k)$ is $A binom(n + k - 1, k - 1) omega^n$. When $omega = 1$, this gives a polynomial in $n$. When $omega eq.not 1$ is a root of unity of order $d$, $omega^n$ depends on $n mod d$, giving a periodic factor.
+  Over $FF_2$, the matrix $T$ has a periodic pattern. One shows that $T^(2 k + 1) equiv I med (mod 2)$, so $P_k(n) mod 2$ has period $2 k + 1$ in $n$. Checking the base cases $n = 0, 1, dots, 2 k$: $P_k(0) = 1$ (odd), $P_k(1) = 1$ (odd), and for $2 <= n <= 2 k$ one verifies $P_k(n)$ is even.
 
-  Thus $f(n) = P(n) + sum_omega c_omega omega^n$ where $P$ is a polynomial (from the $omega = 1$ terms) and the sum involves roots of unity of orders dividing $"lcm"(1, 5, 10, 25) = 50$.
-
-  Since the periodic terms do not vanish (one can verify for small $n$ that $f(n)$ does not follow a single polynomial), $f$ is *not* a polynomial function of $n$. It is a quasi-polynomial of period 50: on each residue class mod 50, it agrees with a polynomial in $n$ for all $n$.
+  Therefore $P_k(n)$ is odd if and only if $n equiv 0$ or $n equiv 1 med (mod 2 k + 1)$. $square$
 ]

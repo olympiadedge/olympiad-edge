@@ -108,10 +108,8 @@
 
 === Problem 2
 #difficulty(1)
-#putnam(2002, "A1")[
-  Let $k$ be a positive integer. A Putnam-style problem: what is $floor(sqrt(n))$ for... // VERIFY: simplified
-
-  Adapted: How many integers in ${1, 2, dots, 1000}$ are divisible by none of 2, 3, or 5?
+#prob(2)[
+  How many integers in ${1, 2, dots, 1000}$ are divisible by none of 2, 3, or 5?
 ]
 
 #hint(1)[
@@ -166,84 +164,84 @@
 
 === Problem 4
 #difficulty(2)
-#putnam(2010, "A2")[
-  Find the minimum value of $(x + 1\/x)^6 - (x^6 + 1\/x^6) - 2$ divided by $(x + 1\/x)^3 + (x^3 + 1\/x^3)$ for $x > 0$.// VERIFY: check exact statement
+#prob(4)[
+  Count the number of surjections from ${1, 2, dots, 6}$ onto ${a, b, c, d}$. Express your answer as an explicit integer.
 ]
 
 #hint(1)[
-  Substitute $t = x + 1\/x$ (note $t >= 2$ for $x > 0$). Express $x^6 + 1\/x^6$ and $x^3 + 1\/x^3$ in terms of $t$.
+  Use the surjection formula with inclusion-exclusion. Let $A_i$ be the set of functions from ${1, dots, 6}$ to ${a, b, c, d}$ whose image misses the $i$th element.
 ]
 
 #hint(2)[
-  We have $x^2 + 1\/x^2 = t^2 - 2$, $x^3 + 1\/x^3 = t^3 - 3 t$, $x^6 + 1\/x^6 = (x^3 + 1\/x^3)^2 - 2 = (t^3 - 3 t)^2 - 2$. Let $u = t^3 - 3 t = x^3 + 1\/x^3$.
+  Surjections $= sum_(j=0)^(4) (-1)^j binom(4, j)(4 - j)^6$. Compute each term: $binom(4,0) dot 4^6 - binom(4,1) dot 3^6 + binom(4,2) dot 2^6 - binom(4,3) dot 1^6 + binom(4,4) dot 0^6$.
 ]
 
 #hint(3)[
-  Numerator $= t^6 - u^2 = 6 t^4 - 9 t^2 = 3 t^2(2 t^2 - 3)$. Denominator $= t^3 + u = 2 t^3 - 3 t = t(2 t^2 - 3)$. Ratio $= 3 t$. Minimize for $t >= 2$.
+  $= 4096 - 4 dot 729 + 6 dot 64 - 4 dot 1 + 0 = 4096 - 2916 + 384 - 4 = 1560$.
 ]
 
 #solution[
-  Let $t = x + 1\/x >= 2$. Let $u = x^3 + 1\/x^3 = t^3 - 3 t$.
+  The number of surjections from an $n$-element set onto a $k$-element set is $sum_(j=0)^(k) (-1)^j binom(k, j)(k - j)^n$.
 
-  *Numerator:* $t^6 - (x^6 + 1\/x^6) - 2 = t^6 - (u^2 - 2) - 2 = t^6 - u^2$.
+  With $n = 6$, $k = 4$:
+  $ sum_(j=0)^(4) (-1)^j binom(4, j)(4 - j)^6 = 1 dot 4096 - 4 dot 729 + 6 dot 64 - 4 dot 1 + 1 dot 0. $
 
-  Now $u = t^3 - 3 t$, so $u^2 = t^6 - 6 t^4 + 9 t^2$.
+  $= 4096 - 2916 + 384 - 4 = bold(1560).$ $square$
 
-  Thus numerator $= t^6 - t^6 + 6 t^4 - 9 t^2 = 6 t^4 - 9 t^2 = 3 t^2(2 t^2 - 3)$.
-
-  *Denominator:* $t^3 + u = t^3 + t^3 - 3 t = 2 t^3 - 3 t = t(2 t^2 - 3)$.
-
-  *Ratio:* $frac(3 t^2(2 t^2 - 3), t(2 t^2 - 3)) = 3 t$ (valid since $t >= 2 > sqrt(3\/2)$, so $2 t^2 - 3 > 0$).
-
-  The ratio equals $3 t = 3(x + 1\/x)$. The minimum of $3 t$ for $t >= 2$ is $bold(6)$, achieved at $t = 2$, i.e., $x = 1$. $square$
+  As a check, the Stirling number $S(6, 4) = 1560 \/ 4! = 65$. $square$
 ]
 
 === Problem 5
 #difficulty(2)
-#putnam(2018, "A4")[
-  Let $m$ and $n$ be positive integers with $gcd(m, n) = 1$. Determine $sum_(k=0)^(m n - 1) (-1)^(floor(k m \/ n) + floor(k n \/ m))$ in terms of $m$ and $n$. // VERIFY: check exact statement
+#prob(5)[
+  Compute $phi(2520)$, where $phi$ is Euler's totient function. Express your answer using the prime factorization of 2520 and the PIE-based product formula.
 ]
 
 #hint(1)[
-  Try small cases first. For $m = 1, n = 2$: sum over $k = 0, 1$ of $(-1)^(floor(k\/2) + floor(2 k))$. Compute.
+  First find the prime factorization: $2520 = 2^3 dot 3^2 dot 5 dot 7$.
 ]
 
 #hint(2)[
-  The exponent $floor(k m\/n) + floor(k n\/m)$ has a pattern related to the Dedekind-sum or lattice-point structure. Consider the grid ${0, 1, dots, m n - 1}$ and classify by residues mod $m$ and mod $n$.
+  Apply $phi(n) = n product_(p | n)(1 - 1\/p)$. The prime divisors are $2, 3, 5, 7$.
 ]
 
 #hint(3)[
-  Since $gcd(m, n) = 1$, as $k$ ranges over ${0, dots, m n - 1}$, the pair $(k mod m, k mod n)$ takes each value in ${0, dots, m-1} times {0, dots, n-1}$ exactly once (CRT). Rewrite the exponent in terms of these residues. After simplification, the sum factors as a product of two geometric-like sums.
+  $phi(2520) = 2520 dot (1 - 1\/2)(1 - 1\/3)(1 - 1\/5)(1 - 1\/7) = 2520 dot 1\/2 dot 2\/3 dot 4\/5 dot 6\/7$.
 ]
 
 #solution[
-  By CRT, as $k$ ranges over ${0, dots, m n - 1}$, the pair $(k mod m, k mod n)$ hits each element of ${0, dots, m-1} times {0, dots, n-1}$ exactly once. Writing $k = q_1 n + r_1$ with $0 <= r_1 < n$, we get $floor(k m\/n) = q_1 m + floor(r_1 m\/n)$, and similarly for the other term.
-
-  After careful bookkeeping using this decomposition, the answer is $bold(0)$ when both $m, n$ are odd (i.e., $m + n$ even), since the terms cancel in pairs by a symmetry argument. // VERIFY: complete computation needed for the case when $m + n$ is odd
+  We have $2520 = 2^3 dot 3^2 dot 5 dot 7$. By the PIE-derived product formula:
+  $ phi(2520) = 2520 (1 - 1\/2)(1 - 1\/3)(1 - 1\/5)(1 - 1\/7) $
+  $ = 2520 dot frac(1, 2) dot frac(2, 3) dot frac(4, 5) dot frac(6, 7) = 2520 dot frac(48, 210) = 2520 dot frac(8, 35) = bold(576). $ $square$
 ]
 
 === Problem 6
 #difficulty(3)
-#putnam(2015, "B5")[
-  Let $P_n$ denote the set of all polynomials $p(x) = sum_(j=0)^n a_j x^j$ with $a_j in {0, 1, 2}$ for all $j$. Find $lim_(n -> infinity) frac(1, n+1) log(sum_(p in P_n) 2^(integral_0^1 p(x) d x))$. // VERIFY: check exact statement
+#prob(6)[
+  At a circular table, $n$ married couples are to be seated such that men and women alternate, and no husband sits next to his wife. Find the number of such seatings (up to rotation) in terms of $n$, using inclusion-exclusion.
 ]
 
 #hint(1)[
-  Compute $integral_0^1 p(x) d x = sum_(j=0)^n a_j \/ (j+1)$. So the sum becomes $sum_(a_0, dots, a_n in {0,1,2}) 2^(sum a_j \/ (j+1))$.
+  Fix the women's positions (accounting for rotational symmetry). Then count the number of ways to seat the men in the remaining $n$ chairs such that no man sits next to his wife.
 ]
 
 #hint(2)[
-  The sum factors: $product_(j=0)^n (sum_(a_j = 0)^(2) 2^(a_j \/ (j+1))) = product_(j=0)^n (1 + 2^(1\/(j+1)) + 2^(2\/(j+1)))$.
+  After fixing women in alternating seats (one way, up to rotation), each man has two neighbors who are women. Man $i$ must not sit next to woman $i$. This is a restricted permutation problem. Let $A_i$ be the set of permutations of men where man $i$ sits adjacent to woman $i$.
 ]
 
 #hint(3)[
-  Take $frac(1, n+1) log$ of the product: $frac(1, n+1) sum_(j=0)^n log(1 + 2^(1\/(j+1)) + 2^(2\/(j+1)))$. As $n -> infinity$, this is a Riemann sum for $integral_0^1 log(1 + 2^t + 2^(2 t)) d t$ where $t = 1\/(j+1)$... but the spacing is not uniform. Substitute $t = 1\/(j+1)$ and analyze.
+  The problem reduces to a variant of the _probleme des menages_. The answer is the menage number $M_n$, which satisfies $M_n = n! sum_(k=0)^(n) (-1)^k frac(2 n, 2 n - k) binom(2 n - k, k) (n - k)! \/ n!$. For small $n$: $M_3 = 1$, $M_4 = 2$, $M_5 = 13$.
 ]
 
 #solution[
-  *Factor the sum.* Since the $a_j$ are independent, $sum_(p in P_n) 2^(integral_0^1 p(x) d x) = product_(j=0)^(n) f(j+1)$ where $f(m) = 1 + 2^(1\/m) + 4^(1\/m)$.
+  Fix the $n$ women in alternating seats around the table (one arrangement up to rotation). The $n$ remaining seats are for the men. Man $i$ must not sit in either of the two seats adjacent to woman $i$.
 
-  *Normalized log.* $frac(1, n+1) log_2(product_(j=0)^n f(j+1)) = frac(1, n+1) sum_(m=1)^(n+1) log_2 f(m)$.
+  This is the classical _probleme des menages_. Let $A_i$ be the set of permutations where man $i$ sits adjacent to woman $i$. By inclusion-exclusion on the forbidden adjacencies, the menage number is:
+  $ M_n = n! sum_(k=0)^(n) (-1)^k frac(2 n, 2 n - k) binom(2 n - k, k) frac((n - k)!, n!). $
 
-  *Limit.* As $m -> infinity$, $f(m) -> 3$, so $log_2 f(m) -> log_2 3$. By the Cesaro mean theorem, the average converges to $bold(log_2 3)$ (or $ln 3$ if natural log is used). // VERIFY: which log base
+  Equivalently, $M_n = sum_(k=0)^(n) (-1)^k frac(2 n, 2 n - k) binom(2 n - k, k) (n - k)!$.
+
+  The key insight is that the $k$-fold intersection $|A_(i_1) sect dots sect A_(i_k)|$ depends on the cyclic structure of the chosen indices. There are $frac(2 n, 2 n - k) binom(2 n - k, k)$ ways to choose $k$ non-adjacent positions on the cycle of $2 n$ seats, and $(n - k)!$ ways to assign the remaining men.
+
+  For verification: $M_3 = 1$, $M_4 = 2$, $M_5 = 13$. $square$
 ]

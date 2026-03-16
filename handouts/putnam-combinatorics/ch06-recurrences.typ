@@ -110,26 +110,32 @@
 
 === Problem 2
 #difficulty(1)
-#putnam(2008, "A1")[
-  Let $f : NN -> NN$ be a function such that $f(f(n)) = 2 n$ for all $n in NN$. Find $f(2008)$. // VERIFY: the exact statement may ask "find f(k) for specific k" or "find all such f"
+#prob(2)[
+  Let $t_n$ be the number of ways to tile a $2 times n$ board using $1 times 2$ dominoes. Find a recurrence for $t_n$ and derive a closed form.
 ]
 
 #hint(1)[
-  From $f(f(n)) = 2 n$: try $f(1) = k$, then $f(k) = 2$, then $f(2) = 2 k$, then $f(f(2)) = 4$ so $f(2 k) = 4$.
+  Consider the rightmost column of the $2 times n$ board. Either it is covered by a single vertical domino, or the last two columns are covered by two horizontal dominoes.
 ]
 
 #hint(2)[
-  Separate $NN$ into chains: $n -> f(n) -> 2 n -> f(2 n) -> 4 n -> dots$. This gives $f(2^j n) = 2^j f(n)$ for the chain structure. Try $f$ that multiplies odd numbers by a factor and then adjusts.
+  If the last column has a vertical domino: the remaining board is $2 times (n - 1)$, giving $t_(n-1)$ tilings. If the last two columns have two horizontal dominoes: the remaining board is $2 times (n - 2)$, giving $t_(n-2)$ tilings. So $t_n = t_(n-1) + t_(n-2)$ with $t_1 = 1$, $t_2 = 2$.
 ]
 
 #hint(3)[
-  One valid function: for odd $m$, define $f(2^a m)$ based on whether $a$ is even or odd. If $a$ is even, $f(2^a m) = 3 dot 2^a m$ (or similar). For the Putnam, the answer is $f(2008) = f(2^3 dot 251) = 2^3 dot f(251)$. Track the chain starting from 251.
+  This is the Fibonacci recurrence shifted: $t_n = F_(n+1)$, where $F_k$ is the $k$th Fibonacci number ($F_1 = 1, F_2 = 1, F_3 = 2, dots$). The closed form is $t_n = frac(phi.alt^(n+1) - psi^(n+1), sqrt(5))$ where $phi.alt = (1 + sqrt(5))\/2$ and $psi = (1 - sqrt(5))\/2$.
 ]
 
 #solution[
-  $f(f(n)) = 2 n$ implies $f$ is injective. Starting from odd $m$, the orbit is $m, f(m), 2 m, 2 f(m), 4 m, dots$. Pair odd numbers: e.g., set $f(m) = 3 m$ for odd $m$ not divisible by 3, and $f(3 m) = 2 m$. Then extend by $f(2^a m) = 2^a f(m)$.
+  Consider the rightmost column of a $2 times n$ board.
 
-  For $2008 = 2^3 dot 251$: $f(251) = 753$, $f(502) = 1506$, $f(1004) = 3012$. Following the chain, $f(2008) = bold(3012)$. // VERIFY
+  *Case 1:* A vertical domino covers the rightmost column. The remaining board is $2 times (n - 1)$, with $t_(n-1)$ tilings.
+
+  *Case 2:* Two horizontal dominoes cover the rightmost two columns. The remaining board is $2 times (n - 2)$, with $t_(n-2)$ tilings.
+
+  These cases are disjoint and exhaustive, so $t_n = t_(n-1) + t_(n-2)$ with $t_1 = 1$ (one vertical domino) and $t_2 = 2$ (two verticals or two horizontals).
+
+  The characteristic equation is $r^2 - r - 1 = 0$ with roots $phi.alt = frac(1 + sqrt(5), 2)$ and $psi = frac(1 - sqrt(5), 2)$. From initial conditions, $t_n = frac(phi.alt^(n+1) - psi^(n+1), sqrt(5)) = F_(n+1)$, the $(n + 1)$th Fibonacci number. $square$
 ]
 
 === Problem 3
@@ -147,7 +153,7 @@
 ]
 
 #hint(3)[
-  Substituting $a_n^((p)) = A n dot 2^n$: $A n dot 2^n = 5 A(n-1) 2^(n-1) - 6 A(n-2) 2^(n-2) + 2^n$. Dividing by $2^(n-2)$: $4 A n = 10 A(n-1) - 6 A(n-2) + 4$. Expanding and solving: $4 A n = 10 A n - 10 A - 6 A n + 12 A + 4 = -2 A n + 2 A + 4$... wait, let me redo. Actually $-2 A + 4 = 0$ gives $A = 2$. // VERIFY
+  Substituting $a_n^((p)) = A n dot 2^n$: dividing by $2^(n-2)$ gives $4 A n - 10 A(n-1) + 6 A(n-2) = 4$, which simplifies to $-2 A = 4$, so $A = -2$.
 ]
 
 #solution[
@@ -176,95 +182,106 @@
 
 === Problem 4
 #difficulty(2)
-#putnam(2016, "A4")[
-  Consider a $2 times n$ grid of squares, each colored either black or white. Let $b_n$ denote the number of colorings such that in every $2 times 2$ sub-grid, the number of black squares is even (0, 2, or 4). Find a closed form for $b_n$. // VERIFY: check exact Putnam 2016 A4 statement
+#prob(4)[
+  Let $C_n$ denote the $n$th Catalan number. Starting from $C_0 = 1$, derive the recurrence $C_(n+1) = sum_(k=0)^(n) C_k C_(n-k)$ and use it to compute $C_5$.
 ]
 
 #hint(1)[
-  Label the columns $1, 2, dots, n$. Each column is one of four types: $(W, W)$, $(W, B)$, $(B, W)$, $(B, B)$. The constraint says that for consecutive columns $i, i+1$, the four squares form a $2 times 2$ sub-grid with an even number of black cells.
+  Interpret $C_(n+1)$ as the number of ways to triangulate a convex $(n + 3)$-gon, or the number of valid sequences of $n + 1$ pairs of parentheses, or the number of full binary trees with $n + 1$ leaves.
 ]
 
 #hint(2)[
-  Let the column types be $00, 01, 10, 11$ (top and bottom). The constraint on columns $i, i+1$ is that the XOR (or sum mod 2) of all four entries is 0. This means column $i+1$ is determined by column $i$ up to a global parity constraint.
+  Use the parenthesization model. A valid sequence of $n + 1$ pairs of parentheses has a first matching pair. If the first open parenthesis matches at position $2 k + 2$, then the first $2 k + 2$ characters form a sub-expression with $k$ inner pairs, and the remaining $n - k$ pairs form another valid sequence.
 ]
 
 #hint(3)[
-  There are 4 choices for the first column. For each subsequent column, the parity constraint means: column $i+1$ is either identical to column $i$ or its bitwise complement. So each transition has 2 choices: same or flip. Total: $4 dot 2^(n-1) = 2^(n+1)$. But check whether all column pairs work. // VERIFY
+  This gives $C_(n+1) = sum_(k=0)^(n) C_k C_(n - k)$. Compute: $C_0 = 1$, $C_1 = 1$, $C_2 = 2$, $C_3 = 5$, $C_4 = 14$, $C_5 = 42$.
 ]
 
 #solution[
-  Encode each cell as 0 (white) or 1 (black). Let column $i$ have top entry $t_i$ and bottom entry $b_i$. The $2 times 2$ sub-grid formed by columns $i$ and $i+1$ has entries $t_i, b_i, t_(i+1), b_(i+1)$. The constraint is $t_i + b_i + t_(i+1) + b_(i+1) equiv 0 (mod 2)$.
+  We use the interpretation of $C_(n+1)$ as the number of valid parenthesizations with $n + 1$ pairs.
 
-  This means $t_(i+1) + b_(i+1) equiv t_i + b_i (mod 2)$ for all $i$. So the column parity $p_i = t_i + b_i mod 2$ is constant across all columns.
+  Consider a valid sequence $s$ with $n + 1$ pairs of parentheses. The first character is an open parenthesis "(". Suppose its matching close parenthesis ")" is at position $2 k + 2$ (for some $0 <= k <= n$). Then:
+  - Positions $2$ through $2 k + 1$ form a valid sub-sequence with $k$ pairs ($C_k$ choices).
+  - Positions $2 k + 3$ through $2 n + 2$ form a valid sub-sequence with $n - k$ pairs ($C_(n - k)$ choices).
 
-  *Case 1: all columns have even parity ($p_i = 0$).* Each column is $(0,0)$ or $(1,1)$: 2 choices per column, giving $2^n$ colorings.
+  Since $k$ ranges from 0 to $n$, we get the recurrence:
+  $ C_(n+1) = sum_(k=0)^(n) C_k C_(n - k). $
 
-  *Case 2: all columns have odd parity ($p_i = 1$).* Each column is $(0,1)$ or $(1,0)$: 2 choices per column, giving $2^n$ colorings.
-
-  But we must also check that the $2 times 2$ constraint is satisfied beyond just the parity condition. With $p_i$ constant: $t_i + b_i + t_(i+1) + b_(i+1) = p_i + p_(i+1) = 2 p equiv 0 (mod 2)$. So the constraint is automatically satisfied.
-
-  Total: $b_n = 2^n + 2^n = bold(2^(n+1))$. // VERIFY
+  Computing from $C_0 = 1$:
+  - $C_1 = C_0 C_0 = 1$
+  - $C_2 = C_0 C_1 + C_1 C_0 = 2$
+  - $C_3 = C_0 C_2 + C_1 C_1 + C_2 C_0 = 2 + 1 + 2 = 5$
+  - $C_4 = C_0 C_3 + C_1 C_2 + C_2 C_1 + C_3 C_0 = 5 + 2 + 2 + 5 = 14$
+  - $C_5 = C_0 C_4 + C_1 C_3 + C_2 C_2 + C_3 C_1 + C_4 C_0 = 14 + 5 + 4 + 5 + 14 = bold(42)$. $square$
 ]
 
 === Problem 5
 #difficulty(3)
-#putnam(2018, "B4")[
-  Given a real number $a$, define a sequence by $x_0 = 1$, $x_1 = x_2 = a$, and for $n >= 3$, $x_n = 2 x_(n-1) x_(n-2) - x_(n-3)$. Find the smallest $a$ such that $x_(2018) >= 2018$. // VERIFY: check exact Putnam 2018 B4 statement
+#prob(5)[
+  The Tower of Hanoi has $n$ disks. Let $T_n$ be the minimum number of moves to transfer all $n$ disks from one peg to another. Find a recurrence for $T_n$, solve it, and prove that $T_n = 2^n - 1$ is optimal.
 ]
 
 #hint(1)[
-  Try the substitution $x_n = cosh(c dot r^n)$ or $x_n = cos(c dot r^n)$ for some constants. Trigonometric/hyperbolic substitutions often linearize product recurrences.
+  To move $n$ disks from peg $A$ to peg $C$: first move the top $n - 1$ disks from $A$ to $B$ (using $C$ as auxiliary), then move the largest disk from $A$ to $C$, then move $n - 1$ disks from $B$ to $C$.
 ]
 
 #hint(2)[
-  Let $x_n = cosh(theta_n)$. The recurrence $x_n = 2 x_(n-1) x_(n-2) - x_(n-3)$ and the identity $2 cosh(alpha) cosh(beta) = cosh(alpha + beta) + cosh(alpha - beta)$ suggest $theta_n = theta_(n-1) + theta_(n-2)$ (a Fibonacci-like recurrence on the arguments).
+  This gives $T_n = 2 T_(n-1) + 1$ with $T_1 = 1$. To solve, let $S_n = T_n + 1$, then $S_n = 2 S_(n-1)$ with $S_1 = 2$, so $S_n = 2^n$ and $T_n = 2^n - 1$.
 ]
 
 #hint(3)[
-  With $x_0 = 1 = cosh(0)$ and $x_1 = x_2 = a = cosh(theta)$, we need $theta_0 = 0$, $theta_1 = theta_2 = theta$. The recurrence $theta_n = theta_(n-1) + theta_(n-2)$ with $theta_1 = theta_2 = theta$ gives $theta_n = F_(n-1) theta$ where $F_k$ is the Fibonacci sequence. So $x_n = cosh(F_(n-1) theta)$. Setting $x_(2018) = cosh(F_(2017) theta) >= 2018$ gives $theta >= "arccosh"(2018) / F_(2017)$.
+  For optimality: at some point the largest disk must move. Before it moves, all $n - 1$ smaller disks must be on a single peg (otherwise the largest cannot move). After it moves, all $n - 1$ must be reassembled. Each of these steps requires at least $T_(n-1)$ moves, plus 1 for the largest disk.
 ]
 
 #solution[
-  Let $x_n = cosh(theta_n)$. Using $2 cosh A cosh B = cosh(A+B) + cosh(A-B)$, the recurrence becomes $theta_n = theta_(n-1) + theta_(n-2)$ (a Fibonacci recurrence on the arguments).
+  *Recurrence:* To move $n$ disks from peg $A$ to peg $C$:
+  1. Move the top $n - 1$ disks from $A$ to $B$: at least $T_(n-1)$ moves.
+  2. Move disk $n$ from $A$ to $C$: 1 move.
+  3. Move $n - 1$ disks from $B$ to $C$: at least $T_(n-1)$ moves.
 
-  With $theta_0 = 0$, $theta_1 = theta_2 = theta$: we get $theta_n = F_n theta$ for $n >= 0$ where $F_n$ is the $n$th Fibonacci number.
+  This gives $T_n <= 2 T_(n-1) + 1$.
 
-  So $x_(2018) = cosh(F_(2018) theta) >= 2018$ requires $theta >= "arccosh"(2018) / F_(2018)$, giving:
-  $ a = cosh(frac("arccosh"(2018), F_(2018))). $
-  Since $F_(2018)$ is astronomically large, $a$ is extremely close to 1. // VERIFY
+  *Optimality:* At some point, disk $n$ (the largest) must move. Before this, disks $1, dots, n - 1$ must all be off peg $A$ and off peg $C$ (since disk $n$ is on $A$ and must go to $C$), so they are all on peg $B$. Moving them there takes at least $T_(n-1)$ moves. Similarly, after disk $n$ moves, the $n - 1$ disks on $B$ must reach $C$, requiring at least $T_(n-1)$ more moves. Therefore $T_n >= 2 T_(n-1) + 1$.
+
+  Combining: $T_n = 2 T_(n-1) + 1$ with $T_1 = 1$.
+
+  *Closed form:* Let $S_n = T_n + 1$. Then $S_n = 2 S_(n-1)$ with $S_1 = 2$, so $S_n = 2^n$ and:
+  $ T_n = bold(2^n - 1). $ $square$
 ]
 
 === Problem 6
 #difficulty(3)
-#putnam(2015, "B5")[
-  Let $P_n$ denote the set of all polynomials $p(x) = sum_(j=0)^(n) a_j x^j$ with $a_j in {0, 1, 2}$ for all $0 <= j <= n$. Find $lim_(n -> infinity) frac(1, n+1) log(sum_(p in P_n) 2^(S(p)))$ where $S(p) = integral_0^1 p(x) d x$. // VERIFY: check exact Putnam 2015 B5 statement
+#prob(6)[
+  A sequence satisfies $a_n = 5 a_(n-1) - 6 a_(n-2)$ for $n >= 2$, with $a_0 = 2$ and $a_1 = 5$. Find an explicit closed-form formula for $a_n$ and prove it by induction.
 ]
 
 #hint(1)[
-  Compute $S(p) = sum_(j=0)^(n) a_j / (j + 1)$. Then $2^(S(p)) = product_(j=0)^(n) 2^(a_j / (j+1))$. The sum over all $p$ factors as a product over coordinates $j$.
+  The characteristic polynomial is $r^2 - 5 r + 6 = (r - 2)(r - 3) = 0$, with roots $r = 2$ and $r = 3$.
 ]
 
 #hint(2)[
-  $ sum_(p in P_n) 2^(S(p)) = product_(j=0)^(n) (sum_(a_j = 0)^(2) 2^(a_j / (j+1))) = product_(j=0)^(n) (1 + 2^(1 / (j+1)) + 2^(2 / (j+1))). $
-  Take $log$ and divide by $n + 1$ to get an average: $frac(1, n+1) sum_(j=0)^(n) log(1 + 2^(1 / (j+1)) + 2^(2 / (j+1)))$.
+  The general solution is $a_n = alpha dot 2^n + beta dot 3^n$. From $a_0 = 2$: $alpha + beta = 2$. From $a_1 = 5$: $2 alpha + 3 beta = 5$. Solve to get $alpha = 1, beta = 1$.
 ]
 
 #hint(3)[
-  As $n -> infinity$, this is a Cesaro average of $f(1 / (j+1))$ where $f(t) = log(1 + 2^t + 2^(2 t))$. Since $1 / (j+1) -> 0$, the terms approach $f(0) = log(3)$. By Cesaro's theorem, the limit is $log(3)$.
+  So $a_n = 2^n + 3^n$. Verify: $a_0 = 1 + 1 = 2$, $a_1 = 2 + 3 = 5$, $a_2 = 4 + 9 = 13$. Check: $5 dot 5 - 6 dot 2 = 25 - 12 = 13$. Correct.
 ]
 
 #solution[
-  Compute $S(p) = integral_0^1 sum_(j=0)^(n) a_j x^j d x = sum_(j=0)^(n) frac(a_j, j + 1)$.
+  The characteristic polynomial of $a_n = 5 a_(n-1) - 6 a_(n-2)$ is $r^2 - 5 r + 6 = (r - 2)(r - 3) = 0$.
 
-  Then:
-  $ sum_(p in P_n) 2^(S(p)) = sum_(a_0, dots, a_n in {0,1,2}} product_(j=0)^(n) 2^(a_j \/ (j+1)) = product_(j=0)^(n) sum_(a=0)^(2) 2^(a \/ (j+1)). $
+  *General solution:* $a_n = alpha dot 2^n + beta dot 3^n$.
 
-  Taking $log$ (base 2 or natural, the limit is the same up to constant):
-  $ frac(1, n+1) log sum_(p in P_n) 2^(S(p)) = frac(1, n+1) sum_(j=0)^(n) log(1 + 2^(1\/(j+1)) + 2^(2\/(j+1))). $
+  *Initial conditions:*
+  - $a_0 = 2$: $alpha + beta = 2$.
+  - $a_1 = 5$: $2 alpha + 3 beta = 5$.
 
-  As $j -> infinity$, $2^(1\/(j+1)) -> 2^0 = 1$ and $2^(2\/(j+1)) -> 1$, so each term approaches $log(1 + 1 + 1) = log 3$.
+  Solving: $beta = 5 - 2(2 - beta) = 1$, so $beta = 1$ and $alpha = 1$.
 
-  By the Cesaro mean theorem (if $b_j -> L$ then $frac(1, n) sum_(j=1)^(n) b_j -> L$), the limit is:
+  *Closed form:* $a_n = 2^n + 3^n$.
 
-  $ lim_(n -> infinity) frac(1, n + 1) log sum_(p in P_n) 2^(S(p)) = bold(log 3). $
+  *Proof by induction:* Base cases $a_0 = 2^0 + 3^0 = 2$ and $a_1 = 2^1 + 3^1 = 5$ are correct. For the inductive step, assume $a_(n-1) = 2^(n-1) + 3^(n-1)$ and $a_(n-2) = 2^(n-2) + 3^(n-2)$. Then:
+  $ 5 a_(n-1) - 6 a_(n-2) = 5(2^(n-1) + 3^(n-1)) - 6(2^(n-2) + 3^(n-2)) $
+  $ = 2^(n-2)(5 dot 2 - 6) + 3^(n-2)(5 dot 3 - 6) = 2^(n-2) dot 4 + 3^(n-2) dot 9 = 2^n + 3^n. $ $square$
 ]

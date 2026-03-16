@@ -133,7 +133,6 @@
     [$s = 4$], [4], [9], [18], [25?], [--],
     [$s = 5$], [5], [14], [25?], [43--48], [--],
   )
-  // VERIFY: R(4,5) = 25 is established; R(5,5) bounds are 43-48
   - *Bounds:* $binom(s + t - 2, s - 1) >= R(s, t) >= 2^(min(s, t) \/ 2)$ (approximately)
   - *Schur numbers:* $S(1) = 2, S(2) = 5, S(3) = 14, S(4) = 45$
 ]

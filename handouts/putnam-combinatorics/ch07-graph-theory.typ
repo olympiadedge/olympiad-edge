@@ -144,53 +144,60 @@
 
 === Problem 2
 #difficulty(1)
-#putnam(2006, "A2")[
-  Alice and Bob play a game on a graph $G$ with $2006$ vertices. They alternate turns (Alice first), each turn consisting of coloring an uncolored vertex either black or white. After all vertices are colored, Alice's score is the number of edges joining two white vertices and Bob's score is the number of edges joining two black vertices. Alice wants to maximize her score minus Bob's score. What is the optimal outcome assuming both play perfectly, for an arbitrary graph $G$? // VERIFY: check exact Putnam 2006 A2 statement
+#prob(2)[
+  Prove the handshaking lemma: in any graph $G = (V, E)$, the sum of the degrees of all vertices equals twice the number of edges. That is, $sum_(v in V) deg(v) = 2 |E|$. Conclude that the number of vertices of odd degree is always even.
 ]
 
 #hint(1)[
-  Let $W$ and $B$ be the sets of white and black vertices. Alice's advantage is $e(W) - e(B)$ where $e(S)$ counts edges within $S$. Note $e(W) + e(B) + e(W, B) = |E|$.
+  Each edge $e = {u, v}$ contributes exactly 1 to $deg(u)$ and 1 to $deg(v)$. What does this say about the total contribution of all edges to the sum of degrees?
 ]
 
 #hint(2)[
-  Consider the "potential" of a partially colored graph. Each player colors one vertex per turn. The parity of the turns (Alice colors 1003 vertices, Bob colors 1003 vertices) is balanced.
+  Count pairs $(v, e)$ where $v$ is a vertex and $e$ is an edge incident to $v$. Count this quantity two ways: by summing over vertices (giving $sum deg(v)$) and by summing over edges (each edge contributes 2 such pairs).
 ]
 
 #hint(3)[
-  Alice's advantage is always 0 regardless of the graph, because the game is "balanced" --- for every strategy Alice has, Bob can mirror it. More precisely, the difference $e(W) - e(B)$ depends only on the degree-sum structure, and with equal numbers of vertices, perfect play yields a tie.
+  For the parity corollary: $sum_(v in V) deg(v) = 2 |E|$ is even. If there were an odd number of odd-degree vertices, the sum of degrees would be odd. Contradiction.
 ]
 
 #solution[
-  Since $|V| = 2006$ is even, each player colors exactly 1003 vertices. We claim the answer is $0$ for any graph.
+  *Double counting.* Consider the set of incidence pairs $I = {(v, e) : v in V, e in E, v in e}$. For each vertex $v$, the number of edges incident to $v$ is $deg(v)$, so $|I| = sum_(v in V) deg(v)$. For each edge $e = {u, w}$, there are exactly 2 vertices incident to $e$ (namely $u$ and $w$), so $|I| = 2 |E|$.
 
-  *Bob's strategy:* Whenever Alice colors a vertex $v$ with color $c$, Bob responds by coloring some uncolored vertex with the opposite color. This "mirror" strategy ensures that for any vertex $v$ colored white, there is a "paired" vertex colored black, and vice versa.
+  Therefore $sum_(v in V) deg(v) = 2 |E|$.
 
-  More precisely, the key insight is that the outcome with optimal play is always $e(W) - e(B) = 0$. Bob can guarantee $e(B) >= e(W)$ by a copying strategy: he maintains a graph isomorphism and mirrors Alice's moves. By symmetry, Alice can also guarantee $e(W) >= e(B)$. Hence the optimal outcome is $bold(0)$. // VERIFY: the exact strategy argument needs care for non-vertex-transitive graphs
+  *Parity corollary.* The sum $sum_(v in V) deg(v) = 2 |E|$ is even. Write this sum as the sum over odd-degree vertices plus the sum over even-degree vertices. The sum over even-degree vertices is even, so the sum over odd-degree vertices must also be even. A sum of odd numbers is even if and only if there are an even number of terms. $square$
 ]
 
 === Problem 3
 #difficulty(2)
-#putnam(2009, "B2")[
-  A $2 times 2$ square is divided into four $1 times 1$ unit squares. Each unit square is colored red or blue. A coloring is _legitimate_ if each $1 times 1$ square shares at least one side with a square of the same color. // VERIFY: this may not be the exact Putnam 2009 B2
-  How many legitimate colorings are there for a $2 times n$ grid?
+#prob(3)[
+  Prove that every tree on $n$ vertices has exactly $n - 1$ edges.
 ]
 
 #hint(1)[
-  Think of the $2 times n$ grid as a graph where each cell is a vertex and edges connect cells sharing a side. The condition says every vertex has at least one neighbor of the same color.
+  Use induction on $n$. The base case $n = 1$ is a single vertex with $0 = 1 - 1$ edges. For the inductive step, find a vertex you can remove to get a smaller tree.
 ]
 
 #hint(2)[
-  Set up a recurrence based on the state of the rightmost column. Each column has 4 possible colorings: $(R, R)$, $(R, B)$, $(B, R)$, $(B, B)$. Track which column states can follow which, subject to the legitimacy constraint.
+  Every tree on $n >= 2$ vertices has at least one leaf (a vertex of degree 1). Why? A longest path in the tree must end at a vertex with no other neighbors along the path, so its endpoint has degree 1.
 ]
 
 #hint(3)[
-  The transfer matrix approach: define a state for each column pair. A column has 4 states. The legitimacy constraint restricts transitions. Build a $4 times 4$ transfer matrix $T$ where $T_(i j) = 1$ if column state $j$ can follow column state $i$ while maintaining legitimacy for column $i$. Diagonalize $T$ to find a closed form.
+  Remove a leaf $v$ and its unique incident edge. The resulting graph is still connected (any path that used $v$ can be shortened since $v$ was an endpoint) and still acyclic (removing a vertex cannot create cycles). So it is a tree on $n - 1$ vertices. Apply the inductive hypothesis.
 ]
 
 #solution[
-  Label column states: $R R, R B, B R, B B$ (top, bottom). Homogeneous columns ($R R$ or $B B$) satisfy the condition internally. Heterogeneous columns ($R B$ or $B R$) need matching neighbors from adjacent columns.
+  *Proof by induction on $n$.*
 
-  Build a $4 times 4$ transfer matrix tracking valid transitions. After enumerating and solving the resulting linear recurrence, the answer is $bold(3 dot 2^n - 2)$. // VERIFY
+  *Base case:* $n = 1$. A single vertex has $0 = 1 - 1$ edges. $checkmark$
+
+  *Inductive step:* Assume every tree on $n - 1$ vertices has $n - 2$ edges. Let $T$ be a tree on $n >= 2$ vertices. We claim $T$ has a leaf (a vertex of degree 1).
+
+  Take a longest path $v_0, v_1, dots, v_k$ in $T$. Then $v_0$ has no neighbor outside the path (otherwise we could extend the path or find a cycle), and $v_0 eq.not v_1$ is its only neighbor, so $deg(v_0) = 1$.
+
+  Remove $v_0$ and its incident edge $v_0 v_1$ to obtain $T' = T - v_0$. The graph $T'$ is connected: any path in $T$ between vertices in $T'$ that passed through $v_0$ would require entering and leaving $v_0$ via the same edge (since $deg(v_0) = 1$), which is impossible in a simple path. So $T'$ is connected. It is also acyclic (a subgraph of an acyclic graph). Hence $T'$ is a tree on $n - 1$ vertices.
+
+  By the inductive hypothesis, $T'$ has $n - 2$ edges. Since $T$ has one more edge than $T'$, $T$ has $n - 1$ edges. $square$
 ]
 
 === Problem 4
@@ -222,7 +229,7 @@
 === Problem 5
 #difficulty(3)
 #putnam(2005, "B4")[
-  For positive integers $m$ and $n$, let $f(m, n)$ denote the number of $n$-tuples $(x_1, x_2, dots, x_n)$ of integers such that $|x_1| + |x_2| + dots + |x_n| <= m$. Show that $f(m, n) = f(n, m)$. // VERIFY: check exact Putnam 2005 B4 statement
+  For positive integers $m$ and $n$, let $f(m, n)$ denote the number of $n$-tuples $(x_1, x_2, dots, x_n)$ of integers such that $|x_1| + |x_2| + dots + |x_n| <= m$. Show that $f(m, n) = f(n, m)$.
 ]
 
 #hint(1)[
@@ -250,31 +257,60 @@
 ]
 
 === Problem 6
-#difficulty(3)
-#putnam(2017, "B5")[
-  A positive integer $n$ is _nice_ if there is a positive integer $k$ such that $k$ has exactly $n$ positive integer divisors and $n$ divides $k$. Find all nice positive integers. // VERIFY: check exact 2017 B5 statement; this may be a different year
+#difficulty(2)
+#prob(6)[
+  Prove that a graph is bipartite if and only if it contains no odd cycle.
 ]
 
 #hint(1)[
-  This is a number theory problem dressed up. Let $tau(k) = n$ and $n | k$. For $n = 1$: $k = 1$ works, $tau(1) = 1$ and $1 | 1$. For $n = 2$: need $tau(k) = 2$ (so $k$ is prime) and $2 | k$, so $k = 2$ works.
+  One direction is easy: if $G$ is bipartite with parts $A$ and $B$, then any cycle must alternate between $A$ and $B$. What does this say about the cycle's length?
 ]
 
 #hint(2)[
-  For $n = p$ prime: need $tau(k) = p$ and $p | k$. Since $tau(k) = p$, we need $k = q^(p-1)$ for some prime $q$. Then $p | q^(p-1)$, so $p | q$, meaning $q = p$ and $k = p^(p-1)$. Check: $tau(p^(p-1)) = p$. Works for all primes.
+  For the other direction, assume $G$ is connected with no odd cycle. Pick any vertex $v$ and define $A = {u : d(v, u) "is even"}$ and $B = {u : d(v, u) "is odd"}$ where $d(v, u)$ is the shortest-path distance. Show that no edge has both endpoints in $A$ or both in $B$.
 ]
 
 #hint(3)[
-  For composite $n$: we have more flexibility in choosing $k$ with $tau(k) = n$. For instance, $n = 4$: need $tau(k) = 4$ and $4 | k$. Try $k = 2^3 = 8$: $tau(8) = 4$ and $4 | 8$. Works. Try $n = 6$: $k = 2^5 = 32$ has $tau(32) = 6$ and $6 divides.not 32$. Try $k = 2^2 dot 3 = 12$: $tau(12) = 6$ and $6 | 12$. Works. In fact, every $n >= 1$ is nice.
+  Suppose for contradiction that $u, w in A$ (both at even distance from $v$) are joined by an edge. Then $d(v, u) + d(v, w) + 1$ gives the length of a closed walk through $v, u, w$. Since $d(v, u)$ and $d(v, w)$ are both even, this walk has odd length, yielding an odd cycle. This contradicts the hypothesis.
 ]
 
 #solution[
-  *Claim:* Every positive integer $n$ is nice.
+  *Forward direction ($=>$):* Suppose $G$ is bipartite with parts $A, B$. Every edge goes from $A$ to $B$. A cycle $v_1, v_2, dots, v_k, v_1$ alternates between $A$ and $B$, so $v_1 in A => v_2 in B => v_3 in A => dots$. Since $v_1 in A$ and $v_k$ must be in $B$ (to have an edge back to $v_1 in A$), the cycle visits $A$ and $B$ alternately for $k$ steps, with $v_(k) in B$, so $k$ is even. Hence no odd cycle.
 
-  *Proof.* For $n = 1$: $k = 1$ works. For $n = p$ prime: $k = p^(p-1)$ has $tau(k) = p$ and $p | k$.
+  *Backward direction ($arrow.l.double$):* Assume $G$ has no odd cycle. We may assume $G$ is connected (otherwise bipartition each component separately). Fix a vertex $v$ and define:
+  $ A = {u in V : d(v, u) equiv 0 mod 2}, quad B = {u in V : d(v, u) equiv 1 mod 2}. $
 
-  For prime powers $n = p^a$: $k = p^(n-1)$ has $tau(k) = n$ and $n | p^(n-1)$ since $a <= n - 1$.
+  Claim: no edge has both endpoints in $A$ (or both in $B$). Suppose $u, w in A$ with $u w in E$. Let $P_u$ be a shortest path from $v$ to $u$ (length $d(v, u)$, which is even) and $P_w$ a shortest path from $v$ to $w$ (length $d(v, w)$, also even). The walk $P_u$, then the edge $u w$, then $P_w$ reversed, returns to $v$ with total length $d(v, u) + 1 + d(v, w)$, which is odd. This closed walk contains an odd cycle, contradicting our assumption. The case $u, w in B$ is identical.
 
-  For general $n$ with $r >= 2$ distinct prime factors: write $n = p_1^(a_1) dots p_r^(a_r)$. We construct $k$ divisible by $n$ with $tau(k) = n$ by choosing $k = p_1^(e_1) p_2^(e_2) dots p_r^(e_r)$ where $e_i >= a_i$ (ensuring $n | k$) and $(e_1 + 1)(e_2 + 1) dots (e_r + 1) = n$. Since $n = p_1^(a_1) dots p_r^(a_r)$ and we need a factorization of $n$ into $r$ factors $f_i = e_i + 1 >= a_i + 1$, set $f_i = p_i^(a_i)$ for $i >= 2$ and $f_1 = n / (f_2 dots f_r) = p_1^(a_1)$. Then $e_i = p_i^(a_i) - 1 >= a_i$ for all $i$, giving $tau(k) = n$ and $n | k$.
+  Therefore $(A, B)$ is a valid bipartition, and $G$ is bipartite. $square$
+]
 
-  Therefore, the set of nice positive integers is $bold(NN) = {1, 2, 3, dots}$. $square$ // VERIFY
+=== Problem 7
+#difficulty(3)
+#prob(7)[
+  Prove that every regular bipartite graph has a perfect matching. (A bipartite graph is _regular_ if every vertex has the same degree $d >= 1$.)
+]
+
+#hint(1)[
+  Use Hall's marriage theorem. You need to verify Hall's condition: for every subset $S$ of one part, $|N(S)| >= |S|$.
+]
+
+#hint(2)[
+  Double-count the edges between $S$ and $N(S)$. Since every vertex in $S$ has degree $d$, there are $d |S|$ edges leaving $S$. Since every vertex in $N(S)$ has degree $d$, there are at most $d |N(S)|$ edges entering $N(S)$.
+]
+
+#hint(3)[
+  From the double count: $d |S| <= d |N(S)|$, so $|N(S)| >= |S|$. This verifies Hall's condition. Also note that regularity implies $|A| = |B|$ (count edges: $d |A| = d |B|$), so a matching saturating $A$ is a perfect matching.
+]
+
+#solution[
+  Let $G = (A union B, E)$ be a $d$-regular bipartite graph with $d >= 1$. First, $|A| = |B|$: the total degree from $A$ is $d |A|$ and from $B$ is $d |B|$; both equal $|E|$, so $|A| = |B|$.
+
+  We verify Hall's condition to apply Hall's marriage theorem. Let $S subset.eq A$ be arbitrary. Count the edges between $S$ and $N(S)$:
+  - Each vertex in $S$ has degree $d$, contributing $d |S|$ edges from $S$ into $B$. All these edges land in $N(S)$.
+  - Each vertex in $N(S)$ has degree $d$, so at most $d |N(S)|$ edges touch $N(S)$.
+
+  Therefore $d |S| <= d |N(S)|$, which gives $|N(S)| >= |S|$. Hall's condition is satisfied.
+
+  By Hall's marriage theorem, there exists a matching saturating all of $A$. Since $|A| = |B|$, this matching covers all vertices and is a perfect matching. $square$
 ]

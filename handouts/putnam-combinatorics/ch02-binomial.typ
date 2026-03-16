@@ -170,8 +170,8 @@
 
 === Problem 4
 #difficulty(2)
-#putnam(2005, "B2")[
-  Find all positive integers $n$ and $k$ with $k >= 2$ such that $binom(n, k) = binom(n-1, k) + binom(n-1, k-2)$. // VERIFY: check exact statement
+#prob(4)[
+  Find all positive integers $n$ and $k$ with $k >= 2$ such that $binom(n, k) = binom(n-1, k) + binom(n-1, k-2)$.
 ]
 
 #hint(1)[
@@ -196,53 +196,63 @@
 
 === Problem 5
 #difficulty(2)
-#putnam(2016, "A3")[
-  Suppose $f$ is a function from ${1, 2, dots, n}$ to ${1, 2, dots, n}$ (not necessarily bijective). Define $f^1 = f$ and $f^(j+1) = f compose f^j$ for $j >= 1$. Let $k = 1 + max{j : f^j eq.not f^(j+1)}$ (set $k = 1$ if $f = f^2$). // VERIFY: exact statement
-  Determine the maximum value of $k$ over all such $f$.
+#putnam(2016, "A2")[
+  For a positive integer $n$, let $M(n)$ be the largest integer $m$ such that $binom(m, n-1) > binom(m-1, n)$. Evaluate $lim_(n -> infinity) frac(M(n), n)$.
 ]
 
 #hint(1)[
-  Think about what happens when we iterate $f$. Eventually the sequence $f, f^2, f^3, dots$ stabilizes. The question is: how long can it take?
+  Write out the inequality $binom(m, n-1) > binom(m-1, n)$ explicitly and simplify. Use the ratio $binom(m, n-1) \/ binom(m-1, n)$.
 ]
 
 #hint(2)[
-  Consider the structure of $f$ as a functional graph: each node has out-degree 1. The graph consists of "rho-shaped" components (a cycle with trees hanging off). Iteration "pulls" nodes toward cycles.
+  We have $frac(binom(m, n-1), binom(m-1, n)) = frac(m! \/ ((n-1)!(m-n+1)!), (m-1)! \/ (n!(m-1-n)!)) = frac(m n, (m - n + 1)(m - n))$. The inequality becomes $m n > (m - n + 1)(m - n)$.
 ]
 
 #hint(3)[
-  The longest possible tail has length $n - 1$ (one fixed point, chain of $n - 1$ nodes feeding into it). Work out small cases to confirm.
+  Setting $m = alpha n$ and letting $n -> infinity$, the inequality becomes $alpha > (alpha - 1)^2$, i.e., $alpha^2 - 3 alpha + 1 < 0$. The larger root is $alpha = (3 + sqrt(5))\/2$. So $M(n) \/ n -> (3 + sqrt(5))\/2$.
 ]
 
 #solution[
-  The functional graph of $f$ has each component shaped like a cycle with trees attached. Iteration $f^j$ "pulls" vertices toward cycles; $f^j = f^(j+1)$ once all vertices have reached their cycle's fixed point.
+  *Simplify the inequality.* $binom(m, n-1) > binom(m-1, n)$ becomes $frac(m!, (n-1)!(m-n+1)!) > frac((m-1)!, n!(m-1-n)!)$.
 
-  To maximize $k$: take $f(i) = i + 1$ for $i < n$ and $f(n) = n$. Vertex 1 is at distance $n - 1$ from the fixed point. We get $f^j(1) = min(1+j, n) eq.not min(2+j, n) = f^(j+1)(1)$ for $j <= n-2$, so $k = bold(n - 1)$. // VERIFY
+  Dividing: $frac(binom(m, n-1), binom(m-1, n)) = frac(m n, (m-n+1)(m-n))$. So the inequality is $m n > (m - n + 1)(m - n)$.
+
+  Expanding the right side: $m^2 - 2 m n + n^2 + m - n$. The inequality becomes $m^2 - 3 m n + n^2 + m - n < 0$.
+
+  *Find $M(n)$.* $M(n)$ is the largest $m$ with $m^2 - 3 m n + n^2 + m - n < 0$. Setting $m = alpha n$: $alpha^2 n^2 - 3 alpha n^2 + n^2 + alpha n - n < 0$, dividing by $n^2$: $alpha^2 - 3 alpha + 1 + O(1\/n) < 0$.
+
+  The roots of $alpha^2 - 3 alpha + 1 = 0$ are $alpha = frac(3 plus.minus sqrt(5), 2)$. The inequality holds for $alpha in (frac(3 - sqrt(5), 2), frac(3 + sqrt(5), 2))$.
+
+  So $M(n) \/ n -> frac(3 + sqrt(5), 2)$ as $n -> infinity$, and the answer is $bold(frac(3 + sqrt(5), 2))$.
 ]
 
 === Problem 6
 #difficulty(3)
-#putnam(2014, "B4")[
-  Show that for each positive integer $n$, all the roots of the polynomial
-  $ p_n(x) = sum_(k=0)^(n) 2^(k(n-k)) x^k $
-  are real and negative. // VERIFY: exact statement
+#prob(6)[
+  Find $binom(100, 42) mod 7$.
 ]
 
 #hint(1)[
-  Try to factor the polynomial or relate it to a known family. Check small cases: $p_1(x) = 1 + x$, $p_2(x) = 1 + 2 x + x^2 = (1 + x)^2$.
+  Use Lucas' theorem: for a prime $p$, $binom(n, k) equiv product_i binom(n_i, k_i) med (mod p)$ where $n_i$ and $k_i$ are the digits of $n$ and $k$ in base $p$.
 ]
 
 #hint(2)[
-  Check $p_3(x) = 1 + 2^2 x + 2^2 x^2 + x^3 = 1 + 4 x + 4 x^2 + x^3$. Note $2^(k(n-k))$ is symmetric in $k$ and $n - k$, so the coefficients are palindromic.
+  Convert $100$ and $42$ to base $7$. We have $100 = 2 dot 7^2 + 0 dot 7 + 2 = (2 0 2)_7$ and $42 = 1 dot 7^2 + 2 dot 7 + 0 = (1 2 0)_7$ (i.e., $42 = 49 + 14 = 63$... no: $42 = 0 dot 49 + 6 dot 7 + 0 = (0 6 0)_7$). Recompute carefully.
 ]
 
 #hint(3)[
-  Consider the polynomial as a $q$-analog with $q = 2$. The coefficients $2^(k(n-k))$ are related to Gaussian binomial coefficients. Use the factorization of $q$-binomials to show all roots are negative real (they are at $-2^j$ for appropriate $j$). The factorization is $p_n(x) = product_(j=0)^(n-1)(1 + 2^j x)$. Verify by expanding.
+  $100 = 2 dot 49 + 0 dot 7 + 2 = (2, 0, 2)_7$. $42 = 0 dot 49 + 6 dot 7 + 0 = (0, 6, 0)_7$. By Lucas, $binom(100, 42) equiv binom(2, 0) dot binom(0, 6) dot binom(2, 0) med (mod 7)$. Since $binom(0, 6) = 0$ (digit of $k$ exceeds digit of $n$), the product is $0$.
 ]
 
 #solution[
-  We claim $p_n(x) = product_(j=0)^(n-1)(1 + 2^j x)$, which has roots $x = -2^(-j)$ for $j = 0, dots, n-1$ (all real and negative).
+  We apply Lucas' theorem with $p = 7$.
 
-  *Proof by induction.* Base: $p_1(x) = 1 + x$. Inductive step: expanding $product_(j=0)^(n-1)(1 + 2^j x)$, the coefficient of $x^k$ is $sum_(S subset.eq {0, dots, n-1}, |S|=k) 2^(sum_(j in S) j)$. The key identity is that this sum equals $2^(k(n-k))$, which follows from the Gaussian binomial coefficient: $sum_(S, |S|=k) 2^(sum S) = 2^(binom(k,2)) binom(n, k)_2$ where $binom(n, k)_q = product_(i=0)^(k-1) frac(q^(n-i) - 1, q^(i+1) - 1)$, and one verifies $2^(binom(k,2)) binom(n, k)_2 = 2^(k(n-k))$ by direct computation. // VERIFY: algebraic details
+  *Base-7 representations:* $100 = 2 dot 49 + 0 dot 7 + 2$, so $100 = (2, 0, 2)_7$. $42 = 0 dot 49 + 6 dot 7 + 0$, so $42 = (0, 6, 0)_7$.
 
-  Once the factorization is established, the roots $x = -2^(-j)$ are manifestly real and negative. $square$
+  *Applying Lucas:*
+  $ binom(100, 42) equiv binom(2, 0) dot binom(0, 6) dot binom(2, 0) med (mod 7). $
+
+  Since $binom(0, 6) = 0$ (we cannot choose $6$ items from $0$), the entire product is $0$.
+
+  Therefore $binom(100, 42) equiv bold(0) med (mod 7)$. $square$
 ]

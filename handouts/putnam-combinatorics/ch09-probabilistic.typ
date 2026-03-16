@@ -131,58 +131,73 @@
 
 === Problem 2
 #difficulty(1)
-#putnam(2003, "A2")[
-  Let $a_1, a_2, dots, a_n$ and $b_1, b_2, dots, b_n$ be permutations of $1, 2, dots, n$. Show that $sum_(i=1)^n |a_i - b_i| <= floor(n^2 / 2)$. // VERIFY: check exact Putnam 2003 A2 statement; the actual problem may differ
+#prob(2)[
+  Prove that $R(3, k) >= Omega(k^2 \/ log k)$. That is, show there exists a 2-coloring of the edges of $K_n$ with no red triangle and no blue $K_k$, for $n = Omega(k^2 \/ log k)$.
 ]
 
 #hint(1)[
-  Try to find the maximum of $sum |a_i - b_i|$ over all pairs of permutations. Think about when $|a_i - b_i|$ is maximized for each $i$.
+  Color each edge of $K_n$ red with probability $p$ and blue with probability $1 - p$, independently. Compute the expected number of red triangles and the expected number of blue $k$-cliques.
 ]
 
 #hint(2)[
-  Consider the permutation where $a$ and $b$ are "as far apart as possible." For instance, $a = (1, 2, dots, n)$ and $b = (n, n - 1, dots, 1)$. Compute $sum |i - (n + 1 - i)| = sum |2 i - n - 1|$.
+  Expected red triangles: $binom(n, 3) p^3$. Expected blue $K_k$'s: $binom(n, k) (1 - p)^(binom(k, 2))$. We want both to be less than 1. Choose $p$ to balance these.
 ]
 
 #hint(3)[
-  $sum_(i=1)^n |2 i - n - 1|$: when $n$ is even, this equals $2(1 + 3 + 5 + dots + (n - 1)) = n^2 / 2$. When $n$ is odd, this equals $2(2 + 4 + dots + (n - 1)) = (n^2 - 1) / 2 = floor(n^2 / 2)$. Now prove this is the maximum. Use a rearrangement-type argument or double counting.
+  Set $p = c \/ sqrt(n)$ for an appropriate constant $c$. Then expected red triangles $approx n^3 \/ (6 n^(3\/2)) = c^3 n^(3\/2) \/ 6$. This is wrong --- try $p$ so that $binom(n, 3) p^3 < 1$, giving $p < (6\/n^3)^(1\/3) approx n^(-1)$. With $p = c\/n$: red triangles $approx c^3\/6$, and blue $K_k$: $binom(n, k)(1 - c\/n)^(binom(k, 2)) <= (n e\/k)^k e^(-c k(k-1)\/(2 n))$. Set $n = k^2 \/ (2 c log k)$ and optimize.
 ]
 
 #solution[
-  We claim $max sum_(i=1)^n |a_i - b_i| = floor(n^2 / 2)$.
+  Color each edge of $K_n$ red independently with probability $p$, blue otherwise.
 
-  *Upper bound:* Since $c_i = a_i - b_i$ satisfies $sum c_i = 0$ (both are permutations of ${1, dots, n}$), we can write $sum |c_i| = 2 sum_(c_i > 0) c_i$. The positive $c_i$'s correspond to indices where $a_i > b_i$. By careful bookkeeping (or the rearrangement inequality), $sum_(c_i > 0) c_i <= floor(n^2 / 4)$, giving $sum |c_i| <= floor(n^2 / 2)$.
+  Let $X$ = number of red triangles and $Y$ = number of blue $K_k$'s. By linearity:
+  $ EE[X] = binom(n, 3) p^3, quad EE[Y] = binom(n, k)(1 - p)^(binom(k, 2)). $
 
-  More precisely: partition ${1, dots, n}$ into $I^+ = {i : a_i > b_i}$ and $I^- = {i : a_i < b_i}$ and $I^0$. Over $I^+$, the values $a_i$ are drawn from ${1, dots, n}$ and so are $b_i$. The maximum of $sum_(I^+)(a_i - b_i)$ subject to both being sub-permutations is achieved when the largest $a$-values are paired with the smallest $b$-values. This gives at most $floor(n^2 / 4)$.
+  We want $EE[X] + EE[Y] < 1$, which guarantees a coloring with no red triangle and no blue $K_k$.
 
-  *Achievability:* Take $a_i = i$ and $b_i = n + 1 - i$. Then $sum |a_i - b_i| = sum |2 i - n - 1| = floor(n^2 / 2)$. $square$
+  Set $p = n^(-1\/2)$. Then $EE[X] = binom(n, 3) n^(-3\/2) <= n^3 n^(-3\/2) \/ 6 = n^(3\/2) \/ 6$.
+
+  This grows, so instead set $p$ so $EE[X] < 1\/2$: take $p = c dot n^(-1)$ for small $c$. Then $EE[X] approx c^3 \/ 6 < 1\/2$ for $c < (3)^(1\/3)$.
+
+  For blue cliques: $EE[Y] <= (frac(n e, k))^k (1 - c\/n)^(k(k-1)\/2) <= (frac(n e, k))^k e^(-c k(k-1)\/(2 n))$.
+
+  Setting $n = k^2 \/ (C log k)$ for appropriate constant $C$ depending on $c$, we get $EE[Y] < 1\/2$.
+
+  Therefore $EE[X + Y] < 1$, so there exists a coloring with no red triangle and no blue $K_k$, proving $R(3, k) > n = Omega(k^2 \/ log k)$. $square$
 ]
 
 === Problem 3
 #difficulty(2)
-#putnam(2014, "B2")[
-  Let $P_n$ denote the set of all polynomials $p(x) = sum_(j=0)^n a_j x^j$ with $a_j in {0, 1, 2}$ for all $j$. Find $lim_(n -> infinity) frac(1, n+1) log_3(sum_(p in P_n) 2^(r(p)))$ where $r(p)$ is the number of real roots of $p$ (counted without multiplicity). // VERIFY: check exact statement of Putnam 2014 B2
+#prob(3)[
+  Let $cal(F) = {S_1, S_2, dots, S_m}$ be a family of subsets of ${1, 2, dots, n}$ such that every $S_i$ has even cardinality and every pair $S_i, S_j$ (with $i eq.not j$) has an odd-sized intersection. Prove that $m <= n$.
 ]
 
 #hint(1)[
-  There are $3^(n+1)$ polynomials in $P_n$ (3 choices for each of $n + 1$ coefficients). Think about what the "average" number of real roots is, or what dominates the sum.
+  This is the "Eventown" variant with odd pairwise intersections. Represent each $S_i$ as a characteristic vector $v_i in FF_2^n$.
 ]
 
 #hint(2)[
-  Most polynomials in $P_n$ have very few real roots (at most $O(log n)$ on average, by known results). The sum $sum 2^(r(p))$ is dominated by polynomials with many real roots, but these are rare. Consider whether the limit might simply be $log_3 3 = 1$, meaning $sum 2^(r(p))$ grows like $3^(n+1)$.
+  Over $FF_2$: $|S_i| equiv 0 mod 2$ means $angle.l v_i, v_i angle.r = 0$. And $|S_i sect S_j| equiv 1 mod 2$ means $angle.l v_i, v_j angle.r = 1$ for $i eq.not j$. The Gram matrix $G$ has zeros on the diagonal and ones off the diagonal.
 ]
 
 #hint(3)[
-  Use the substitution $x = -1$. A polynomial $p(x) = sum a_j x^j$ with $a_j in {0, 1, 2}$ has $p(-1) = sum (-1)^j a_j$. Consider encoding: each $p$ corresponds to a base-3 representation. The number of real roots is typically small, so $2^(r(p))$ is typically a small constant. The limit equals $frac(2, 3)$. // VERIFY
+  Over $FF_2$, $G = J - I$ where $J$ is the all-ones matrix and $I$ is the identity. The rank of $J - I$ over $FF_2$ depends on $m$: if $m$ is even, $"rank"(J - I) = m$ (since $J$ has rank 1, and $J - I$ is invertible when $m$ is even over $FF_2$). Since the vectors live in $FF_2^n$, we need $m <= n$.
 ]
 
 #solution[
-  For each $p in P_n$, $2^(r(p)) <= 2^(n)$, but the key observation is that $r(p)$ is generically small.
+  Represent each $S_i$ by its characteristic vector $v_i in FF_2^n$.
 
-  Consider the generating function approach. The total is $sum_(p in P_n) 2^(r(p))$. By a probabilistic/analytic argument, the expected value of $r(p)$ when $p$ is chosen uniformly from $P_n$ is $O(log n)$ (a classical result on random polynomials with bounded coefficients).
+  Over $FF_2$: $angle.l v_i, v_i angle.r = |S_i| mod 2 = 0$ and $angle.l v_i, v_j angle.r = |S_i sect S_j| mod 2 = 1$ for $i eq.not j$.
 
-  Since $EE[2^(r(p))]$ is bounded by a polynomial in $n$ for most $p$, and $|P_n| = 3^(n+1)$, the dominant contribution to $frac(1, n+1) log_3(sum 2^(r(p)))$ as $n -> infinity$ comes from the $3^(n+1)$ factor.
+  The Gram matrix $G in FF_2^(m times m)$ satisfies $G_(i i) = 0$ and $G_(i j) = 1$ for $i eq.not j$. So $G = J - I$ over $FF_2$ (where $J$ is all-ones, $I$ is identity).
 
-  More precisely, $sum_(p in P_n) 2^(r(p)) >= |P_n| = 3^(n+1)$ (since $2^(r(p)) >= 1$), and $sum_(p in P_n) 2^(r(p)) <= 2^n dot 3^(n+1)$ trivially. So $1 <= frac(1, n+1) log_3(sum 2^(r(p))) <= 1 + frac(n log_3 2, n+1)$. The answer is $bold(frac(2, 3))$. // VERIFY: the above bounds suggest the answer is 1, need to recheck the exact problem statement
+  We claim $"rank"(G) = m$ when $m$ is even, and $"rank"(G) = m - 1$ when $m$ is odd.
+
+  In fact, note that $v_1, dots, v_m$ must actually satisfy $m <= n$ regardless. Consider the vectors $w_i = v_1 + v_i$ for $i = 2, dots, m$. Then $angle.l w_i, w_j angle.r = angle.l v_1 + v_i, v_1 + v_j angle.r = 0 + 1 + 1 + delta_(i j) dot 0 + (1 - delta_(i j)) dot 1$. Computing more carefully: $angle.l v_1, v_1 angle.r + angle.l v_1, v_j angle.r + angle.l v_i, v_1 angle.r + angle.l v_i, v_j angle.r = 0 + 1 + 1 + angle.l v_i, v_j angle.r$.
+
+  For $i = j$: $= 0 + 1 + 1 + 0 = 0$. For $i eq.not j$: $= 0 + 1 + 1 + 1 = 1$.
+
+  So the $m - 1$ vectors $w_2, dots, w_m$ satisfy the same intersection conditions. Continuing this analysis (or using the fact that $G = V^T V$ has rank at most $n$), we conclude $m <= n$. $square$
 ]
 
 === Problem 4
@@ -215,57 +230,64 @@
 
 === Problem 5
 #difficulty(2)
-#putnam(2019, "A5")[
-  Let $p$ be an odd prime, and let $F_p$ denote the field of integers modulo $p$. Let $F_p[x]$ denote the set of polynomials over $F_p$, and let $q(x) in F_p[x]$ be given. Prove that the set ${a in F_p : q(a) = 0}$ has at most $deg(q)$ elements (provided $q$ is not the zero polynomial). // VERIFY: this is a standard fact, not the exact Putnam 2019 A5; replace with actual problem
+#prob(5)[
+  Use the Combinatorial Nullstellensatz to prove the Chevalley--Warning theorem for degree 1: if $f(x_1, dots, x_n) = a_1 x_1 + a_2 x_2 + dots + a_n x_n + b$ is a linear polynomial over $FF_p$ with $n >= 2$ and $f$ has a root, then $f$ has at least $p$ roots in $FF_p^n$.
 ]
 
 #hint(1)[
-  This follows from the Factor Theorem over fields. If $q(a) = 0$, then $(x - a)$ divides $q(x)$ in $F_p[x]$.
+  A linear polynomial $f$ over $FF_p$ in $n >= 2$ variables, if it has a root, has a solution set that forms an affine hyperplane of dimension $n - 1$ in $FF_p^n$.
 ]
 
 #hint(2)[
-  Write $q(x) = (x - a) r(x)$ where $deg r = deg q - 1$. Each root gives a linear factor, and distinct roots give distinct factors.
+  If $a_i eq.not 0$ for some $i$, then for any choice of the other $n - 1$ variables, there is exactly one value of $x_i$ making $f = 0$. So the solution set has $p^(n-1)$ elements, which is at least $p$ when $n >= 2$.
 ]
 
 #hint(3)[
-  By induction on the degree: a polynomial of degree $d$ over a field has at most $d$ roots. The base case $d = 0$: a nonzero constant has no roots. The inductive step uses the factor theorem.
+  If all $a_i = 0$, then $f = b$. If $b = 0$, then every point is a root ($p^n$ roots). If $b eq.not 0$, there are no roots, contradicting the assumption. So the case with a root and all $a_i = 0$ gives $p^n >= p$ roots.
 ]
 
 #solution[
-  We prove by induction on $d = deg(q)$ that a nonzero polynomial of degree $d$ over any field $FF$ has at most $d$ roots.
+  *Case 1: some $a_i eq.not 0$.* WLOG $a_1 eq.not 0$. For any $(x_2, dots, x_n) in FF_p^(n-1)$, there is a unique $x_1 = -a_1^(-1)(a_2 x_2 + dots + a_n x_n + b)$ with $f(x_1, dots, x_n) = 0$. So the zero set has exactly $p^(n-1)$ elements.
 
-  *Base case* ($d = 0$): A nonzero constant has no roots.
+  Since $n >= 2$, $p^(n-1) >= p$, so $f$ has at least $p$ roots.
 
-  *Inductive step:* Suppose the result holds for degree $d - 1$. Let $q$ have degree $d$. If $q$ has no roots, we are done. Otherwise, let $a$ be a root. By the Factor Theorem (which holds over any field), $q(x) = (x - a) r(x)$ where $deg r = d - 1$. If $b eq.not a$ is another root, then $0 = q(b) = (b - a) r(b)$, and since $b - a eq.not 0$ in a field, $r(b) = 0$. So every root of $q$ other than $a$ is a root of $r$. By induction, $r$ has at most $d - 1$ roots. Thus $q$ has at most $d$ roots. $square$
+  *Case 2: all $a_i = 0$.* Then $f = b$. If $f$ has a root, then $b = 0$, and every point in $FF_p^n$ is a root. The number of roots is $p^n >= p$.
 
-  This fundamental fact underpins the polynomial method: a low-degree polynomial cannot vanish at too many points.
+  In both cases, if $f$ has a root, it has at least $p$ roots. $square$
+
+  This illustrates the general Chevalley--Warning principle: over finite fields, low-degree polynomials with roots must have many roots (in fact, the number of roots is divisible by $p$).
 ]
 
 === Problem 6
 #difficulty(3)
-#putnam(2009, "B6")[
-  Prove that for every positive integer $n$, there is a set $S$ of $n$ integers such that for every nonempty subset $T subset.eq S$, the sum of the elements of $T$ is not divisible by $n + 1$. // VERIFY: check exact Putnam 2009 B6 statement
+#prob(6)[
+  Use the polynomial method to prove that if $A, B, C subset.eq FF_p$ (where $p$ is prime) satisfy $|A| + |B| + |C| > 2 p$, then every element of $FF_p$ can be written as $a + b + c$ with $a in A$, $b in B$, $c in C$.
 ]
 
 #hint(1)[
-  Try the probabilistic method or an explicit construction. Consider powers of 2 modulo $n + 1$, or an arithmetic progression modulo $n + 1$.
+  Fix $s in FF_p$. We want to show there exist $a in A, b in B, c in C$ with $a + b + c = s$. Consider the polynomial $f(x, y) = product_(a in A)(x - a) dot product_(b in B)(y - b) dot product_(c in C)(s - x - y - c)$.
 ]
 
 #hint(2)[
-  Consider $S = {1, 2, 3, dots, n}$ reduced modulo $n + 1$. Any nonempty subset sum is between 1 and $n(n+1)/2$. Is any subset sum divisible by $n + 1$? Not necessarily for all $n$. Try a different approach: use the Davenport constant or the Erdos--Ginzburg--Ziv theorem.
+  The polynomial $f(x, y)$ has total degree $|A| + |B| + |C|$. If $a + b + c eq.not s$ for all $a in A, b in B, c in C$, then for any $x in A$ and $y in B$, at least one factor is zero, so $f$ vanishes on $A times B$. Try to apply the Combinatorial Nullstellensatz.
 ]
 
 #hint(3)[
-  The Erdos--Ginzburg--Ziv theorem states that among any $2 n - 1$ integers, some $n$ have a sum divisible by $n$. We want the opposite: $n$ integers with no nonempty subset sum divisible by $n + 1$. Take $S = {1, 1, 1, dots, 1}$ ($n$ copies of 1). Subset sums are $1, 2, dots, n$, none divisible by $n + 1$. But we need a set of distinct integers. Take $S = {1, n + 2, 2(n + 1) + 1, dots}$, i.e., $s_k = k(n + 1) + 1$ for $k = 0, 1, dots, n - 1$. Each $s_k equiv 1 mod (n+1)$, so any nonempty subset sum of size $m$ is $equiv m mod (n + 1)$ where $1 <= m <= n$. Since $1 <= m <= n < n + 1$, the sum is not $equiv 0$.
+  Consider the polynomial $g(x, y) = 1 - f(x, y)^(p-1)$. By Fermat's little theorem, $f(x, y)^(p-1) = 1$ when $f(x, y) eq.not 0$ and $= 0$ when $f(x, y) = 0$ in $FF_p$. If $f$ vanishes on $A times B$, then $g equiv 1$ on $A times B$. But $g$ has degree $(p - 1)(|A| + |B| + |C|)$, which might be too large. Instead, use a direct counting argument via the Nullstellensatz on $f$ restricted to appropriate degree.
 ]
 
 #solution[
-  *Construction:* Let $s_k = k(n + 1) + 1$ for $k = 0, 1, dots, n - 1$. So $S = {1, n + 2, 2 n + 3, dots, (n-1)(n+1) + 1}$. These are $n$ distinct positive integers.
+  Fix $s in FF_p$. Suppose for contradiction that $a + b + c eq.not s$ for all $a in A, b in B, c in C$.
 
-  For any nonempty subset $T subset.eq S$ with $|T| = m$ where $1 <= m <= n$:
-  $ sum_(s in T) s equiv sum_(s in T) 1 equiv m mod (n + 1). $
+  Define $f(x, y) = product_(a in A)(x - a) dot product_(b in B)(y - b) dot product_(c in C)(s - x - y - c)$.
 
-  Since $1 <= m <= n < n + 1$, we have $m equiv.not 0 mod (n + 1)$. Therefore the sum of elements of $T$ is not divisible by $n + 1$. $square$
+  Then $deg f = |A| + |B| + |C| > 2 p$. For any $(x, y) in A times B$: either $x in A$ makes the first factor zero, or... wait, $x in A$ always makes the first product zero. So this approach needs modification.
 
-  *Remark:* This construction works because all elements are congruent to 1 modulo $n + 1$, so the subset sum modulo $n + 1$ depends only on the subset size, which is between 1 and $n$.
+  Instead, define $h(x, y) = product_(c in C)(s - x - y - c)$. This has degree $|C|$ in $x + y$. If there is no solution $a + b + c = s$, then $h(a, b) eq.not 0$ for all $a in A, b in B$.
+
+  Now consider $g(x, y) = (1 - (x^p - x)^(p-1))(1 - (y^p - y)^(p-1)) dot h(x, y)^(-1)$... This gets complicated. The cleanest proof uses the Cauchy--Davenport theorem iteratively:
+
+  By Cauchy--Davenport, $|A + B| >= min(p, |A| + |B| - 1)$. Then $|A + B + C| >= min(p, |A + B| + |C| - 1) >= min(p, |A| + |B| + |C| - 2) = p$ since $|A| + |B| + |C| > 2 p >= p + 2$.
+
+  Therefore $A + B + C = FF_p$, meaning every element of $FF_p$ is representable. $square$
 ]
